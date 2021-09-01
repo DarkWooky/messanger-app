@@ -8,8 +8,8 @@
 import UIKit
 
 extension UIViewController {
-    func assignBackground() {
-        let background = UIImage(named: "background")
+    func assignBackground(backgroundName: String) {
+        let background = UIImage(named: backgroundName)
 
         var imageView: UIImageView!
         imageView = UIImageView(frame: view.bounds)

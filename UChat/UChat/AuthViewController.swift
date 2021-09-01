@@ -10,8 +10,6 @@ import UIKit
 // MARK: - AuthViewController
 
 class AuthViewController: UIViewController {
-    // MARK: Internal
-
     let logoImageView = UIImageView(image: #imageLiteral(resourceName: "Logo"), contentMode: .scaleAspectFit)
 
     let googleLabel = UILabel(text: "Get started with")
@@ -26,12 +24,14 @@ class AuthViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
 
-        assignBackground()
+        assignBackground(backgroundName: "background")
         setupConstraints()
     }
+}
 
-    // MARK: Private
+// MARK: - Setup Constraints
 
+extension AuthViewController {
     private func setupConstraints() {
         logoImageView.translatesAutoresizingMaskIntoConstraints = false
 
@@ -44,12 +44,12 @@ class AuthViewController: UIViewController {
 
         view.addSubview(logoImageView)
         view.addSubview(stackView)
-        
+
         NSLayoutConstraint.activate([
             logoImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
             logoImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50)
         ])
-        
+
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 200),
             stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
