@@ -17,6 +17,8 @@
 		F493645E26DEEFB3008DC184 /* UIViewController + Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = F493645D26DEEFB3008DC184 /* UIViewController + Extention.swift */; };
 		F493646026DEF158008DC184 /* UILabel + Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = F493645F26DEF158008DC184 /* UILabel + Extention.swift */; };
 		F493646226DEF37B008DC184 /* UIImage + Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = F493646126DEF37B008DC184 /* UIImage + Extention.swift */; };
+		F493646626DF005A008DC184 /* ButtonFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F493646526DF005A008DC184 /* ButtonFormView.swift */; };
+		F493646826DF0E74008DC184 /* UIStackView + Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = F493646726DF0E74008DC184 /* UIStackView + Extention.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		F493645D26DEEFB3008DC184 /* UIViewController + Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Extention.swift"; sourceTree = "<group>"; };
 		F493645F26DEF158008DC184 /* UILabel + Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + Extention.swift"; sourceTree = "<group>"; };
 		F493646126DEF37B008DC184 /* UIImage + Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage + Extention.swift"; sourceTree = "<group>"; };
+		F493646526DF005A008DC184 /* ButtonFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonFormView.swift; sourceTree = "<group>"; };
+		F493646726DF0E74008DC184 /* UIStackView + Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView + Extention.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,16 +71,34 @@
 				F493644326DEC3FF008DC184 /* AppDelegate.swift */,
 				F493644526DEC3FF008DC184 /* SceneDelegate.swift */,
 				F493644726DEC3FF008DC184 /* AuthViewController.swift */,
-				F493645F26DEF158008DC184 /* UILabel + Extention.swift */,
-				F493645D26DEEFB3008DC184 /* UIViewController + Extention.swift */,
-				F493646126DEF37B008DC184 /* UIImage + Extention.swift */,
-				F493645726DED3B4008DC184 /* UIButton + Extention.swift */,
-				F493645926DED8C3008DC184 /* UIFont + Extention.swift */,
+				F493646426DEFBC0008DC184 /* Extentions */,
 				F493644C26DEC404008DC184 /* Assets.xcassets */,
 				F493644E26DEC404008DC184 /* LaunchScreen.storyboard */,
 				F493645126DEC404008DC184 /* Info.plist */,
 			);
 			path = UChat;
+			sourceTree = "<group>";
+		};
+		F493646326DEFBB7008DC184 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				F493645F26DEF158008DC184 /* UILabel + Extention.swift */,
+				F493645D26DEEFB3008DC184 /* UIViewController + Extention.swift */,
+				F493646126DEF37B008DC184 /* UIImage + Extention.swift */,
+				F493645726DED3B4008DC184 /* UIButton + Extention.swift */,
+				F493645926DED8C3008DC184 /* UIFont + Extention.swift */,
+				F493646726DF0E74008DC184 /* UIStackView + Extention.swift */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+		F493646426DEFBC0008DC184 /* Extentions */ = {
+			isa = PBXGroup;
+			children = (
+				F493646526DF005A008DC184 /* ButtonFormView.swift */,
+				F493646326DEFBB7008DC184 /* UIKit */,
+			);
+			path = Extentions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -151,8 +173,10 @@
 				F493645826DED3B4008DC184 /* UIButton + Extention.swift in Sources */,
 				F493644826DEC3FF008DC184 /* AuthViewController.swift in Sources */,
 				F493644426DEC3FF008DC184 /* AppDelegate.swift in Sources */,
+				F493646626DF005A008DC184 /* ButtonFormView.swift in Sources */,
 				F493644626DEC3FF008DC184 /* SceneDelegate.swift in Sources */,
 				F493645A26DED8C3008DC184 /* UIFont + Extention.swift in Sources */,
+				F493646826DF0E74008DC184 /* UIStackView + Extention.swift in Sources */,
 				F493645E26DEEFB3008DC184 /* UIViewController + Extention.swift in Sources */,
 				F493646226DEF37B008DC184 /* UIImage + Extention.swift in Sources */,
 				F493646026DEF158008DC184 /* UILabel + Extention.swift in Sources */,

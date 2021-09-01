@@ -13,7 +13,7 @@ extension UIButton {
                      backgroundColor: UIColor,
                      font: UIFont? = .helvetica20(),
                      isShadow: Bool = false,
-                     cornerRadius: CGFloat = 5)
+                     cornerRadius: CGFloat = 30)
     {
         self.init(type: .system)
 
@@ -27,7 +27,7 @@ extension UIButton {
         if isShadow {
             self.layer.shadowColor = UIColor.black.cgColor
             self.layer.shadowRadius = 4
-            self.layer.shadowOpacity = 0.2
+            self.layer.shadowOpacity = 0.5
             self.layer.shadowOffset = CGSize(width: 0, height: 4)
         }
     }
