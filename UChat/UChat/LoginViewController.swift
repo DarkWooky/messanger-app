@@ -29,6 +29,7 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        googleButton.customizeGoogleButton()
         setupView()
     }
 }
