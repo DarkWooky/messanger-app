@@ -51,7 +51,7 @@ extension AuthViewController {
         ])
 
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 200),
+            stackView.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 150),
             stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
             stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40)
         ])
@@ -76,6 +76,6 @@ struct AuthVCProvider: PreviewProvider {
     }
 
     static var previews: some View {
-        ContainerView().preferredColorScheme(.light).edgesIgnoringSafeArea(.all)
+        ContainerView().preferredColorScheme(.dark).edgesIgnoringSafeArea(.all)
     }
 }

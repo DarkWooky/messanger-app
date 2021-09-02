@@ -8,11 +8,13 @@
 import UIKit
 
 class OneLineTextField: UITextField {
-    convenience init(font: UIFont? = .helvetica20()) {
+    convenience init(font: UIFont? = .helvetica20(), isSecure: Bool = true) {
         self.init()
         
         self.font = font
         self.borderStyle = .none
+        self.clearButtonMode = .whileEditing
+        self.isSecureTextEntry = isSecure
         self.translatesAutoresizingMaskIntoConstraints = false
         
         var bottomView = UIView()
@@ -22,7 +24,7 @@ class OneLineTextField: UITextField {
         self.addSubview(bottomView)
         
         NSLayoutConstraint.activate([
-            bottomView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            bottomView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 3),
             bottomView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             bottomView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             bottomView.heightAnchor.constraint(equalToConstant: 1)

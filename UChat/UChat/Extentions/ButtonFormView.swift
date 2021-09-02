@@ -20,7 +20,7 @@ class ButtonFormView: UIView {
         
         NSLayoutConstraint.activate([
             label.topAnchor.constraint(equalTo: self.topAnchor),
-            label.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20)
+            label.leadingAnchor.constraint(equalTo: self.leadingAnchor)
         ])
         
         NSLayoutConstraint.activate([

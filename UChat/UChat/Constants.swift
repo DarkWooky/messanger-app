@@ -1,5 +1,5 @@
 //
-//  Contstants.swift
+//  Constants.swift
 //  UChat
 //
 //  Created by Egor Mihalevich on 2.09.21.

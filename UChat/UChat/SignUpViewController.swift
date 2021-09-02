@@ -19,8 +19,11 @@ class SignUpViewController: UIViewController {
     let passwordLabel = UILabel(text: "Password")
     let confirmPasswordLabel = UILabel(text: "Confirm password")
     let alreadyOnBoardLabel = UILabel(text: "Already onboard?", textColor: .systemGray6)
+    
+    //MARK: – TODO: Add Error!
+    let emailErrorLabel = UILabel(text: "Incorrect email", font: .helvetica14(), textColor: .systemRed)
 
-    let emailTextField = OneLineTextField(font: .helvetica20())
+    let emailTextField = OneLineTextField(font: .helvetica20(), isSecure: false)
     let passwordTextField = OneLineTextField(font: .helvetica20())
     let confirmPasswordTextField = OneLineTextField(font: .helvetica20())
 
@@ -29,16 +32,16 @@ class SignUpViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        setupConstraints()
+        setupScrollView()
+        setupViews()
         assignBackground(backgroundName: "background")
-//        loginButton.setTitle("Login", for: .normal)
-//        loginButton.setTitleColor(.systemPurple, for: .normal)
     }
 }
 
 extension SignUpViewController {
-    private func setupConstraints() {
+    
+     //MARK: - ScrollView
+    private func setupScrollView() {
         let screensize: CGRect = UIScreen.main.bounds
         let screenWidth = screensize.width
         let screenHeight = screensize.height
@@ -48,11 +51,14 @@ extension SignUpViewController {
 
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
-
-        let emailStackView = UIStackView(arrangedSubviews: [emailLabel, emailTextField], axis: .vertical, spacing: 5)
+    }
+    // MARK: - Views
+    private func setupViews() {
+        
+        //Main StackView
+        let emailStackView = UIStackView(arrangedSubviews: [emailLabel, emailTextField, emailErrorLabel], axis: .vertical, spacing: 5)
         let passwordStackView = UIStackView(arrangedSubviews: [passwordLabel, passwordTextField], axis: .vertical, spacing: 5)
         let confirmPasswordStackView = UIStackView(arrangedSubviews: [confirmPasswordLabel, confirmPasswordTextField], axis: .vertical, spacing: 5)
-
         signUpButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
 
         let stackView = UIStackView(arrangedSubviews: [
@@ -62,10 +68,13 @@ extension SignUpViewController {
             signUpButton
         ], axis: .vertical, spacing: 40)
 
+        //Bottom StackView
+        loginButton.contentHorizontalAlignment = .leading
         let bottomStackView = UIStackView(arrangedSubviews: [
             alreadyOnBoardLabel,
             loginButton
-        ], axis: .horizontal, spacing: -1)
+        ], axis: .horizontal, spacing: 10)
+        bottomStackView.alignment = .firstBaseline
 
         welcomeLabel.translatesAutoresizingMaskIntoConstraints = false
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -75,6 +84,7 @@ extension SignUpViewController {
         contentView.addSubview(stackView)
         contentView.addSubview(bottomStackView)
 
+        //Constraints
         NSLayoutConstraint.activate([
             welcomeLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 160),
             welcomeLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor)
