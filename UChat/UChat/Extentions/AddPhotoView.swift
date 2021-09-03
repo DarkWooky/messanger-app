@@ -28,11 +28,11 @@ class AddPhotoView: UIView {
     var circleImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = #imageLiteral(resourceName: "avatar")
+        imageView.image = UIImage(systemName: "person.crop.circle")
+        imageView.tintColor = UIColor(named: "customColor")
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
-        imageView.layer.borderColor = UIColor(named: "customColor")?.cgColor
-        imageView.layer.borderWidth = 1
+
         return imageView
     }()
     

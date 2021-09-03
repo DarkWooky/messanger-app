@@ -18,7 +18,7 @@ class SignUpViewController: UIViewController {
     let emailLabel = UILabel(text: "Email")
     let passwordLabel = UILabel(text: "Password")
     let confirmPasswordLabel = UILabel(text: "Confirm password")
-    let alreadyOnBoardLabel = UILabel(text: "Already onboard?", textColor: .systemGray6)
+    let alreadyOnBoardLabel = UILabel(text: "Already onboard?", textColor: .white)
     
     //MARK: – TODO: Add Error!
     let emailErrorLabel = UILabel(text: "Incorrect email", font: .helvetica14(), textColor: .systemRed)

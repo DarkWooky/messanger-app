@@ -26,14 +26,14 @@ class AuthViewController: UIViewController {
 
         googleButton.customizeGoogleButton()
         assignBackground(backgroundName: "background")
-        setupConstraints()
+        setupViews()
     }
 }
 
-// MARK: - Setup Constraints
+// MARK: - Setup views
 
 extension AuthViewController {
-    private func setupConstraints() {
+    private func setupViews() {
         logoImageView.translatesAutoresizingMaskIntoConstraints = false
 
         let googleView = ButtonFormView(label: googleLabel, button: googleButton)
