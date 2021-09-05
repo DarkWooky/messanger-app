@@ -16,15 +16,15 @@ class LoginViewController: UIViewController {
     let orLabel = UILabel(text: "or")
     let emailLabel = UILabel(text: "Email")
     let passwordLabel = UILabel(text: "Password")
-    let needAnAccountLabel = UILabel(text: "Need an account?")
+    let needAnAccountLabel = UILabel(text: "Need an account?", textColor: .white)
 
-    let googleButton = UIButton(title: "Google", titleColor: .systemPurple, backgroundColor: .systemGray6, isShadow: true)
+    let googleButton = UIButton(title: "Google", backgroundColor: .systemGray6, isShadow: true)
 
     let emailTextField = OneLineTextField(font: .helvetica20(), isSecure: false)
     let passwordTextField = OneLineTextField(font: .helvetica20())
 
-    let loginButton = UIButton(title: "Login", titleColor: .white, backgroundColor: .systemPurple, isShadow: true)
-    let signUpButton = UIButton(title: "Sign Up", titleColor: .systemPurple)
+    let loginButton = UIButton(title: "Login", titleColor: .white, isShadow: true)
+    let signUpButton = UIButton(title: "Sign Up", titleColor: .systemPurple, backgroundColor: nil)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,7 +51,7 @@ extension LoginViewController {
         let bottomStackView = UIStackView(arrangedSubviews: [needAnAccountLabel,
                                                              signUpButton],
                                           axis: .horizontal,
-                                          spacing: 10)
+                                          spacing: 12)
         bottomStackView.alignment = .firstBaseline
         
         let stackView = UIStackView(arrangedSubviews: [loginWithView,
@@ -100,6 +100,6 @@ struct LoginVCProvider: PreviewProvider {
     }
 
     static var previews: some View {
-        ContainerView().preferredColorScheme(.dark).edgesIgnoringSafeArea(.all)
+        ContainerView().preferredColorScheme(.light).edgesIgnoringSafeArea(.all)
     }
 }

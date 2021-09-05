@@ -20,7 +20,7 @@ class SetupProfileViewController: UIViewController {
     let aboutmeTextField = OneLineTextField(font: .helvetica20(), isSecure: false)
     let sexSegmentedControl = UISegmentedControl(first: "Male", second: "Female")
 
-    let goToChatsButton = UIButton(title: "Go to chats!", titleColor: .white, backgroundColor: .systemPurple, isShadow: true)
+    let goToChatsButton = UIButton(title: "Go to chats!", titleColor: .white, isShadow: true)
 
     let fillImageView = AddPhotoView()
 

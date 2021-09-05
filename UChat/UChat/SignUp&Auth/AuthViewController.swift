@@ -16,9 +16,9 @@ class AuthViewController: UIViewController {
     let emailLabel = UILabel(text: "Or sign up with")
     let alreadyOnboardLabel = UILabel(text: "Already onboard?")
 
-    let googleButton = UIButton(title: "Google", titleColor: .systemPurple, backgroundColor: .systemGray6, isShadow: true)
+    let googleButton = UIButton(title: "Google", backgroundColor: .systemGray6, isShadow: true)
     let emailButton = UIButton(title: "Email", titleColor: .systemGray6, backgroundColor: .systemPurple, isShadow: true)
-    let loginButton = UIButton(title: "Login", titleColor: .systemPurple, backgroundColor: .systemGray6, isShadow: true)
+    let loginButton = UIButton(title: "Login", backgroundColor: .systemGray6, isShadow: true)
 
     override func viewDidLoad() {
         super.viewDidLoad()
