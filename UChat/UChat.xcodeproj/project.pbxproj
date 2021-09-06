@@ -37,6 +37,7 @@
 		F4B9325726E57D440001DD04 /* waitingChats.json in Resources */ = {isa = PBXBuildFile; fileRef = F4B9325526E57D440001DD04 /* waitingChats.json */; };
 		F4B9325826E57D440001DD04 /* activeChats.json in Resources */ = {isa = PBXBuildFile; fileRef = F4B9325626E57D440001DD04 /* activeChats.json */; };
 		F4B9325B26E5902C0001DD04 /* ActiveChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B9325A26E5902C0001DD04 /* ActiveChatCell.swift */; };
+		F4B9325D26E64A480001DD04 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B9325C26E64A480001DD04 /* Date.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,6 +72,7 @@
 		F4B9325526E57D440001DD04 /* waitingChats.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = waitingChats.json; sourceTree = "<group>"; };
 		F4B9325626E57D440001DD04 /* activeChats.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = activeChats.json; sourceTree = "<group>"; };
 		F4B9325A26E5902C0001DD04 /* ActiveChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveChatCell.swift; sourceTree = "<group>"; };
+		F4B9325C26E64A480001DD04 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +142,7 @@
 				F493646526DF005A008DC184 /* ButtonFormView.swift */,
 				F4B9325026E577740001DD04 /* Bundle-Decodable.swift */,
 				F493646B26DFC24E008DC184 /* OneLineTextField.swift */,
+				F4B9325C26E64A480001DD04 /* Date.swift */,
 				F493646326DEFBB7008DC184 /* UIKit */,
 			);
 			path = Extentions;
@@ -282,6 +285,7 @@
 				F493644826DEC3FF008DC184 /* AuthViewController.swift in Sources */,
 				F493644426DEC3FF008DC184 /* AppDelegate.swift in Sources */,
 				F4B9324426E188500001DD04 /* ListViewController.swift in Sources */,
+				F4B9325D26E64A480001DD04 /* Date.swift in Sources */,
 				F4B9323E26E174C30001DD04 /* UISegmentedControl + Extention.swift in Sources */,
 				F4B9325B26E5902C0001DD04 /* ActiveChatCell.swift in Sources */,
 				F493646626DF005A008DC184 /* ButtonFormView.swift in Sources */,

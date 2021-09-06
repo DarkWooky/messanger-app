@@ -1,0 +1,37 @@
+[
+    {
+        "username": "Peter Brown",
+        "userImageString": "human6",
+        "lastMessage": "Are you going to ride a bike today?",
+        "date": "2021-07-21T19:32:00Z",
+        "id": 6
+    },
+    {
+        "username": "Sarah White",
+        "userImageString": "human7",
+        "lastMessage": "Wow!",
+        "date": "2021-07-21T19:32:00Z",
+        "id": 7
+    },
+    {
+        "username": "Melven Sandro",
+        "userImageString": "human8",
+        "lastMessage": "Hello!",
+        "date": "2021-07-21T19:32:00Z",
+        "id": 8
+    },
+    {
+        "username": "Nike Rose",
+        "userImageString": "human9",
+        "lastMessage": "Nice to meet you",
+        "date": "2021-07-21T19:32:00Z",
+        "id": 9
+    },
+    {
+        "username": "Andrey Velvet",
+        "userImageString": "human10",
+        "lastMessage": "How much?",
+        "date": "2021-07-21T19:32:00Z",
+        "id": 10
+    }
+]

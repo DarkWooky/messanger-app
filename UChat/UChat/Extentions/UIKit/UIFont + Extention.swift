@@ -21,6 +21,14 @@ extension UIFont {
         return UIFont.init(name: "helvetica", size: 26)
     }
     
+    static func helveticaNeueMedium20() -> UIFont? {
+        return UIFont.init(name: "Helvetica Neue Medium", size: 20)
+    }
+    
+    static func helveticaNeue18() -> UIFont? {
+        return UIFont.init(name: "Helvetica Neue", size: 18)
+    }
+    
     static func laoSangamMN20() -> UIFont? {
         return UIFont.init(name: "Lao Sangam MN", size: 20)
     }

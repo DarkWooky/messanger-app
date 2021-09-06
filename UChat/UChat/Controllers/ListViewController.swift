@@ -119,7 +119,7 @@ extension ListViewController {
 
         let section = NSCollectionLayoutSection(group: group)
         //section.interGroupSpacing = 16
-        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
         return section
     }
 
