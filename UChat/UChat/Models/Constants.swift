@@ -13,5 +13,14 @@ enum Constants: CGFloat {
 
 enum Section: Int, CaseIterable {
     case waitingChats, activeChats
+    
+    func description() -> String {
+        switch self {
+        case .waitingChats:
+            return "Waiting chats"
+        case .activeChats:
+            return "Active chats"
+        }
+    }
 }
 

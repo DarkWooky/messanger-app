@@ -7,13 +7,6 @@
 
 import UIKit
 
-// MARK: - SelfConfiguringCell
-
-protocol SelfConfiguringCell {
-    static var reuseId: String { get }
-    func configure(with value: Chat)
-}
-
 // MARK: - ActiveChatCell
 
 class ActiveChatCell: UICollectionViewCell, SelfConfiguringCell {
@@ -30,7 +23,7 @@ class ActiveChatCell: UICollectionViewCell, SelfConfiguringCell {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = UIColor(named: "mainColor-1")
+        backgroundColor = UIColor(named: "mainColor-1")?.withAlphaComponent(0.5)
         setupViews()
     }
 
@@ -61,13 +54,12 @@ extension ActiveChatCell {
         chatStackView.translatesAutoresizingMaskIntoConstraints = false
         lastMsgTimeLbl.translatesAutoresizingMaskIntoConstraints = false
         lineView.translatesAutoresizingMaskIntoConstraints = false
-
-        friendImageView.backgroundColor = .blue
+        
         lineView.backgroundColor = .brown
 
         lastMessageLabel.numberOfLines = 2
 
-        friendImageView.layer.cornerRadius = layer.bounds.height / 2.4
+        friendImageView.layer.cornerRadius = layer.bounds.height / 2.8
         friendImageView.clipsToBounds = true
 
         addSubview(friendImageView)
@@ -115,6 +107,6 @@ struct ActiveChatProvider: PreviewProvider {
     }
 
     static var previews: some View {
-        ContainerView().preferredColorScheme(.dark).edgesIgnoringSafeArea(.all)
+        ContainerView().preferredColorScheme(.light).edgesIgnoringSafeArea(.all)
     }
 }
