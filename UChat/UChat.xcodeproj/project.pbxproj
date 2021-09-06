@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -32,6 +32,11 @@
 		F4B9324A26E425CA0001DD04 /* UIColor + Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B9324926E425CA0001DD04 /* UIColor + Extention.swift */; };
 		F4B9324D26E5699C0001DD04 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B9324C26E5699C0001DD04 /* Chat.swift */; };
 		F4B9324F26E570E20001DD04 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B9324E26E570E20001DD04 /* Data.swift */; };
+		F4B9325126E577740001DD04 /* Bundle-Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B9325026E577740001DD04 /* Bundle-Decodable.swift */; };
+		F4B9325426E5783F0001DD04 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = F4B9325326E5783F0001DD04 /* SwiftyJSON */; };
+		F4B9325726E57D440001DD04 /* waitingChats.json in Resources */ = {isa = PBXBuildFile; fileRef = F4B9325526E57D440001DD04 /* waitingChats.json */; };
+		F4B9325826E57D440001DD04 /* activeChats.json in Resources */ = {isa = PBXBuildFile; fileRef = F4B9325626E57D440001DD04 /* activeChats.json */; };
+		F4B9325B26E5902C0001DD04 /* ActiveChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B9325A26E5902C0001DD04 /* ActiveChatCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +67,10 @@
 		F4B9324926E425CA0001DD04 /* UIColor + Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Extention.swift"; sourceTree = "<group>"; };
 		F4B9324C26E5699C0001DD04 /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
 		F4B9324E26E570E20001DD04 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		F4B9325026E577740001DD04 /* Bundle-Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle-Decodable.swift"; sourceTree = "<group>"; };
+		F4B9325526E57D440001DD04 /* waitingChats.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = waitingChats.json; sourceTree = "<group>"; };
+		F4B9325626E57D440001DD04 /* activeChats.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = activeChats.json; sourceTree = "<group>"; };
+		F4B9325A26E5902C0001DD04 /* ActiveChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveChatCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4B9325426E5783F0001DD04 /* SwiftyJSON in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -116,6 +126,8 @@
 				F493645926DED8C3008DC184 /* UIFont + Extention.swift */,
 				F493646726DF0E74008DC184 /* UIStackView + Extention.swift */,
 				F4B9323D26E174C30001DD04 /* UISegmentedControl + Extention.swift */,
+				F4B9325626E57D440001DD04 /* activeChats.json */,
+				F4B9325526E57D440001DD04 /* waitingChats.json */,
 				F4B9324926E425CA0001DD04 /* UIColor + Extention.swift */,
 			);
 			path = UIKit;
@@ -126,6 +138,7 @@
 			children = (
 				F493647A26E1072B008DC184 /* AddPhotoView.swift */,
 				F493646526DF005A008DC184 /* ButtonFormView.swift */,
+				F4B9325026E577740001DD04 /* Bundle-Decodable.swift */,
 				F493646B26DFC24E008DC184 /* OneLineTextField.swift */,
 				F493646326DEFBB7008DC184 /* UIKit */,
 			);
@@ -155,6 +168,7 @@
 		F4B9324026E1877E0001DD04 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				F4B9325926E58F930001DD04 /* Cell */,
 				F4B9324126E187BD0001DD04 /* MainTabBarController.swift */,
 				F4B9324326E188500001DD04 /* ListViewController.swift */,
 				F4B9324526E18C410001DD04 /* PeopleViewController.swift */,
@@ -170,6 +184,14 @@
 				F4B9324E26E570E20001DD04 /* Data.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		F4B9325926E58F930001DD04 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				F4B9325A26E5902C0001DD04 /* ActiveChatCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -188,6 +210,9 @@
 			dependencies = (
 			);
 			name = UChat;
+			packageProductDependencies = (
+				F4B9325326E5783F0001DD04 /* SwiftyJSON */,
+			);
 			productName = ChatU;
 			productReference = F493644026DEC3FF008DC184 /* UChat.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +240,9 @@
 				Base,
 			);
 			mainGroup = F493643726DEC3FF008DC184;
+			packageReferences = (
+				F4B9325226E5783F0001DD04 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
+			);
 			productRefGroup = F493644126DEC3FF008DC184 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -229,8 +257,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4B9325726E57D440001DD04 /* waitingChats.json in Resources */,
 				F493645026DEC404008DC184 /* LaunchScreen.storyboard in Resources */,
 				F493644D26DEC404008DC184 /* Assets.xcassets in Resources */,
+				F4B9325826E57D440001DD04 /* activeChats.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,7 +283,9 @@
 				F493644426DEC3FF008DC184 /* AppDelegate.swift in Sources */,
 				F4B9324426E188500001DD04 /* ListViewController.swift in Sources */,
 				F4B9323E26E174C30001DD04 /* UISegmentedControl + Extention.swift in Sources */,
+				F4B9325B26E5902C0001DD04 /* ActiveChatCell.swift in Sources */,
 				F493646626DF005A008DC184 /* ButtonFormView.swift in Sources */,
+				F4B9325126E577740001DD04 /* Bundle-Decodable.swift in Sources */,
 				F4B9324F26E570E20001DD04 /* Data.swift in Sources */,
 				F493644626DEC3FF008DC184 /* SceneDelegate.swift in Sources */,
 				F493645A26DED8C3008DC184 /* UIFont + Extention.swift in Sources */,
@@ -457,6 +489,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F4B9325226E5783F0001DD04 /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F4B9325326E5783F0001DD04 /* SwiftyJSON */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4B9325226E5783F0001DD04 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
+			productName = SwiftyJSON;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F493643826DEC3FF008DC184 /* Project object */;
 }

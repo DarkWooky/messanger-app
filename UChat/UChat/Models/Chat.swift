@@ -7,11 +7,11 @@
 
 import UIKit
 
-struct Chat: Hashable {
-    var username: String?
-    var userImage: UIImage?
-    var lastMessage: String?
-    var id = UUID()
+struct Chat: Hashable, Decodable {
+    var username: String
+    var userImageString: String
+    var lastMessage: String
+    var id: Int
     
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
@@ -20,13 +20,5 @@ struct Chat: Hashable {
     static func == (lhs: Chat, rhs: Chat) -> Bool {
         return lhs.id == rhs.id
     }
-}
-
-extension Chat {
-    static var activeChats: [Chat] = [
-        Chat(username: "Nick", userImage: UIImage(named: "human1"), lastMessage: "Hello"),
-        Chat(username: "Sam", userImage: UIImage(named: "human2"), lastMessage: "Kiss"),
-        Chat(username: "Margo", userImage: UIImage(named: "human3"), lastMessage: "LOL"),
-    ]
 }
 

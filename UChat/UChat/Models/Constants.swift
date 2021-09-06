@@ -12,6 +12,6 @@ enum Constants: CGFloat {
 }
 
 enum Section: Int, CaseIterable {
-    case activeChats
+    case waitingChats, activeChats
 }
 
