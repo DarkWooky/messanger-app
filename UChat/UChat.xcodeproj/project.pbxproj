@@ -25,6 +25,7 @@
 		F493647526E043A3008DC184 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F493647426E043A3008DC184 /* LoginViewController.swift */; };
 		F493647926E102A1008DC184 /* SetupProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F493647826E102A1008DC184 /* SetupProfileViewController.swift */; };
 		F493647B26E1072B008DC184 /* AddPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F493647A26E1072B008DC184 /* AddPhotoView.swift */; };
+		F49578BD26EA3B8D00CD3294 /* gradient.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F49578BC26EA3B8D00CD3294 /* gradient.jpeg */; };
 		F4B9323E26E174C30001DD04 /* UISegmentedControl + Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B9323D26E174C30001DD04 /* UISegmentedControl + Extention.swift */; };
 		F4B9324226E187BD0001DD04 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B9324126E187BD0001DD04 /* MainTabBarController.swift */; };
 		F4B9324426E188500001DD04 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B9324326E188500001DD04 /* ListViewController.swift */; };
@@ -39,6 +40,7 @@
 		F4B9325F26E65F1A0001DD04 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B9325E26E65F1A0001DD04 /* GradientView.swift */; };
 		F4B9326126E670D00001DD04 /* WaitingChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B9326026E670CF0001DD04 /* WaitingChatCell.swift */; };
 		F4B9326326E6728A0001DD04 /* SelfConfiguringCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B9326226E6728A0001DD04 /* SelfConfiguringCell.swift */; };
+		F4D38C0626E97D4100919CDE /* VerificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D38C0526E97D4100919CDE /* VerificationService.swift */; };
 		F4E9DB3126E6C1A1001C065C /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E9DB3026E6C1A1001C065C /* SectionHeader.swift */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +65,7 @@
 		F493647426E043A3008DC184 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		F493647826E102A1008DC184 /* SetupProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupProfileViewController.swift; sourceTree = "<group>"; };
 		F493647A26E1072B008DC184 /* AddPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoView.swift; sourceTree = "<group>"; };
+		F49578BC26EA3B8D00CD3294 /* gradient.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = gradient.jpeg; sourceTree = "<group>"; };
 		F4B9323D26E174C30001DD04 /* UISegmentedControl + Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISegmentedControl + Extention.swift"; sourceTree = "<group>"; };
 		F4B9324126E187BD0001DD04 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		F4B9324326E188500001DD04 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
@@ -76,6 +79,7 @@
 		F4B9325E26E65F1A0001DD04 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		F4B9326026E670CF0001DD04 /* WaitingChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingChatCell.swift; sourceTree = "<group>"; };
 		F4B9326226E6728A0001DD04 /* SelfConfiguringCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfConfiguringCell.swift; sourceTree = "<group>"; };
+		F4D38C0526E97D4100919CDE /* VerificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationService.swift; sourceTree = "<group>"; };
 		F4E9DB3026E6C1A1001C065C /* SectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -118,6 +122,7 @@
 				F493646426DEFBC0008DC184 /* Extentions */,
 				F4B9325626E57D440001DD04 /* activeChats.json */,
 				F4B9325526E57D440001DD04 /* waitingChats.json */,
+				F49578BC26EA3B8D00CD3294 /* gradient.jpeg */,
 				F493644C26DEC404008DC184 /* Assets.xcassets */,
 				F493644E26DEC404008DC184 /* LaunchScreen.storyboard */,
 				F493645126DEC404008DC184 /* Info.plist */,
@@ -169,6 +174,7 @@
 				F493646926DFBC52008DC184 /* SignUpViewController.swift */,
 				F493647426E043A3008DC184 /* LoginViewController.swift */,
 				F493647826E102A1008DC184 /* SetupProfileViewController.swift */,
+				F4D38C0526E97D4100919CDE /* VerificationService.swift */,
 			);
 			path = "SignUp&Auth";
 			sourceTree = "<group>";
@@ -275,6 +281,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4B9325726E57D440001DD04 /* waitingChats.json in Resources */,
+				F49578BD26EA3B8D00CD3294 /* gradient.jpeg in Resources */,
 				F493645026DEC404008DC184 /* LaunchScreen.storyboard in Resources */,
 				F493644D26DEC404008DC184 /* Assets.xcassets in Resources */,
 				F4B9325826E57D440001DD04 /* activeChats.json in Resources */,
@@ -303,6 +310,7 @@
 				F4B9324426E188500001DD04 /* ListViewController.swift in Sources */,
 				F4B9323E26E174C30001DD04 /* UISegmentedControl + Extention.swift in Sources */,
 				F4B9325B26E5902C0001DD04 /* ActiveChatCell.swift in Sources */,
+				F4D38C0626E97D4100919CDE /* VerificationService.swift in Sources */,
 				F493646626DF005A008DC184 /* ButtonFormView.swift in Sources */,
 				F4B9325126E577740001DD04 /* Bundle-Decodable.swift in Sources */,
 				F493644626DEC3FF008DC184 /* SceneDelegate.swift in Sources */,

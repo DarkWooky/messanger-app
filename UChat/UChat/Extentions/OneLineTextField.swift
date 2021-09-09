@@ -8,13 +8,19 @@
 import UIKit
 
 class OneLineTextField: UITextField {
-    convenience init(font: UIFont? = .helvetica20(), isSecure: Bool = true) {
+    convenience init(font: UIFont? = .helvetica20(),
+                     isSecure: Bool = true,
+                     placeholder: String = "",
+                     textContentType: UITextContentType! = nil) {
         self.init()
         
         self.font = font
         self.borderStyle = .none
         self.clearButtonMode = .whileEditing
         self.isSecureTextEntry = isSecure
+        self.textContentType = textContentType
+        self.autocapitalizationType = .none
+        self.placeholder = placeholder
         self.translatesAutoresizingMaskIntoConstraints = false
         
         var bottomView = UIView()

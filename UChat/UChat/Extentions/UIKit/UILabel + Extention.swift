@@ -10,12 +10,14 @@ import UIKit
 extension UILabel {
     convenience init(text: String,
                      font: UIFont? = .helvetica20(),
-                     textColor: UIColor? = .label)
+                     textColor: UIColor? = .label,
+                     isHidden: Bool = false)
     {
         self.init()
 
         self.text = text
         self.font = font
         self.textColor = textColor
+        self.isHidden = isHidden
     }
 }

@@ -21,17 +21,25 @@ extension UIViewController {
         self.view.sendSubviewToBack(imageView)
     }
     
-//    func setupScrollView(set scrollView: UIScrollView, on view: UIView, with contentView: UIView) {
-//        var scrollView = scrollView
-//        var contentView = contentView
-//        let screensize: CGRect = UIScreen.main.bounds
-//        let screenWidth = screensize.width
-//        let screenHeight = screensize.height
-//        scrollView = UIScrollView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight))
-//        scrollView.contentSize = CGSize(width: screenWidth, height: Constants.maxScreenHeight.rawValue)
-//        contentView = UIView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight))
-//
-//        view.addSubview(scrollView)
-//        scrollView.addSubview(contentView)
-//    }
+    func setupScrollView(scrollView: UIScrollView, with contentView: UIView) {
+
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+
+        view.addSubview(scrollView)
+        scrollView.addSubview(contentView)
+
+        NSLayoutConstraint.activate([
+            scrollView.topAnchor.constraint(equalTo: view.topAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            ])
+        NSLayoutConstraint.activate([
+            contentView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
+            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+            contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor)
+            ])
+    }
 }
