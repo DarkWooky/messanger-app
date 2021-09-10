@@ -7,11 +7,7 @@
 
 import UIKit
 
-enum Constants: CGFloat {
-    case maxScreenHeight = 926
-}
-
-enum Section: Int, CaseIterable {
+enum ListSection: Int, CaseIterable {
     case waitingChats, activeChats
     
     func description() -> String {
@@ -22,5 +18,9 @@ enum Section: Int, CaseIterable {
             return "Active chats"
         }
     }
+}
+
+enum PeopleSection: Int, CaseIterable {
+    case users
 }
 

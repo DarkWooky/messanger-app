@@ -16,7 +16,7 @@ class ListViewController: UIViewController {
     let waitingChats = Bundle.main.decode([Chat].self, from: "waitingChats.json")
 
     var collectionView: UICollectionView!
-    var dataSource: UICollectionViewDiffableDataSource<Section, Chat>?
+    var dataSource: UICollectionViewDiffableDataSource<ListSection, Chat>?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +41,7 @@ class ListViewController: UIViewController {
     private func setupCollectionView() {
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createCompositionalLayout())
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        collectionView.backgroundView = GradientView(from: .topLeading, to: .bottomTrailing, startColor: #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1), endColor: #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1))
+        //collectionView.backgroundView = GradientView(from: .topLeading, to: .bottomTrailing, startColor: #colorLiteral(red: 0.7450980392, green: 0.2196078431, blue: 0.9529411765, alpha: 1), endColor: #colorLiteral(red: 0.1137254902, green: 0, blue: 0.862745098, alpha: 1))
 
         view.addSubview(collectionView)
 
@@ -52,7 +52,7 @@ class ListViewController: UIViewController {
     }
 
     private func reloadData() {
-        var snapshot = NSDiffableDataSourceSnapshot<Section, Chat>()
+        var snapshot = NSDiffableDataSourceSnapshot<ListSection, Chat>()
         snapshot.appendSections([.waitingChats, .activeChats])
 
         snapshot.appendItems(waitingChats, toSection: .waitingChats)
@@ -73,8 +73,8 @@ extension ListViewController {
     }
 
     private func createDataSource() {
-        dataSource = UICollectionViewDiffableDataSource<Section, Chat>(collectionView: collectionView, cellProvider: { collectionView, indexPath, chat in
-            guard let section = Section(rawValue: indexPath.section) else {
+        dataSource = UICollectionViewDiffableDataSource<ListSection, Chat>(collectionView: collectionView, cellProvider: { collectionView, indexPath, chat in
+            guard let section = ListSection(rawValue: indexPath.section) else {
                 fatalError("Unknown section kind")
             }
 
@@ -90,7 +90,7 @@ extension ListViewController {
             collectionView, kind, indexPath in
             guard let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SectionHeader.reuseId, for: indexPath) as? SectionHeader else {
                 fatalError("Can not create new section header") }
-            guard let section = Section(rawValue: indexPath.section) else {
+            guard let section = ListSection(rawValue: indexPath.section) else {
                 fatalError("Unknown section kind") }
             sectionHeader.configure(text: section.description(),
                 font: .helvetica20(),
@@ -105,7 +105,7 @@ extension ListViewController {
 extension ListViewController {
     private func createCompositionalLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewCompositionalLayout { sectionIndex, _ -> NSCollectionLayoutSection? in
-            guard let section = Section(rawValue: sectionIndex) else {
+            guard let section = ListSection(rawValue: sectionIndex) else {
                 fatalError("Unknown section kind")
             }
             switch section {
