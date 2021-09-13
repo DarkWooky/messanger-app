@@ -10,61 +10,64 @@ import UIKit
 // MARK: - SetupProfileViewController
 
 class SetupProfileViewController: UIViewController {
+    //Labels
     let setupProfileLabel = UILabel(text: "Set up profile!", font: .helvetica26())
-
     let fullNameLabel = UILabel(text: "Full name")
     let aboutmeLabel = UILabel(text: "About me")
     let sexLabel = UILabel(text: "Sex")
 
+    //Text fields
     let fullNameTextField = OneLineTextField(font: .helvetica20(), isSecure: false)
     let aboutmeTextField = OneLineTextField(font: .helvetica20(), isSecure: false)
+    
+    //Segmented control
     let sexSegmentedControl = UISegmentedControl(first: "Male", second: "Female")
 
+    //Button
     let goToChatsButton = UIButton(title: "Go to chats!", titleColor: .white, isShadow: true)
 
+    //View
     let fillImageView = AddPhotoView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        assignBackground(backgroundName: "background")
+        //assignBackground(backgroundName: "background")
         setupViews()
     }
 }
 
+// MARK: - Setup views
+
 extension SetupProfileViewController {
     private func setupViews() {
-        let fullNameStackView = UIStackView(arrangedSubviews: [fullNameLabel,
-                                                               fullNameTextField],
+        //Stack views
+        let fullNameStackView = UIStackView(arrangedSubviews: [fullNameLabel, fullNameTextField],
                                             axis: .vertical,
                                             spacing: 0)
-        let aboutmeStackView = UIStackView(arrangedSubviews: [aboutmeLabel,
-                                                              aboutmeTextField],
+        let aboutmeStackView = UIStackView(arrangedSubviews: [aboutmeLabel, aboutmeTextField],
                                            axis: .vertical,
                                            spacing: 0)
-        let sexStackView = UIStackView(arrangedSubviews: [sexLabel,
-                                                          sexSegmentedControl],
+        let sexStackView = UIStackView(arrangedSubviews: [sexLabel, sexSegmentedControl],
                                        axis: .vertical,
                                        spacing: 12)
 
         goToChatsButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
-        let stackView = UIStackView(arrangedSubviews: [
-            fullNameStackView,
-            aboutmeStackView,
-            sexStackView,
-            goToChatsButton
-        ],
-        axis: .vertical,
-        spacing: 40)
+        
+        let stackView = UIStackView(arrangedSubviews: [fullNameStackView, aboutmeStackView,
+                                                       sexStackView, goToChatsButton],
+                                    axis: .vertical,
+                                    spacing: 40)
 
         setupProfileLabel.translatesAutoresizingMaskIntoConstraints = false
         fillImageView.translatesAutoresizingMaskIntoConstraints = false
         stackView.translatesAutoresizingMaskIntoConstraints = false
+        
         view.addSubview(setupProfileLabel)
         view.addSubview(fillImageView)
         view.addSubview(stackView)
 
-
+        //Constraints
         NSLayoutConstraint.activate([
             setupProfileLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
             setupProfileLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
@@ -75,7 +78,7 @@ extension SetupProfileViewController {
         ])
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: fillImageView.bottomAnchor, constant: 60),
-            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 25),
             stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40)
         ])
         

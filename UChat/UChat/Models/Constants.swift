@@ -22,5 +22,12 @@ enum ListSection: Int, CaseIterable {
 
 enum PeopleSection: Int, CaseIterable {
     case users
+    
+    func description(userCount: Int) -> String {
+        switch self {
+        case .users:
+            return "\(userCount) people nearby"
+        }
+    }
 }
 

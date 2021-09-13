@@ -17,11 +17,12 @@ class ListViewController: UIViewController {
 
     var collectionView: UICollectionView!
     var dataSource: UICollectionViewDiffableDataSource<ListSection, Chat>?
+    var searchBarDelegate: UISearchBarDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setupSearchBar()
+        setupSearchBar(searchBarDelegate)
         setupCollectionView()
         createDataSource()
         reloadData()
@@ -29,18 +30,10 @@ class ListViewController: UIViewController {
 
     // MARK: Private
 
-    private func setupSearchBar() {
-        let searchController = UISearchController(searchResultsController: nil)
-        navigationItem.searchController = searchController
-        navigationItem.hidesSearchBarWhenScrolling = true
-        searchController.hidesNavigationBarDuringPresentation = false
-        searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.delegate = self
-    }
-
     private func setupCollectionView() {
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createCompositionalLayout())
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        collectionView.backgroundColor = .systemBackground
         //collectionView.backgroundView = GradientView(from: .topLeading, to: .bottomTrailing, startColor: #colorLiteral(red: 0.7450980392, green: 0.2196078431, blue: 0.9529411765, alpha: 1), endColor: #colorLiteral(red: 0.1137254902, green: 0, blue: 0.862745098, alpha: 1))
 
         view.addSubview(collectionView)
@@ -137,6 +130,7 @@ extension ListViewController {
         section.orthogonalScrollingBehavior = .continuous
 
         let sectionHeader = createSectionHeader()
+        sectionHeader.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 0)
         section.boundarySupplementaryItems = [sectionHeader]
         return section
     }
@@ -155,6 +149,7 @@ extension ListViewController {
         section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
 
         let sectionHeader = createSectionHeader()
+        sectionHeader.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 0)
         section.boundarySupplementaryItems = [sectionHeader]
         return section
     }
@@ -183,7 +178,7 @@ import SwiftUI
 
 struct ListVCProvider: PreviewProvider {
     static var previews: some View {
-        ContainerView().preferredColorScheme(.light).edgesIgnoringSafeArea(.all)
+        ContainerView().preferredColorScheme(.dark).edgesIgnoringSafeArea(.all)
     }
 
     struct ContainerView: UIViewControllerRepresentable {

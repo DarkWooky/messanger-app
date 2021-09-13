@@ -10,12 +10,15 @@ import UIKit
 // MARK: - AuthViewController
 
 class AuthViewController: UIViewController {
+    //Image View
     let logoImageView = UIImageView(image: #imageLiteral(resourceName: "Logo"), contentMode: .scaleAspectFit)
 
+    //Labels
     let googleLabel = UILabel(text: "Get started with")
     let emailLabel = UILabel(text: "Or sign up with")
     let alreadyOnboardLabel = UILabel(text: "Already onboard?")
 
+    //Buttons
     let googleButton = UIButton(title: "Google", backgroundColor: .systemGray6, isShadow: true)
     let emailButton = UIButton(title: "Email", titleColor: .systemGray6, backgroundColor: .systemPurple, isShadow: true)
     let loginButton = UIButton(title: "Login", backgroundColor: .systemGray6, isShadow: true)
@@ -34,14 +37,16 @@ class AuthViewController: UIViewController {
 
 extension AuthViewController {
     private func setupViews() {
-        logoImageView.translatesAutoresizingMaskIntoConstraints = false
 
         let googleView = ButtonFormView(label: googleLabel, button: googleButton)
         let emailView = ButtonFormView(label: emailLabel, button: emailButton)
         let loginView = ButtonFormView(label: alreadyOnboardLabel, button: loginButton)
 
-        let stackView = UIStackView(arrangedSubviews: [googleView, emailView, loginView], axis: .vertical, spacing: 40)
+        let stackView = UIStackView(arrangedSubviews: [googleView, emailView, loginView],
+                                    axis: .vertical,
+                                    spacing: 40)
         stackView.translatesAutoresizingMaskIntoConstraints = false
+        logoImageView.translatesAutoresizingMaskIntoConstraints = false
 
         view.addSubview(logoImageView)
         view.addSubview(stackView)
@@ -53,8 +58,8 @@ extension AuthViewController {
 
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 150),
-            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
-            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40)
+            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 25),
+            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -25)
         ])
     }
 }
@@ -77,6 +82,6 @@ struct AuthVCProvider: PreviewProvider {
     }
 
     static var previews: some View {
-        ContainerView().preferredColorScheme(.dark).edgesIgnoringSafeArea(.all)
+        ContainerView().preferredColorScheme(.light).edgesIgnoringSafeArea(.all)
     }
 }

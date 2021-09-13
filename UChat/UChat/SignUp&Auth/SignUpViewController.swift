@@ -15,20 +15,24 @@ class SignUpViewController: UIViewController {
     private var isPassConfirmed = false
     private var passwordStrength: PasswordStrength = .weak
 
+    //Scroll View
     let scrollView = UIScrollView()
     let contentView = UIView()
 
+    //Labels
     let welcomeLabel = UILabel(text: "Good to see you!", font: .helvetica26())
 
     let emailLabel = UILabel(text: "Enter your email")
     let passwordLabel = UILabel(text: "Enter strong password")
     let alreadyOnBoardLabel = UILabel(text: "Already onboard?")
 
+    //Error labels
     let emailErrorLabel = UILabel(text: "Incorrect email", font: .helvetica14(), textColor: .systemRed, isHidden: true)
     let passwordErrorLabel = UILabel(text: "Weak password", font: .helvetica14(), textColor: .systemRed, isHidden: true)
     let passwordRuleLabel = UILabel(text: "Your password must be a minimum of 8 characters and contain one lowercase letter and one number.", font: .helvetica16(), textColor: .systemGray)
     let confirmPasswordlErrorLabel = UILabel(text: "Passwords do not match", font: .helvetica14(), textColor: .systemRed, isHidden: true)
 
+    //Text fields
     let emailTextField = OneLineTextField(font: .helvetica20(),
         isSecure: false,
         placeholder: "Email",
@@ -40,6 +44,7 @@ class SignUpViewController: UIViewController {
         placeholder: "Confirm password",
         textContentType: .newPassword)
 
+    //Buttons
     let signUpButton = UIButton(title: "Sign Up", titleColor: .systemGray6, backgroundColor: .systemPurple, isShadow: true)
     let loginButton = UIButton(title: "Login", titleColor: .systemPurple, backgroundColor: nil)
 
@@ -47,16 +52,16 @@ class SignUpViewController: UIViewController {
         super.viewDidLoad()
         signUpButton.isEnabled = false
         setupViews()
-        assignBackground(backgroundName: "background")
+        //assignBackground(backgroundName: "background")
         setupScrollView(scrollView: scrollView, with: contentView)
 
         addTargets()
     }
 }
 
-extension SignUpViewController {
+// MARK: - Setup views
 
-    // MARK: - Setup views
+extension SignUpViewController {
 
     private func setupViews() {
         // Main StackView
@@ -108,15 +113,15 @@ extension SignUpViewController {
             bottomStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -50)
             ])
     }
+}
 
+// MARK: - Verification
+
+extension SignUpViewController {
+    
     private func updateBtnState() {
-        signUpButton.isEnabled = isValidEmail &&
-            isPassConfirmed && (passwordStrength != .weak)
-        if signUpButton.isEnabled {
-            signUpButton.alpha = 1
-        } else {
-            signUpButton.alpha = 0.5
-        }
+        signUpButton.isEnabled = isValidEmail && isPassConfirmed && (passwordStrength != .weak)
+        signUpButton.alpha = signUpButton.isEnabled ? 1 : 0.5
     }
 
     private func updatePassErrorLbl(pass1: String, pass2: String) {
@@ -125,12 +130,14 @@ extension SignUpViewController {
             confirmPasswordlErrorLabel.isHidden = isPassConfirmed
         }
     }
+    
     private func addTargets() {
         let textFields = [emailTextField, passwordTextField, confirmPasswordTextField]
         textFields.forEach { textField in
             textField.addTarget(self, action: #selector(SignUpViewController.textFieldDidChange(_:)), for: .editingChanged)
         }
     }
+    
     @objc func textFieldDidChange(_ textField: UITextField) {
         switch textField {
         case emailTextField:
@@ -142,11 +149,7 @@ extension SignUpViewController {
             guard let pass1 = passwordTextField.text,
                 let pass2 = confirmPasswordTextField.text else { return }
             passwordStrength = VerificationService.isValidPassword(pass1)
-            if passwordStrength != .weak {
-                passwordErrorLabel.textColor = .systemGreen
-            } else {
-                passwordErrorLabel.textColor = .systemRed
-            }
+            passwordErrorLabel.textColor = passwordStrength != .weak ? .systemGreen : .systemRed
             passwordErrorLabel.isHidden = pass1 == ""
             passwordErrorLabel.text = "\(passwordStrength.description()) password"
             updatePassErrorLbl(pass1: pass1, pass2: pass2)
@@ -154,16 +157,15 @@ extension SignUpViewController {
         case confirmPasswordTextField:
             guard let pass1 = passwordTextField.text,
                 let pass2 = confirmPasswordTextField.text else { return }
-            confirmPasswordlErrorLabel.isHidden = pass2 == ""
             updatePassErrorLbl(pass1: pass1, pass2: pass2)
+            //confirmPasswordlErrorLabel.isHidden = pass2 == ""
+            
             updateBtnState()
         default:
             print("")
         }
     }
 }
-
-// MARK: - Canvas
 
 import SwiftUI
 

@@ -25,6 +25,7 @@ extension UIViewController {
 
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         contentView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.backgroundColor = .systemBackground
 
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
@@ -41,5 +42,16 @@ extension UIViewController {
             contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
             contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor)
             ])
+    }
+    
+    func setupSearchBar(_ self: UISearchBarDelegate?) {
+        navigationController?.navigationBar.barTintColor = UIColor(named: "mainColor")
+        navigationController?.navigationBar.shadowImage = UIImage()
+        let searchController = UISearchController(searchResultsController: nil)
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = true
+        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.delegate = self
     }
 }

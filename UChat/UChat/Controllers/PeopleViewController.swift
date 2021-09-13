@@ -13,12 +13,12 @@ class PeopleViewController: UIViewController {
 
     var collectionView: UICollectionView!
     var dataSource: UICollectionViewDiffableDataSource<PeopleSection, User>?
+    var searchBarDelegate: UISearchBarDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .orange
-        setupSearchBar()
+        setupSearchBar(searchBarDelegate)
         setupCollectionView()
         createDataSource()
         reloadData()
@@ -27,26 +27,16 @@ class PeopleViewController: UIViewController {
     private func setupCollectionView() {
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createCompositionalLayout())
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        collectionView.backgroundView = GradientView(from: .topLeading, to: .bottomTrailing, startColor: #colorLiteral(red: 0.7450980392, green: 0.2196078431, blue: 0.9529411765, alpha: 1), endColor: #colorLiteral(red: 0.1137254902, green: 0, blue: 0.862745098, alpha: 1))
+        collectionView.backgroundColor = .systemBackground
+//        collectionView.backgroundView = GradientView(from: .topLeading, to: .bottomTrailing, startColor: #colorLiteral(red: 0.7450980392, green: 0.2196078431, blue: 0.9529411765, alpha: 1), endColor: #colorLiteral(red: 0.1137254902, green: 0, blue: 0.862745098, alpha: 1))
 
         view.addSubview(collectionView)
 
-        //collectionView.register(SectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SectionHeader.reuseId)
+        collectionView.register(SectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SectionHeader.reuseId)
 
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cellid")
     }
-
-    private func setupSearchBar() {
-        navigationController?.navigationBar.barTintColor = UIColor(named: "mainColor")
-        navigationController?.navigationBar.shadowImage = UIImage()
-        let searchController = UISearchController(searchResultsController: nil)
-        navigationItem.searchController = searchController
-        navigationItem.hidesSearchBarWhenScrolling = false
-        searchController.hidesNavigationBarDuringPresentation = false
-        searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.delegate = self
-    }
-
+    
     private func reloadData() {
         var snapshot = NSDiffableDataSourceSnapshot<PeopleSection, User>()
         snapshot.appendSections([.users])
@@ -69,6 +59,17 @@ extension PeopleViewController {
                 return cell
             }
         })
+        
+        dataSource?.supplementaryViewProvider = {
+            collectionView, kind, indexPath in
+            guard let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SectionHeader.reuseId, for: indexPath) as? SectionHeader else { fatalError("Cannot create new section header") }
+            guard let section = PeopleSection(rawValue: indexPath.section) else { fatalError("Unknown section kind") }
+            let items = self.dataSource?.snapshot().itemIdentifiers(inSection: .users)
+            sectionHeader.configure(text: section.description(userCount: items!.count),
+                                    font: .systemFont(ofSize: 36, weight: .light),
+                                    textColor: .label)
+            return sectionHeader
+        }
     }
 }
 
@@ -105,9 +106,18 @@ extension PeopleViewController {
         section.interGroupSpacing = spacing
         section.contentInsets = NSDirectionalEdgeInsets.init(top: 16, leading: 15, bottom: 0, trailing: 15)
         
-//        let sectionHeader = createSectionHeader()
-//        section.boundarySupplementaryItems = [sectionHeader]
+        let sectionHeader = createSectionHeader()
+        section.boundarySupplementaryItems = [sectionHeader]
         return section
+    }
+    
+    private func createSectionHeader() -> NSCollectionLayoutBoundarySupplementaryItem {
+        let sectionHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+            heightDimension: .estimated(1))
+        let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: sectionHeaderSize,
+            elementKind: UICollectionView.elementKindSectionHeader,
+            alignment: .top)
+        return sectionHeader
     }
 }
 
