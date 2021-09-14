@@ -44,14 +44,18 @@ extension UIViewController {
             ])
     }
     
-    func setupSearchBar(_ self: UISearchBarDelegate?) {
+    func setupSearchBar(_ searchController: UISearchController /*, _ delegate: UISearchBarDelegate?*/) {
         navigationController?.navigationBar.barTintColor = UIColor(named: "mainColor")
         navigationController?.navigationBar.shadowImage = UIImage()
-        let searchController = UISearchController(searchResultsController: nil)
         navigationItem.searchController = searchController
-        navigationItem.hidesSearchBarWhenScrolling = true
+        navigationItem.hidesSearchBarWhenScrolling = false
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.delegate = self
+    }
+    
+    func configure<T: SelfConfiguringCell, U: Hashable>(collectionView: UICollectionView,cellType: T.Type, with value: U, for indexPath: IndexPath) -> T {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellType.reuseId, for: indexPath) as? T else { fatalError("Unable to dequeue \(cellType)") }
+        cell.configure(with: value)
+        return cell
     }
 }

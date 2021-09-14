@@ -8,6 +8,7 @@
 import UIKit
 
 class WaitingChatCell: UICollectionViewCell, SelfConfiguringCell {
+        
     static var reuseId: String = "WaitingChatCell"
 
     let friendImageView = UIImageView()
@@ -17,8 +18,9 @@ class WaitingChatCell: UICollectionViewCell, SelfConfiguringCell {
         setupConstraints()
     }
 
-    func configure(with value: Chat) {
-        friendImageView.image = UIImage(named: value.userImageString)
+    func configure<U>(with value: U) where U : Hashable {
+        guard let chat: Chat = value as? Chat else { return }
+        friendImageView.image = UIImage(named: chat.userImageString)
     }
 
     private func setupConstraints() {

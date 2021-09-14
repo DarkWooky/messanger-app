@@ -26,17 +26,17 @@ class ActiveChatCell: UICollectionViewCell, SelfConfiguringCell {
         backgroundColor = UIColor(named: "mainColor-1")?.withAlphaComponent(0.5)
         setupViews()
     }
-
-    @available(*, unavailable)
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func configure(with value: Chat) {
-        friendImageView.image = UIImage(named: value.userImageString)
-        friendNameLabel.text = value.username
-        lastMessageLabel.text = value.lastMessage
-        lastMsgTimeLbl.text = Chat.timeFormatter(from: value.date, format: "HH:mm")
+    func configure<U>(with value: U) where U : Hashable {
+        guard let chat: Chat = value as? Chat else { return }
+        friendImageView.image = UIImage(named: chat.userImageString)
+        friendNameLabel.text = chat.username
+        lastMessageLabel.text = chat.lastMessage
+        lastMsgTimeLbl.text = Chat.timeFormatter(from: chat.date, format: "HH:mm")
     }
 }
 

@@ -13,38 +13,45 @@ class PeopleViewController: UIViewController {
 
     var collectionView: UICollectionView!
     var dataSource: UICollectionViewDiffableDataSource<PeopleSection, User>?
-    var searchBarDelegate: UISearchBarDelegate?
+    let searchController = UISearchController()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        setupSearchBar(searchBarDelegate)
+        
+        setupSearchBar(searchController)
         setupCollectionView()
         createDataSource()
-        reloadData()
+        reloadData(with: nil)
     }
 
     private func setupCollectionView() {
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createCompositionalLayout())
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         collectionView.backgroundColor = .systemBackground
-//        collectionView.backgroundView = GradientView(from: .topLeading, to: .bottomTrailing, startColor: #colorLiteral(red: 0.7450980392, green: 0.2196078431, blue: 0.9529411765, alpha: 1), endColor: #colorLiteral(red: 0.1137254902, green: 0, blue: 0.862745098, alpha: 1))
 
         view.addSubview(collectionView)
 
         collectionView.register(SectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SectionHeader.reuseId)
 
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cellid")
+        collectionView.register(UserCell.self, forCellWithReuseIdentifier: UserCell.reuseId)
     }
     
-    private func reloadData() {
+    private func reloadData(with searchText: String?) {
+        let filtered = users.filter { (user) -> Bool in
+            user.contains(filter: searchText)
+        }
+        searchController.searchBar.delegate = self
+        
         var snapshot = NSDiffableDataSourceSnapshot<PeopleSection, User>()
         snapshot.appendSections([.users])
-        snapshot.appendItems(users, toSection: .users)
+        snapshot.appendItems(filtered, toSection: .users)
 
         dataSource?.apply(snapshot, animatingDifferences: true)
     }
 }
+
+// MARK: - Create DataSource
 
 extension PeopleViewController {
     private func createDataSource() {
@@ -54,9 +61,7 @@ extension PeopleViewController {
             }
             switch section {
             case .users:
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellid", for: indexPath)
-                cell.backgroundColor = .yellow
-                return cell
+                return self.configure(collectionView: collectionView, cellType: UserCell.self, with: user, for: indexPath)
             }
         })
         
@@ -73,6 +78,7 @@ extension PeopleViewController {
     }
 }
 
+// MARK: - Create Compositional Layout
 extension PeopleViewController {
     private func createCompositionalLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewCompositionalLayout { sectionIndex, _ -> NSCollectionLayoutSection? in
@@ -121,11 +127,9 @@ extension PeopleViewController {
     }
 }
 
-
-
 extension PeopleViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print(searchText)
+        reloadData(with: searchText)
     }
 }
 

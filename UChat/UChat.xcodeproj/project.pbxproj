@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F434684E26F00CDF00FABC15 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F434684D26F00CDF00FABC15 /* UserCell.swift */; };
 		F493644426DEC3FF008DC184 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F493644326DEC3FF008DC184 /* AppDelegate.swift */; };
 		F493644626DEC3FF008DC184 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F493644526DEC3FF008DC184 /* SceneDelegate.swift */; };
 		F493644826DEC3FF008DC184 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F493644726DEC3FF008DC184 /* AuthViewController.swift */; };
@@ -35,7 +36,6 @@
 		F4B9324A26E425CA0001DD04 /* UIColor + Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B9324926E425CA0001DD04 /* UIColor + Extention.swift */; };
 		F4B9324D26E5699C0001DD04 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B9324C26E5699C0001DD04 /* Chat.swift */; };
 		F4B9325126E577740001DD04 /* Bundle-Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B9325026E577740001DD04 /* Bundle-Decodable.swift */; };
-		F4B9325426E5783F0001DD04 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = F4B9325326E5783F0001DD04 /* SwiftyJSON */; };
 		F4B9325726E57D440001DD04 /* waitingChats.json in Resources */ = {isa = PBXBuildFile; fileRef = F4B9325526E57D440001DD04 /* waitingChats.json */; };
 		F4B9325826E57D440001DD04 /* activeChats.json in Resources */ = {isa = PBXBuildFile; fileRef = F4B9325626E57D440001DD04 /* activeChats.json */; };
 		F4B9325B26E5902C0001DD04 /* ActiveChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B9325A26E5902C0001DD04 /* ActiveChatCell.swift */; };
@@ -47,6 +47,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F434684D26F00CDF00FABC15 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		F493644026DEC3FF008DC184 /* UChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F493644326DEC3FF008DC184 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F493644526DEC3FF008DC184 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -92,7 +93,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F4B9325426E5783F0001DD04 /* SwiftyJSON in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,6 +227,7 @@
 			children = (
 				F4B9326026E670CF0001DD04 /* WaitingChatCell.swift */,
 				F4B9325A26E5902C0001DD04 /* ActiveChatCell.swift */,
+				F434684D26F00CDF00FABC15 /* UserCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -256,7 +257,6 @@
 			);
 			name = UChat;
 			packageProductDependencies = (
-				F4B9325326E5783F0001DD04 /* SwiftyJSON */,
 			);
 			productName = ChatU;
 			productReference = F493644026DEC3FF008DC184 /* UChat.app */;
@@ -286,7 +286,6 @@
 			);
 			mainGroup = F493643726DEC3FF008DC184;
 			packageReferences = (
-				F4B9325226E5783F0001DD04 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 			);
 			productRefGroup = F493644126DEC3FF008DC184 /* Products */;
 			projectDirPath = "";
@@ -346,6 +345,7 @@
 				F493645E26DEEFB3008DC184 /* UIViewController + Extention.swift in Sources */,
 				F4E9DB3126E6C1A1001C065C /* SectionHeader.swift in Sources */,
 				F493647226E03A3C008DC184 /* Constants.swift in Sources */,
+				F434684E26F00CDF00FABC15 /* UserCell.swift in Sources */,
 				F493646226DEF37B008DC184 /* UIImage + Extention.swift in Sources */,
 				F493646026DEF158008DC184 /* UILabel + Extention.swift in Sources */,
 			);
@@ -541,25 +541,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		F4B9325226E5783F0001DD04 /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.1;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		F4B9325326E5783F0001DD04 /* SwiftyJSON */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F4B9325226E5783F0001DD04 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
-			productName = SwiftyJSON;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F493643826DEC3FF008DC184 /* Project object */;
 }
