@@ -14,7 +14,7 @@ class InsertableTextField: UITextField {
         
         backgroundColor = .white
         placeholder = "Write something here …"
-        font = UIFont.systemFont(ofSize: 14)
+        font = UIFont.systemFont(ofSize: 16)
         clearButtonMode = .whileEditing
         borderStyle = .none
         layer.cornerRadius = 18
@@ -25,7 +25,7 @@ class InsertableTextField: UITextField {
         imageView.setupColor(color: .lightGray)
         
         leftView = imageView
-        leftView?.frame = CGRect(x: 0, y: 0, width: 19, height: 19)
+        leftView?.frame = CGRect(x: 0, y: 0, width: 25, height: 25)
         leftViewMode = .always
         
         let button = UIButton(type: .system)
@@ -40,11 +40,11 @@ class InsertableTextField: UITextField {
     override func textRect(forBounds bounds: CGRect) -> CGRect {
         return bounds.insetBy(dx: 36, dy: 0)
     }
-    
+
     override func placeholderRect(forBounds bounds: CGRect) -> CGRect {
         return bounds.insetBy(dx: 36, dy: 0)
     }
-    
+
     override func editingRect(forBounds bounds: CGRect) -> CGRect {
         return bounds.insetBy(dx: 36, dy: 0)
     }

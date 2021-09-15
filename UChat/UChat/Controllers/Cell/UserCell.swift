@@ -10,7 +10,7 @@ import UIKit
 class UserCell: UICollectionViewCell, SelfConfiguringCell {
     
     let userImageView = UIImageView()
-    let userName = UILabel(text: "Alexey", font: .helvetica20(), textColor: UIColor(named: "customColor-1"))
+    let userName = UILabel(text: "Alexey")
     let containerView = UIView()
     
     static var reuseId: String = "UserCell"
@@ -18,7 +18,7 @@ class UserCell: UICollectionViewCell, SelfConfiguringCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        backgroundColor = UIColor(named: "projectColor")
+        backgroundColor = UIColor(named: "mainColor")
         setupViews()
         
         self.layer.cornerRadius = 10
@@ -83,7 +83,7 @@ import SwiftUI
 
 struct UserChatProvider: PreviewProvider {
     static var previews: some View {
-        ContainerView().preferredColorScheme(.light).edgesIgnoringSafeArea(.all)
+        ContainerView().preferredColorScheme(.dark).edgesIgnoringSafeArea(.all)
     }
     
     struct ContainerView: UIViewControllerRepresentable {
