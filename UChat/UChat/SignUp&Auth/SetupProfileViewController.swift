@@ -32,7 +32,7 @@ class SetupProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //assignBackground(backgroundName: "background")
+        view.applyGradients(cornerRadius: 0)
         setupViews()
     }
 }

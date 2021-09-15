@@ -29,7 +29,7 @@ class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        view.applyGradients(cornerRadius: 0)
         //assignBackground(backgroundName: "background")
         googleButton.customizeGoogleButton()
         setupView()

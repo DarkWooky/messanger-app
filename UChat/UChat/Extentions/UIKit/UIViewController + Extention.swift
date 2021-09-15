@@ -25,7 +25,7 @@ extension UIViewController {
 
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         contentView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.backgroundColor = .systemBackground
+        //scrollView.backgroundColor = .systemBackground
 
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)

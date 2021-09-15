@@ -29,7 +29,7 @@ class SignUpViewController: UIViewController {
     //Error labels
     let emailErrorLabel = UILabel(text: "Incorrect email", font: .helvetica14(), textColor: .systemRed, isHidden: true)
     let passwordErrorLabel = UILabel(text: "Weak password", font: .helvetica14(), textColor: .systemRed, isHidden: true)
-    let passwordRuleLabel = UILabel(text: "Your password must be a minimum of 8 characters and contain one lowercase letter and one number.", font: .helvetica16(), textColor: .systemGray)
+    let passwordRuleLabel = UILabel(text: "Your password must be a minimum of 8 characters and contain one lowercase letter and one number.", font: .helvetica16(), textColor: .systemGray6)
     let confirmPasswordlErrorLabel = UILabel(text: "Passwords do not match", font: .helvetica14(), textColor: .systemRed, isHidden: true)
 
     //Text fields
@@ -52,9 +52,8 @@ class SignUpViewController: UIViewController {
         super.viewDidLoad()
         signUpButton.isEnabled = false
         setupViews()
-        //assignBackground(backgroundName: "background")
         setupScrollView(scrollView: scrollView, with: contentView)
-
+        scrollView.applyGradients(cornerRadius: 10)
         addTargets()
     }
 }

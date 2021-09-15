@@ -26,9 +26,8 @@ class AuthViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-
+        view.applyGradients(cornerRadius: 0)
         googleButton.customizeGoogleButton()
-        assignBackground(backgroundName: "background")
         setupViews()
     }
 }

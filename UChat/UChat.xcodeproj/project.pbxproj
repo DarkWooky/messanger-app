@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		F434684E26F00CDF00FABC15 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F434684D26F00CDF00FABC15 /* UserCell.swift */; };
+		F434685026F1431A00FABC15 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F434684F26F1431A00FABC15 /* ProfileViewController.swift */; };
+		F434685226F1450700FABC15 /* InsertableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F434685126F1450600FABC15 /* InsertableTextField.swift */; };
+		F434685426F1455900FABC15 /* UIImageView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F434685326F1455900FABC15 /* UIImageView + Extension.swift */; };
+		F434685826F14A1C00FABC15 /* UIView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F434685726F14A1C00FABC15 /* UIView + Extension.swift */; };
 		F493644426DEC3FF008DC184 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F493644326DEC3FF008DC184 /* AppDelegate.swift */; };
 		F493644626DEC3FF008DC184 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F493644526DEC3FF008DC184 /* SceneDelegate.swift */; };
 		F493644826DEC3FF008DC184 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F493644726DEC3FF008DC184 /* AuthViewController.swift */; };
@@ -48,6 +52,10 @@
 
 /* Begin PBXFileReference section */
 		F434684D26F00CDF00FABC15 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
+		F434684F26F1431A00FABC15 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		F434685126F1450600FABC15 /* InsertableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertableTextField.swift; sourceTree = "<group>"; };
+		F434685326F1455900FABC15 /* UIImageView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView + Extension.swift"; sourceTree = "<group>"; };
+		F434685726F14A1C00FABC15 /* UIView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extension.swift"; sourceTree = "<group>"; };
 		F493644026DEC3FF008DC184 /* UChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F493644326DEC3FF008DC184 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F493644526DEC3FF008DC184 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -138,14 +146,16 @@
 		F493646326DEFBB7008DC184 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
-				F493645F26DEF158008DC184 /* UILabel + Extention.swift */,
 				F493645D26DEEFB3008DC184 /* UIViewController + Extention.swift */,
+				F434685726F14A1C00FABC15 /* UIView + Extension.swift */,
 				F493646126DEF37B008DC184 /* UIImage + Extention.swift */,
+				F434685326F1455900FABC15 /* UIImageView + Extension.swift */,
+				F493645F26DEF158008DC184 /* UILabel + Extention.swift */,
 				F493645726DED3B4008DC184 /* UIButton + Extention.swift */,
 				F493645926DED8C3008DC184 /* UIFont + Extention.swift */,
+				F4B9324926E425CA0001DD04 /* UIColor + Extention.swift */,
 				F493646726DF0E74008DC184 /* UIStackView + Extention.swift */,
 				F4B9323D26E174C30001DD04 /* UISegmentedControl + Extention.swift */,
-				F4B9324926E425CA0001DD04 /* UIColor + Extention.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -154,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				F493647A26E1072B008DC184 /* AddPhotoView.swift */,
+				F434685126F1450600FABC15 /* InsertableTextField.swift */,
 				F493646526DF005A008DC184 /* ButtonFormView.swift */,
 				F4B9325026E577740001DD04 /* Bundle-Decodable.swift */,
 				F493646B26DFC24E008DC184 /* OneLineTextField.swift */,
@@ -206,6 +217,7 @@
 				F4B9324126E187BD0001DD04 /* MainTabBarController.swift */,
 				F4B9324326E188500001DD04 /* ListViewController.swift */,
 				F4B9324526E18C410001DD04 /* PeopleViewController.swift */,
+				F434684F26F1431A00FABC15 /* ProfileViewController.swift */,
 				F49578BE26EA3EBC00CD3294 /* Header */,
 				F4B9325926E58F930001DD04 /* Cell */,
 			);
@@ -323,6 +335,7 @@
 				F4B9324226E187BD0001DD04 /* MainTabBarController.swift in Sources */,
 				F4B9324A26E425CA0001DD04 /* UIColor + Extention.swift in Sources */,
 				F493646A26DFBC52008DC184 /* SignUpViewController.swift in Sources */,
+				F434685026F1431A00FABC15 /* ProfileViewController.swift in Sources */,
 				F493647926E102A1008DC184 /* SetupProfileViewController.swift in Sources */,
 				F4B9324626E18C410001DD04 /* PeopleViewController.swift in Sources */,
 				F49578C326EA413500CD3294 /* User.swift in Sources */,
@@ -334,6 +347,8 @@
 				F4B9323E26E174C30001DD04 /* UISegmentedControl + Extention.swift in Sources */,
 				F4B9325B26E5902C0001DD04 /* ActiveChatCell.swift in Sources */,
 				F4D38C0626E97D4100919CDE /* VerificationService.swift in Sources */,
+				F434685826F14A1C00FABC15 /* UIView + Extension.swift in Sources */,
+				F434685426F1455900FABC15 /* UIImageView + Extension.swift in Sources */,
 				F493646626DF005A008DC184 /* ButtonFormView.swift in Sources */,
 				F4B9325126E577740001DD04 /* Bundle-Decodable.swift in Sources */,
 				F493644626DEC3FF008DC184 /* SceneDelegate.swift in Sources */,
@@ -341,6 +356,7 @@
 				F493646826DF0E74008DC184 /* UIStackView + Extention.swift in Sources */,
 				F4B9326326E6728A0001DD04 /* SelfConfiguringCell.swift in Sources */,
 				F493647B26E1072B008DC184 /* AddPhotoView.swift in Sources */,
+				F434685226F1450700FABC15 /* InsertableTextField.swift in Sources */,
 				F4B9324D26E5699C0001DD04 /* Chat.swift in Sources */,
 				F493645E26DEEFB3008DC184 /* UIViewController + Extention.swift in Sources */,
 				F4E9DB3126E6C1A1001C065C /* SectionHeader.swift in Sources */,
