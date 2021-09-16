@@ -12,11 +12,11 @@ import UIKit
 class ListViewController: UIViewController {
     // MARK: Internal
 
-    let activeChats = Bundle.main.decode([Chat].self, from: "activeChats.json")
-    let waitingChats = Bundle.main.decode([Chat].self, from: "waitingChats.json")
+    let activeChats = Bundle.main.decode([MChat].self, from: "activeChats.json")
+    let waitingChats = Bundle.main.decode([MChat].self, from: "waitingChats.json")
 
     var collectionView: UICollectionView!
-    var dataSource: UICollectionViewDiffableDataSource<ListSection, Chat>?
+    var dataSource: UICollectionViewDiffableDataSource<ListSection, MChat>?
     var searchBarDelegate: UISearchBarDelegate?
 
     override func viewDidLoad() {
@@ -45,7 +45,7 @@ class ListViewController: UIViewController {
     }
 
     private func reloadData() {
-        var snapshot = NSDiffableDataSourceSnapshot<ListSection, Chat>()
+        var snapshot = NSDiffableDataSourceSnapshot<ListSection, MChat>()
         snapshot.appendSections([.waitingChats, .activeChats])
 
         snapshot.appendItems(waitingChats, toSection: .waitingChats)
@@ -60,7 +60,7 @@ class ListViewController: UIViewController {
 extension ListViewController {
 
     private func createDataSource() {
-        dataSource = UICollectionViewDiffableDataSource<ListSection, Chat>(collectionView: collectionView, cellProvider: { collectionView, indexPath, chat in
+        dataSource = UICollectionViewDiffableDataSource<ListSection, MChat>(collectionView: collectionView, cellProvider: { collectionView, indexPath, chat in
             guard let section = ListSection(rawValue: indexPath.section) else {
                 fatalError("Unknown section kind")
             }

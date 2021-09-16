@@ -29,7 +29,7 @@ class SignUpViewController: UIViewController {
     //Error labels
     let emailErrorLabel = UILabel(text: "Incorrect email", font: .helvetica14(), textColor: .systemRed, isHidden: true)
     let passwordErrorLabel = UILabel(text: "Weak password", font: .helvetica14(), textColor: .systemRed, isHidden: true)
-    let passwordRuleLabel = UILabel(text: "Your password must be a minimum of 8 characters and contain one lowercase letter and one number.", font: .helvetica16(), textColor: .systemGray6)
+    let passwordRuleLabel = UILabel(text: "Your password must be a minimum of 6 characters and contain one lowercase letter and one number.", font: .helvetica16())
     let confirmPasswordlErrorLabel = UILabel(text: "Passwords do not match", font: .helvetica14(), textColor: .systemRed, isHidden: true)
 
     //Text fields
@@ -44,17 +44,38 @@ class SignUpViewController: UIViewController {
         placeholder: "Confirm password",
         textContentType: .newPassword)
 
+
     //Buttons
-    let signUpButton = UIButton(title: "Sign Up", titleColor: .systemGray6, backgroundColor: .systemPurple, isShadow: true)
-    let loginButton = UIButton(title: "Login", titleColor: .systemPurple, backgroundColor: nil)
+    let signUpButton = UIButton(title: "Sign Up", titleColor: .white, isShadow: true, isEnabled: false)
+    let loginButton = UIButton(title: "Login", backgroundColor: nil)
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        signUpButton.isEnabled = false
         setupViews()
-        setupScrollView(scrollView: scrollView, with: contentView)
-        scrollView.applyGradients(cornerRadius: 10)
         addTargets()
+    }
+
+    private func addTargets() {
+        let textFields = [emailTextField, passwordTextField, confirmPasswordTextField]
+        textFields.forEach { $0.addTarget(self, action: #selector(SignUpViewController.textFieldDidChange(_:)), for: .editingChanged)
+        }
+
+        signUpButton.addTarget(self, action: #selector(signUpButtonTapped), for: .touchUpInside)
+    }
+
+    @objc func signUpButtonTapped() {
+        print(#function)
+        AuthService.shared.register(email: emailTextField.text,
+            password: passwordTextField.text,
+            confirmPassword: confirmPasswordTextField.text) { result in
+            switch result {
+
+            case .success(_):
+                self.showAlert(with: "Success!", and: "You signed up")
+            case .failure(let error):
+                self.showAlert(with: "Error!", and: error.localizedDescription)
+            }
+        }
     }
 }
 
@@ -63,6 +84,9 @@ class SignUpViewController: UIViewController {
 extension SignUpViewController {
 
     private func setupViews() {
+
+        view.applyGradients()
+        setupScrollView(scrollView, with: contentView)
         // Main StackView
         let emailStackView = UIStackView(arrangedSubviews: [emailLabel, emailTextField, emailErrorLabel], axis: .vertical, spacing: 10)
         let passwordStackView = UIStackView(arrangedSubviews: [passwordLabel, passwordTextField, passwordErrorLabel, passwordRuleLabel], axis: .vertical, spacing: 10)
@@ -87,9 +111,8 @@ extension SignUpViewController {
             ], axis: .horizontal, spacing: 10)
         bottomStackView.alignment = .firstBaseline
 
-        welcomeLabel.translatesAutoresizingMaskIntoConstraints = false
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        bottomStackView.translatesAutoresizingMaskIntoConstraints = false
+        let views = [welcomeLabel, stackView, bottomStackView]
+        views.forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
 
         contentView.addSubview(welcomeLabel)
         contentView.addSubview(stackView)
@@ -117,48 +140,34 @@ extension SignUpViewController {
 // MARK: - Verification
 
 extension SignUpViewController {
-    
+
     private func updateBtnState() {
         signUpButton.isEnabled = isValidEmail && isPassConfirmed && (passwordStrength != .weak)
         signUpButton.alpha = signUpButton.isEnabled ? 1 : 0.5
     }
 
-    private func updatePassErrorLbl(pass1: String, pass2: String) {
-        if passwordStrength != .weak {
-            isPassConfirmed = VerificationService.isPasswordConfirmed(pass1: pass1, pass2: pass2)
-            confirmPasswordlErrorLabel.isHidden = isPassConfirmed
-        }
-    }
-    
-    private func addTargets() {
-        let textFields = [emailTextField, passwordTextField, confirmPasswordTextField]
-        textFields.forEach { textField in
-            textField.addTarget(self, action: #selector(SignUpViewController.textFieldDidChange(_:)), for: .editingChanged)
-        }
-    }
-    
     @objc func textFieldDidChange(_ textField: UITextField) {
         switch textField {
         case emailTextField:
             guard let email = emailTextField.text else { return }
             isValidEmail = VerificationService.isValidEmail(email)
             emailErrorLabel.isHidden = isValidEmail
+
             updateBtnState()
         case passwordTextField:
             guard let pass1 = passwordTextField.text,
                 let pass2 = confirmPasswordTextField.text else { return }
+
             passwordStrength = VerificationService.isValidPassword(pass1)
-            passwordErrorLabel.textColor = passwordStrength != .weak ? .systemGreen : .systemRed
-            passwordErrorLabel.isHidden = pass1 == ""
-            passwordErrorLabel.text = "\(passwordStrength.description()) password"
-            updatePassErrorLbl(pass1: pass1, pass2: pass2)
+            VerificationService.updatePassErrorLbl1(pass1, pass2, passwordStrength, &isPassConfirmed, confPassErrLbl: confirmPasswordlErrorLabel, passErrLbl: passwordErrorLabel)
+
             updateBtnState()
         case confirmPasswordTextField:
             guard let pass1 = passwordTextField.text,
                 let pass2 = confirmPasswordTextField.text else { return }
-            updatePassErrorLbl(pass1: pass1, pass2: pass2)
-            //confirmPasswordlErrorLabel.isHidden = pass2 == ""
-            
+
+            VerificationService.updatePassErrorLbl1(pass1, pass2, passwordStrength, &isPassConfirmed, confPassErrLbl: confirmPasswordlErrorLabel)
+
             updateBtnState()
         default:
             print("")
@@ -183,5 +192,16 @@ struct SignUpVCProvider: PreviewProvider {
 
     static var previews: some View {
         ContainerView().preferredColorScheme(.light).edgesIgnoringSafeArea(.all)
+    }
+}
+
+
+extension UIViewController {
+
+    func showAlert(with title: String, and message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(okAction)
+        present(alertController, animated: true, completion: nil)
     }
 }

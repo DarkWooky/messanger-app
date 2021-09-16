@@ -23,7 +23,7 @@ class ActiveChatCell: UICollectionViewCell, SelfConfiguringCell {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = UIColor(named: "mainColor-1")?.withAlphaComponent(0.5)
+        backgroundColor = UIColor(named: "activeChatsBg")?.withAlphaComponent(0.5)
         setupViews()
     }
     
@@ -32,11 +32,11 @@ class ActiveChatCell: UICollectionViewCell, SelfConfiguringCell {
     }
 
     func configure<U>(with value: U) where U : Hashable {
-        guard let chat: Chat = value as? Chat else { return }
+        guard let chat: MChat = value as? MChat else { return }
         friendImageView.image = UIImage(named: chat.userImageString)
         friendNameLabel.text = chat.username
         lastMessageLabel.text = chat.lastMessage
-        lastMsgTimeLbl.text = Chat.timeFormatter(from: chat.date, format: "HH:mm")
+        lastMsgTimeLbl.text = MChat.timeFormatter(from: chat.date, format: "HH:mm")
     }
 }
 
@@ -48,12 +48,8 @@ extension ActiveChatCell {
         let chatStackView = UIStackView(arrangedSubviews: [friendNameLabel, lastMessageLabel], axis: .vertical, spacing: 8)
         chatStackView.alignment = .leading
 
-        friendImageView.translatesAutoresizingMaskIntoConstraints = false
-        friendNameLabel.translatesAutoresizingMaskIntoConstraints = false
-        lastMessageLabel.translatesAutoresizingMaskIntoConstraints = false
-        chatStackView.translatesAutoresizingMaskIntoConstraints = false
-        lastMsgTimeLbl.translatesAutoresizingMaskIntoConstraints = false
-        lineView.translatesAutoresizingMaskIntoConstraints = false
+        let views = [friendImageView, friendNameLabel, lastMessageLabel, chatStackView, lastMsgTimeLbl, lineView]
+        views.forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
         
         lineView.backgroundColor = .brown
 

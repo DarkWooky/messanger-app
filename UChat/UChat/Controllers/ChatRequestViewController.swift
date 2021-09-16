@@ -25,10 +25,9 @@ class ChatRequestViewController: UIViewController {
     }
     
     private func customizeElements() {
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        containerView.translatesAutoresizingMaskIntoConstraints = false
-        nameLabel.translatesAutoresizingMaskIntoConstraints = false
-        aboutMeLabel.translatesAutoresizingMaskIntoConstraints = false
+        let views = [imageView, containerView, nameLabel, aboutMeLabel]
+        views.forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
+    
         acceptButton.setBackgroundImage(UIImage(named: "gradient"), for: .normal)
         denyButton.layer.borderWidth = 1.2
         denyButton.layer.borderColor = #colorLiteral(red: 0.8352941176, green: 0.2, blue: 0.2, alpha: 1)

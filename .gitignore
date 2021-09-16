@@ -57,7 +57,7 @@ playground.xcworkspace
 # https://guides.cocoapods.org/using/using-cocoapods.html#should-i-check-the-pods-directory-into-source-control
 # Pods/
 # Add this line if you want to avoid checking in source code from the Xcode workspace
-# *.xcworkspace
+*.xcworkspace
 
 # Carthage
 # Add this line if you want to avoid checking in source code from Carthage dependencies.
@@ -88,5 +88,10 @@ iOSInjectionProject/
 
 # End of https://www.toptal.com/developers/gitignore/api/swift
 
-ChatU/ChatU.xcodeproj/project.pbxproj
-ChatU/ChatU.xcodeproj/project.xcworkspace/
+/Users/DarkWooky/Downloads/Code/Swift/messanger-app/messanger-app/UChat/Pods
+/Users/DarkWooky/Downloads/Code/Swift/messanger-app/messanger-app/UChat/Podfile
+/Users/DarkWooky/Downloads/Code/Swift/messanger-app/messanger-app/UChat/Podfile.lock
+
+/Users/DarkWooky/Downloads/Code/Swift/messanger-app/messanger-app/UChat/UChat.xcodeproj
+/Users/DarkWooky/Downloads/Code/Swift/messanger-app/messanger-app/UChat/UChat.xcworkspace
+

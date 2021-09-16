@@ -9,10 +9,10 @@ import UIKit
 
 class PeopleViewController: UIViewController {
 
-    let users = Bundle.main.decode([User].self, from: "users.json")
+    let users = Bundle.main.decode([MUser].self, from: "users.json")
 
     var collectionView: UICollectionView!
-    var dataSource: UICollectionViewDiffableDataSource<PeopleSection, User>?
+    var dataSource: UICollectionViewDiffableDataSource<PeopleSection, MUser>?
     let searchController = UISearchController()
     
 
@@ -43,7 +43,7 @@ class PeopleViewController: UIViewController {
         }
         searchController.searchBar.delegate = self
         
-        var snapshot = NSDiffableDataSourceSnapshot<PeopleSection, User>()
+        var snapshot = NSDiffableDataSourceSnapshot<PeopleSection, MUser>()
         snapshot.appendSections([.users])
         snapshot.appendItems(filtered, toSection: .users)
 
@@ -55,7 +55,7 @@ class PeopleViewController: UIViewController {
 
 extension PeopleViewController {
     private func createDataSource() {
-        dataSource = UICollectionViewDiffableDataSource<PeopleSection, User>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, user) -> UICollectionViewCell? in
+        dataSource = UICollectionViewDiffableDataSource<PeopleSection, MUser>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, user) -> UICollectionViewCell? in
             guard let section = PeopleSection(rawValue: indexPath.section) else {
                 fatalError("Unknown section kind")
             }

@@ -23,11 +23,9 @@ class ProfileViewController: UIViewController {
     }
     
     private func constomizeElements() {
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        containerView.translatesAutoresizingMaskIntoConstraints = false
-        nameLabel.translatesAutoresizingMaskIntoConstraints = false
-        aboutMeLabel.translatesAutoresizingMaskIntoConstraints = false
-        myTextField.translatesAutoresizingMaskIntoConstraints = false
+        let views = [imageView, containerView, nameLabel, aboutMeLabel, myTextField]
+        views.forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
+        
         aboutMeLabel.numberOfLines = 0
         containerView.backgroundColor = .mainWhite()
         containerView.layer.cornerRadius = 30

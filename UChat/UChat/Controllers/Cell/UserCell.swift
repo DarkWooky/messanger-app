@@ -36,15 +36,15 @@ class UserCell: UICollectionViewCell, SelfConfiguringCell {
     }
     
     func configure<U>(with value: U) where U : Hashable {
-        guard let user: User = value as? User else { return }
+        guard let user: MUser = value as? MUser else { return }
         userImageView.image = UIImage(named: user.avatarImageString)
         userName.text = user.username
     }
     
     private func setupViews() {
-        userImageView.translatesAutoresizingMaskIntoConstraints = false
-        userName.translatesAutoresizingMaskIntoConstraints = false
-        containerView.translatesAutoresizingMaskIntoConstraints = false
+        let views = [userImageView, userName, containerView]
+        views.forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
+    
         userImageView.backgroundColor = .red
         
         addSubview(containerView)

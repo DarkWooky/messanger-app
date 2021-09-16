@@ -32,7 +32,6 @@ class SetupProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.applyGradients(cornerRadius: 0)
         setupViews()
     }
 }
@@ -41,6 +40,9 @@ class SetupProfileViewController: UIViewController {
 
 extension SetupProfileViewController {
     private func setupViews() {
+        
+        view.applyGradients()
+        
         //Stack views
         let fullNameStackView = UIStackView(arrangedSubviews: [fullNameLabel, fullNameTextField],
                                             axis: .vertical,
@@ -59,9 +61,8 @@ extension SetupProfileViewController {
                                     axis: .vertical,
                                     spacing: 40)
 
-        setupProfileLabel.translatesAutoresizingMaskIntoConstraints = false
-        fillImageView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.translatesAutoresizingMaskIntoConstraints = false
+        let views = [setupProfileLabel, fillImageView, stackView]
+        views.forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
         
         view.addSubview(setupProfileLabel)
         view.addSubview(fillImageView)

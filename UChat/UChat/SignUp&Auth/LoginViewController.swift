@@ -19,20 +19,39 @@ class LoginViewController: UIViewController {
     let needAnAccountLabel = UILabel(text: "Need an account?")
 
     //Buttons
-    let googleButton = UIButton(title: "Google", backgroundColor: .systemGray6, isShadow: true)
+    let googleButton = UIButton(title: "Google", backgroundColor: UIColor(named: "buttonBg"), isShadow: true)
     let loginButton = UIButton(title: "Login", titleColor: .white, isShadow: true)
-    let signUpButton = UIButton(title: "Sign Up", titleColor: .systemPurple, backgroundColor: nil)
-    
+    let signUpButton = UIButton(title: "Sign Up", backgroundColor: nil)
+
     //TextFields
     let emailTextField = OneLineTextField(font: .helvetica20(), isSecure: false)
     let passwordTextField = OneLineTextField(font: .helvetica20())
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.applyGradients(cornerRadius: 0)
+        view.applyGradients()
         //assignBackground(backgroundName: "background")
         googleButton.customizeGoogleButton()
         setupView()
+        addTargets()
+    }
+    
+    private func addTargets() {
+        loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
+    }
+    
+    @objc func loginButtonTapped() {
+        print(#function)
+        AuthService.shared.login(email: emailTextField.text,
+                                 password: passwordTextField.text) { result in
+            switch result {
+            
+            case .success(_):
+                self.showAlert(with: "Success!", and: "You signed in")
+            case .failure(let error):
+                self.showAlert(with: "Error", and: error.localizedDescription)
+            }
+        }
     }
 }
 
@@ -41,24 +60,24 @@ extension LoginViewController {
         //Stack view
         let loginWithView = ButtonFormView(label: loginWithLabel, button: googleButton)
         let emailStackView = UIStackView(arrangedSubviews: [emailLabel, emailTextField],
-                                         axis: .vertical,
-                                         spacing: 5)
+            axis: .vertical,
+            spacing: 5)
         let passwordStackView = UIStackView(arrangedSubviews: [passwordLabel, passwordTextField],
-                                            axis: .vertical,
-                                            spacing: 5)
+            axis: .vertical,
+            spacing: 5)
 
         loginButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
 
         signUpButton.contentHorizontalAlignment = .leading
         let bottomStackView = UIStackView(arrangedSubviews: [needAnAccountLabel, signUpButton],
-                                          axis: .horizontal,
-                                          spacing: 12)
+            axis: .horizontal,
+            spacing: 12)
         bottomStackView.alignment = .firstBaseline
 
         let stackView = UIStackView(arrangedSubviews: [loginWithView, orLabel, emailStackView,
-                                                       passwordStackView, loginButton, bottomStackView],
-                                    axis: .vertical,
-                                    spacing: 40)
+            passwordStackView, loginButton, bottomStackView],
+            axis: .vertical,
+            spacing: 40)
 
         welcomeLabel.translatesAutoresizingMaskIntoConstraints = false
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -70,13 +89,13 @@ extension LoginViewController {
         NSLayoutConstraint.activate([
             welcomeLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 160),
             welcomeLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
-        ])
+            ])
 
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: welcomeLabel.bottomAnchor, constant: 100),
             stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 25),
             stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -25)
-        ])
+            ])
     }
 }
 
@@ -94,7 +113,7 @@ struct LoginVCProvider: PreviewProvider {
             return loginVC
         }
 
-        func updateUIViewController(_ uiViewController: LoginVCProvider.ContainerView.UIViewControllerType, context: UIViewControllerRepresentableContext<LoginVCProvider.ContainerView>) {}
+        func updateUIViewController(_ uiViewController: LoginVCProvider.ContainerView.UIViewControllerType, context: UIViewControllerRepresentableContext<LoginVCProvider.ContainerView>) { }
     }
 
     static var previews: some View {

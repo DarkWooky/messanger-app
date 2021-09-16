@@ -5,7 +5,7 @@
 //  Created by Egor Mihalevich on 9.09.21.
 //
 
-import Foundation
+import UIKit
 
 enum PasswordStrength: Int {
     case weak
@@ -32,10 +32,10 @@ enum PasswordStrength: Int {
 
 class VerificationService {
 
-    static let simpleRegex = "^(?=.*[a-z])(?=.*[0-9]).{8,}$"
-    static let averageRegex = "^(?=.*[a-z])(?=.*[0-9])(?=.*[A-Z]).{8,}$"
-    static let strongRegex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&#])[A-Za-z\\d$@$!%*?&#]{8,12}"
-    static let excellentRegex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&#])[A-Za-z\\d$@$!%*?&#]{12,}"
+    static let simpleRegex = "^(?=.*[a-z])(?=.*[0-9]).{6,}$"
+    static let averageRegex = "^(?=.*[a-z])(?=.*[0-9])(?=.*[A-Z]).{6,}$"
+    static let strongRegex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&#])[A-Za-z\\d$@$!%*?&#]{6,10}"
+    static let excellentRegex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&#])[A-Za-z\\d$@$!%*?&#]{10,}"
 
 
     static func isValidEmail(_ email: String) -> Bool {
@@ -63,8 +63,15 @@ class VerificationService {
             return .weak
         }
     }
-
-    static func isPasswordConfirmed (pass1: String, pass2: String) -> Bool {
-        return pass1 == pass2
+    
+    static func updatePassErrorLbl1(_ pass1: String, _ pass2: String, _ passwordStrength: PasswordStrength, _ isPassConfirmed: inout Bool, confPassErrLbl: UILabel, passErrLbl: UILabel? = nil) {
+        if passwordStrength != .weak {
+            isPassConfirmed = pass1 == pass2
+            confPassErrLbl.isHidden = isPassConfirmed
+        }
+        guard let passErrLbl = passErrLbl else { return }
+        passErrLbl.textColor = passwordStrength != .weak ? .systemGreen : .systemRed
+        passErrLbl.isHidden = pass1 == ""
+        passErrLbl.text = "\(passwordStrength.description()) password"
     }
 }

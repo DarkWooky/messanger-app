@@ -20,7 +20,8 @@ class OneLineTextField: UITextField {
         self.isSecureTextEntry = isSecure
         self.textContentType = textContentType
         self.autocapitalizationType = .none
-        self.placeholder = placeholder
+        self.attributedPlaceholder = NSAttributedString(string: placeholder,
+                                                        attributes: [NSAttributedString.Key.foregroundColor: UIColor.systemGray3])
         self.translatesAutoresizingMaskIntoConstraints = false
         
         var bottomView = UIView()

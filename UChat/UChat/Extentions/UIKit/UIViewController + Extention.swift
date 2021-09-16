@@ -21,7 +21,7 @@ extension UIViewController {
         self.view.sendSubviewToBack(imageView)
     }
     
-    func setupScrollView(scrollView: UIScrollView, with contentView: UIView) {
+    func setupScrollView(_ scrollView: UIScrollView, with contentView: UIView) {
 
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         contentView.translatesAutoresizingMaskIntoConstraints = false

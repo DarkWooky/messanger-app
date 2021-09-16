@@ -19,16 +19,34 @@ class AuthViewController: UIViewController {
     let alreadyOnboardLabel = UILabel(text: "Already onboard?")
 
     //Buttons
-    let googleButton = UIButton(title: "Google", backgroundColor: .systemGray6, isShadow: true)
-    let emailButton = UIButton(title: "Email", titleColor: .systemGray6, backgroundColor: .systemPurple, isShadow: true)
-    let loginButton = UIButton(title: "Login", backgroundColor: .systemGray6, isShadow: true)
+    let googleButton = UIButton(title: "Google", backgroundColor: UIColor(named: "buttonBg"), isShadow: true)
+    let emailButton = UIButton(title: "Email", titleColor: .white, isShadow: true)
+    let loginButton = UIButton(title: "Login", backgroundColor: UIColor(named: "buttonBg"), isShadow: true)
+    
+    let signUpVC = SignUpViewController()
+    let loginVC = LoginViewController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        view.applyGradients(cornerRadius: 0)
-        googleButton.customizeGoogleButton()
+        
         setupViews()
+        setupTargets()
+    }
+    
+    private func setupTargets() {
+        emailButton.addTarget(self, action: #selector(emailButtonTapped), for: .touchUpInside)
+        loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
+    }
+    
+    @objc private func emailButtonTapped() {
+        print(#function)
+        present(signUpVC, animated: true, completion: nil)
+    }
+    
+    @objc private func loginButtonTapped() {
+        print(#function)
+        present(loginVC, animated: true, completion: nil)
+        
     }
 }
 
@@ -37,6 +55,9 @@ class AuthViewController: UIViewController {
 extension AuthViewController {
     private func setupViews() {
 
+        view.applyGradients()
+        googleButton.customizeGoogleButton()
+        
         let googleView = ButtonFormView(label: googleLabel, button: googleButton)
         let emailView = ButtonFormView(label: emailLabel, button: emailButton)
         let loginView = ButtonFormView(label: alreadyOnboardLabel, button: loginButton)
@@ -52,7 +73,7 @@ extension AuthViewController {
 
         NSLayoutConstraint.activate([
             logoImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
-            logoImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50)
+            logoImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40)
         ])
 
         NSLayoutConstraint.activate([
