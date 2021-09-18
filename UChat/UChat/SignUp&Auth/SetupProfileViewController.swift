@@ -59,7 +59,7 @@ extension SetupProfileViewController {
         let stackView = UIStackView(arrangedSubviews: [fullNameStackView, aboutmeStackView,
                                                        sexStackView, goToChatsButton],
                                     axis: .vertical,
-                                    spacing: 40)
+                                    spacing: 35)
 
         let views = [setupProfileLabel, fillImageView, stackView]
         views.forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
@@ -74,11 +74,11 @@ extension SetupProfileViewController {
             setupProfileLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
         NSLayoutConstraint.activate([
-            fillImageView.topAnchor.constraint(equalTo: setupProfileLabel.bottomAnchor, constant: 60),
+            fillImageView.topAnchor.constraint(equalTo: setupProfileLabel.bottomAnchor, constant: 40),
             fillImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: fillImageView.bottomAnchor, constant: 60),
+            stackView.topAnchor.constraint(equalTo: fillImageView.bottomAnchor, constant: 40),
             stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 25),
             stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40)
         ])

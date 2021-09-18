@@ -49,8 +49,10 @@
 		F4B9325F26E65F1A0001DD04 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B9325E26E65F1A0001DD04 /* GradientView.swift */; };
 		F4B9326126E670D00001DD04 /* WaitingChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B9326026E670CF0001DD04 /* WaitingChatCell.swift */; };
 		F4B9326326E6728A0001DD04 /* SelfConfiguringCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B9326226E6728A0001DD04 /* SelfConfiguringCell.swift */; };
+		F4BD25E626F3E4690008C703 /* AuthNavigationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BD25E526F3E4680008C703 /* AuthNavigationDelegate.swift */; };
 		F4D38C0626E97D4100919CDE /* VerificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D38C0526E97D4100919CDE /* VerificationService.swift */; };
 		F4E9DB3126E6C1A1001C065C /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E9DB3026E6C1A1001C065C /* SectionHeader.swift */; };
+		F4EAE44C26F663190080F506 /* FirestoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EAE44B26F663190080F506 /* FirestoreService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -100,8 +102,10 @@
 		F4B9325E26E65F1A0001DD04 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		F4B9326026E670CF0001DD04 /* WaitingChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingChatCell.swift; sourceTree = "<group>"; };
 		F4B9326226E6728A0001DD04 /* SelfConfiguringCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfConfiguringCell.swift; sourceTree = "<group>"; };
+		F4BD25E526F3E4680008C703 /* AuthNavigationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthNavigationDelegate.swift; sourceTree = "<group>"; };
 		F4D38C0526E97D4100919CDE /* VerificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationService.swift; sourceTree = "<group>"; };
 		F4E9DB3026E6C1A1001C065C /* SectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
+		F4EAE44B26F663190080F506 /* FirestoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +141,8 @@
 			isa = PBXGroup;
 			children = (
 				F434685E26F2BB4F00FABC15 /* AuthService.swift */,
+				F4EAE44B26F663190080F506 /* FirestoreService.swift */,
+				F49578BF26EA3ED300CD3294 /* Verification Service */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -243,7 +249,6 @@
 				F493646926DFBC52008DC184 /* SignUpViewController.swift */,
 				F493647426E043A3008DC184 /* LoginViewController.swift */,
 				F493647826E102A1008DC184 /* SetupProfileViewController.swift */,
-				F49578BF26EA3ED300CD3294 /* Verification Service */,
 			);
 			path = "SignUp&Auth";
 			sourceTree = "<group>";
@@ -286,6 +291,7 @@
 			isa = PBXGroup;
 			children = (
 				F4B9326226E6728A0001DD04 /* SelfConfiguringCell.swift */,
+				F4BD25E526F3E4680008C703 /* AuthNavigationDelegate.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -419,9 +425,11 @@
 				F49578C326EA413500CD3294 /* MUser.swift in Sources */,
 				F493645826DED3B4008DC184 /* UIButton + Extention.swift in Sources */,
 				F4B9325F26E65F1A0001DD04 /* GradientView.swift in Sources */,
+				F4BD25E626F3E4690008C703 /* AuthNavigationDelegate.swift in Sources */,
 				F493644826DEC3FF008DC184 /* AuthViewController.swift in Sources */,
 				F493644426DEC3FF008DC184 /* AppDelegate.swift in Sources */,
 				F4B9324426E188500001DD04 /* ListViewController.swift in Sources */,
+				F4EAE44C26F663190080F506 /* FirestoreService.swift in Sources */,
 				F4B9323E26E174C30001DD04 /* UISegmentedControl + Extention.swift in Sources */,
 				F4B9325B26E5902C0001DD04 /* ActiveChatCell.swift in Sources */,
 				F4D38C0626E97D4100919CDE /* VerificationService.swift in Sources */,

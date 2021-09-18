@@ -13,7 +13,7 @@ enum PasswordStrength: Int {
     case average
     case strong
     case excellent
-    
+
     func description() -> String {
         switch self {
         case .weak:
@@ -64,6 +64,18 @@ class VerificationService {
         }
     }
     
+    static func isFilled(email: String?, password: String?, confirmPassword: String?) -> Bool {
+        guard let password = password,
+        let confirmPassword = confirmPassword,
+        let email = email,
+        password != "",
+        confirmPassword != "",
+            email != "" else {
+                return false
+        }
+        return true
+    }
+
     static func updatePassErrorLbl1(_ pass1: String, _ pass2: String, _ passwordStrength: PasswordStrength, _ isPassConfirmed: inout Bool, confPassErrLbl: UILabel, passErrLbl: UILabel? = nil) {
         if passwordStrength != .weak {
             isPassConfirmed = pass1 == pass2

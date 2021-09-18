@@ -14,11 +14,11 @@ class PeopleViewController: UIViewController {
     var collectionView: UICollectionView!
     var dataSource: UICollectionViewDiffableDataSource<PeopleSection, MUser>?
     let searchController = UISearchController()
-    
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         setupSearchBar(searchController)
         setupCollectionView()
         createDataSource()
@@ -36,13 +36,13 @@ class PeopleViewController: UIViewController {
 
         collectionView.register(UserCell.self, forCellWithReuseIdentifier: UserCell.reuseId)
     }
-    
+
     private func reloadData(with searchText: String?) {
         let filtered = users.filter { (user) -> Bool in
             user.contains(filter: searchText)
         }
         searchController.searchBar.delegate = self
-        
+
         var snapshot = NSDiffableDataSourceSnapshot<PeopleSection, MUser>()
         snapshot.appendSections([.users])
         snapshot.appendItems(filtered, toSection: .users)
@@ -64,15 +64,15 @@ extension PeopleViewController {
                 return self.configure(collectionView: collectionView, cellType: UserCell.self, with: user, for: indexPath)
             }
         })
-        
+
         dataSource?.supplementaryViewProvider = {
             collectionView, kind, indexPath in
             guard let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SectionHeader.reuseId, for: indexPath) as? SectionHeader else { fatalError("Cannot create new section header") }
             guard let section = PeopleSection(rawValue: indexPath.section) else { fatalError("Unknown section kind") }
             let items = self.dataSource?.snapshot().itemIdentifiers(inSection: .users)
             sectionHeader.configure(text: section.description(userCount: items!.count),
-                                    font: .systemFont(ofSize: 36, weight: .light),
-                                    textColor: .label)
+                font: .systemFont(ofSize: 36, weight: .light),
+                textColor: .label)
             return sectionHeader
         }
     }
@@ -96,27 +96,27 @@ extension PeopleViewController {
         layout.configuration = config
         return layout
     }
-    
+
     private func createUsersSection() -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
-                                              heightDimension: .fractionalHeight(1))
+            heightDimension: .fractionalHeight(1))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        
+
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                               heightDimension: .fractionalWidth(0.6))
+            heightDimension: .fractionalWidth(0.6))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 2)
         let spacing = CGFloat(15)
         group.interItemSpacing = .fixed(spacing)
-        
+
         let section = NSCollectionLayoutSection(group: group)
         section.interGroupSpacing = spacing
         section.contentInsets = NSDirectionalEdgeInsets.init(top: 16, leading: 15, bottom: 0, trailing: 15)
-        
+
         let sectionHeader = createSectionHeader()
         section.boundarySupplementaryItems = [sectionHeader]
         return section
     }
-    
+
     private func createSectionHeader() -> NSCollectionLayoutBoundarySupplementaryItem {
         let sectionHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
             heightDimension: .estimated(1))

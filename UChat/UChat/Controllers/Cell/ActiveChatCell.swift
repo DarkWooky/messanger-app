@@ -18,7 +18,7 @@ class ActiveChatCell: UICollectionViewCell, SelfConfiguringCell {
     let friendNameLabel = UILabel(text: "User name", font: .helveticaNeueMedium20())
     let lastMessageLabel = UILabel(text: "How are you?", font: .helveticaNeue18())
     let lineView = UIView()
-    let lastMsgTimeLbl = UILabel(text: "2:00", font: .helveticaNeue18())
+    let lastMsgTimeLbl = UILabel(text: "2:00", font: .helvetica16())
 //    let unreadMessageCountLbl = UILabel()
 
     override init(frame: CGRect) {
@@ -55,7 +55,7 @@ extension ActiveChatCell {
 
         lastMessageLabel.numberOfLines = 2
 
-        friendImageView.layer.cornerRadius = layer.bounds.height / 2.8
+        friendImageView.layer.cornerRadius = layer.bounds.height / 3
         friendImageView.clipsToBounds = true
 
         addSubview(friendImageView)
@@ -66,8 +66,8 @@ extension ActiveChatCell {
         NSLayoutConstraint.activate([
             friendImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             friendImageView.topAnchor.constraint(equalTo: topAnchor, constant: 10),
-            friendImageView.heightAnchor.constraint(equalToConstant: 88),
-            friendImageView.widthAnchor.constraint(equalToConstant: 88),
+            friendImageView.heightAnchor.constraint(equalToConstant: 75),
+            friendImageView.widthAnchor.constraint(equalToConstant: 75),
             ])
         NSLayoutConstraint.activate([
             chatStackView.topAnchor.constraint(equalTo: friendImageView.topAnchor),
