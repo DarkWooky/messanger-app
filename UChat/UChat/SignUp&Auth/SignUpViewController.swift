@@ -35,14 +35,12 @@ class SignUpViewController: UIViewController {
                                           placeholder: "Email",
                                           textContentType: .emailAddress)
     let passwordTextField = OneLineTextField(font: .helvetica20(),
-                                             placeholder: "Password",
-                                             textContentType: .newPassword)
+                                             placeholder: "Password")
     let confirmPasswordTextField = OneLineTextField(font: .helvetica20(),
-                                                    placeholder: "Confirm password",
-                                                    textContentType: .newPassword)
+                                                    placeholder: "Confirm password")
 
     // Buttons
-    let signUpButton = UIButton(title: "Sign Up", titleColor: .white, isShadow: true, isEnabled: false)
+    let signUpButton = UIButton(title: "Sign Up", titleColor: .white, isShadow: true)
     let loginButton = UIButton(title: "Login", backgroundColor: nil)
 
     weak var delegate: AuthNavigationDelegate?
@@ -59,9 +57,9 @@ class SignUpViewController: UIViewController {
                                     password: passwordTextField.text,
                                     confirmPassword: confirmPasswordTextField.text) { result in
             switch result {
-            case .success:
+            case .success(let user):
                 self.showAlert(with: "Success!", and: "You signed up") {
-                    self.present(SetupProfileViewController(), animated: true, completion: nil)
+                    self.present(SetupProfileViewController(currentUser: user), animated: true, completion: nil)
                 }
             case .failure(let error):
                 self.showAlert(with: "Error!", and: error.localizedDescription)
@@ -77,7 +75,6 @@ class SignUpViewController: UIViewController {
 
     // MARK: Private
 
-    private var isValidEmail = false
     private var isPassConfirmed = false
     private var passwordStrength: PasswordStrength = .weak
 
@@ -95,16 +92,14 @@ class SignUpViewController: UIViewController {
 
 extension SignUpViewController {
     private func setupViews() {
-        
         view.applyGradients()
         setupScrollView(scrollView, with: contentView)
-        
+
         // Main StackView
         let emailStackView = UIStackView(arrangedSubviews: [emailLabel, emailTextField, emailErrorLabel], axis: .vertical, spacing: 10)
         let passwordStackView = UIStackView(arrangedSubviews: [passwordLabel, passwordTextField, passwordErrorLabel, passwordRuleLabel], axis: .vertical, spacing: 10)
         let confirmPasswordStackView = UIStackView(arrangedSubviews: [confirmPasswordTextField, confirmPasswordlErrorLabel], axis: .vertical, spacing: 10)
         signUpButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
-        signUpButton.alpha = 0.5
 
         passwordRuleLabel.numberOfLines = 0
 
@@ -152,35 +147,26 @@ extension SignUpViewController {
 // MARK: - Verification
 
 extension SignUpViewController {
-    private func updateBtnState() {
-        signUpButton.isEnabled = isValidEmail && isPassConfirmed && (passwordStrength != .weak)
-        signUpButton.alpha = signUpButton.isEnabled ? 1 : 0.5
-    }
-
     @objc func textFieldDidChange(_ textField: UITextField) {
         switch textField {
         case emailTextField:
             guard let email = emailTextField.text else { return }
 
-            isValidEmail = VerificationService.isValidEmail(email)
-            emailErrorLabel.isHidden = isValidEmail
+            emailErrorLabel.isHidden = Validators.isValidEmail(email)
 
-            updateBtnState()
         case passwordTextField:
             guard let pass1 = passwordTextField.text,
                   let pass2 = confirmPasswordTextField.text else { return }
 
-            passwordStrength = VerificationService.isValidPassword(pass1)
-            VerificationService.updatePassErrorLbl1(pass1, pass2, passwordStrength, &isPassConfirmed, confPassErrLbl: confirmPasswordlErrorLabel, passErrLbl: passwordErrorLabel)
+            passwordStrength = Validators.isValidPassword(pass1)
+            Validators.updatePassErrorLbl(pass1, pass2, passwordStrength, &isPassConfirmed, confPassErrLbl: confirmPasswordlErrorLabel, passErrLbl: passwordErrorLabel)
 
-            updateBtnState()
         case confirmPasswordTextField:
             guard let pass1 = passwordTextField.text,
                   let pass2 = confirmPasswordTextField.text else { return }
 
-            VerificationService.updatePassErrorLbl1(pass1, pass2, passwordStrength, &isPassConfirmed, confPassErrLbl: confirmPasswordlErrorLabel)
+            Validators.updatePassErrorLbl(pass1, pass2, passwordStrength, &isPassConfirmed, confPassErrLbl: confirmPasswordlErrorLabel)
 
-            updateBtnState()
         default:
             print("")
         }

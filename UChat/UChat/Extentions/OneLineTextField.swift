@@ -11,7 +11,7 @@ class OneLineTextField: UITextField {
     convenience init(font: UIFont? = .helvetica20(),
                      isSecure: Bool = true,
                      placeholder: String = "",
-                     textContentType: UITextContentType! = nil) {
+                     textContentType: UITextContentType! = .none) {
         self.init()
         
         self.font = font

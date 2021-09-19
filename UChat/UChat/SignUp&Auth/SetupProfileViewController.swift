@@ -6,10 +6,16 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 // MARK: - SetupProfileViewController
 
 class SetupProfileViewController: UIViewController {
+    
+    // Scroll View
+    let scrollView = UIScrollView()
+    let contentView = UIView()
+    
     //Labels
     let setupProfileLabel = UILabel(text: "Set up profile!", font: .helvetica26())
     let fullNameLabel = UILabel(text: "Full name")
@@ -19,7 +25,7 @@ class SetupProfileViewController: UIViewController {
     //Text fields
     let fullNameTextField = OneLineTextField(font: .helvetica20(), isSecure: false)
     let aboutmeTextField = OneLineTextField(font: .helvetica20(), isSecure: false)
-    
+
     //Segmented control
     let sexSegmentedControl = UISegmentedControl(first: "Male", second: "Female")
 
@@ -28,11 +34,47 @@ class SetupProfileViewController: UIViewController {
 
     //View
     let fillImageView = AddPhotoView()
-
+    
+    private let currentUser: User
+    
+    init(currentUser: User) {
+        self.currentUser = currentUser
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupViews()
+        addTargets()
+    }
+
+    private func addTargets() {
+        goToChatsButton.addTarget(self, action: #selector(goToChatsButtonTapped), for: .touchUpInside)
+    }
+
+    @objc private func goToChatsButtonTapped() {
+       // guard let email = currentUser.email else { return }
+        FirestoreService.shared.saveProfileWith(
+            id: currentUser.uid,
+            email: currentUser.email!,
+            username: fullNameTextField.text,
+            avatarImageString: "nil",
+            description: aboutmeTextField.text,
+            sex: sexSegmentedControl.titleForSegment(at: sexSegmentedControl.selectedSegmentIndex)) { result in
+            switch result {
+            
+            case .success(let muser):
+                self.showAlert(with: "Success!", and: "Enjoy chatting")
+                print(muser)
+            case .failure(let error):
+                self.showAlert(with: "Error!", and: error.localizedDescription)
+            }
+        }
     }
 }
 
@@ -40,49 +82,51 @@ class SetupProfileViewController: UIViewController {
 
 extension SetupProfileViewController {
     private func setupViews() {
-        
+
         view.applyGradients()
-        
+        setupScrollView(scrollView, with: contentView)
+
         //Stack views
         let fullNameStackView = UIStackView(arrangedSubviews: [fullNameLabel, fullNameTextField],
-                                            axis: .vertical,
-                                            spacing: 0)
+            axis: .vertical,
+            spacing: 0)
         let aboutmeStackView = UIStackView(arrangedSubviews: [aboutmeLabel, aboutmeTextField],
-                                           axis: .vertical,
-                                           spacing: 0)
+            axis: .vertical,
+            spacing: 0)
         let sexStackView = UIStackView(arrangedSubviews: [sexLabel, sexSegmentedControl],
-                                       axis: .vertical,
-                                       spacing: 12)
+            axis: .vertical,
+            spacing: 12)
 
         goToChatsButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
-        
+
         let stackView = UIStackView(arrangedSubviews: [fullNameStackView, aboutmeStackView,
-                                                       sexStackView, goToChatsButton],
-                                    axis: .vertical,
-                                    spacing: 35)
+            sexStackView, goToChatsButton],
+            axis: .vertical,
+            spacing: 35)
 
         let views = [setupProfileLabel, fillImageView, stackView]
         views.forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
-        
-        view.addSubview(setupProfileLabel)
-        view.addSubview(fillImageView)
-        view.addSubview(stackView)
+
+        contentView.addSubview(setupProfileLabel)
+        contentView.addSubview(fillImageView)
+        contentView.addSubview(stackView)
 
         //Constraints
         NSLayoutConstraint.activate([
-            setupProfileLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
-            setupProfileLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
-        ])
+            setupProfileLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 100),
+            setupProfileLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor)
+            ])
         NSLayoutConstraint.activate([
             fillImageView.topAnchor.constraint(equalTo: setupProfileLabel.bottomAnchor, constant: 40),
-            fillImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
-        ])
+            fillImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor)
+            ])
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: fillImageView.bottomAnchor, constant: 40),
-            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 25),
-            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40)
-        ])
-        
+            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 25),
+            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -40),
+            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -50)
+            ])
+
     }
 }
 
@@ -94,13 +138,13 @@ import SwiftUI
 
 struct SetupProfileVCProvider: PreviewProvider {
     struct ContainerView: UIViewControllerRepresentable {
-        let setupProfileVC = SetupProfileViewController()
+        let setupProfileVC = SetupProfileViewController(currentUser: Auth.auth().currentUser!)
 
         func makeUIViewController(context: UIViewControllerRepresentableContext<SetupProfileVCProvider.ContainerView>) -> SetupProfileViewController {
             return setupProfileVC
         }
 
-        func updateUIViewController(_ uiViewController: SetupProfileVCProvider.ContainerView.UIViewControllerType, context: UIViewControllerRepresentableContext<SetupProfileVCProvider.ContainerView>) {}
+        func updateUIViewController(_ uiViewController: SetupProfileVCProvider.ContainerView.UIViewControllerType, context: UIViewControllerRepresentableContext<SetupProfileVCProvider.ContainerView>) { }
     }
 
     static var previews: some View {
