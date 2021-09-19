@@ -9,12 +9,27 @@ import UIKit
 
 class MainTabBarController: UITabBarController {
     
+    private let currentUser: MUser
+    
+    init(currentUser: MUser = MUser(username: "Default",
+                                    email: "Default",
+                                    avatarStringURL: "Default",
+                                    description: "Default",
+                                    sex: "Default",
+                                    id: "Default")) {
+        self.currentUser = currentUser
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let listViewController = ListViewController()
-        let peopleViewController = PeopleViewController()
+        let listViewController = ListViewController(currentUser: currentUser)
+        let peopleViewController = PeopleViewController(currentUser: currentUser)
         
         tabBar.tintColor = .systemPurple
         let boldConfig = UIImage.SymbolConfiguration(weight: .bold)
@@ -22,8 +37,8 @@ class MainTabBarController: UITabBarController {
         let peopleImage = UIImage(systemName: "person.2.fill", withConfiguration: boldConfig)
         
         viewControllers = [
-            generateNavigationController(rootViewController: listViewController, title: "Conversations", image: convImage!),
-            generateNavigationController(rootViewController: peopleViewController, title: "People", image: peopleImage!)
+            generateNavigationController(rootViewController: peopleViewController, title: "People", image: peopleImage!),
+            generateNavigationController(rootViewController: listViewController, title: "Conversations", image: convImage!)
         ]
     }
     

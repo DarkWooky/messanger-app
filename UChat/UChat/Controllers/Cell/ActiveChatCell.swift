@@ -51,7 +51,7 @@ extension ActiveChatCell {
         let views = [friendImageView, friendNameLabel, lastMessageLabel, chatStackView, lastMsgTimeLbl, lineView]
         views.forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
         
-        lineView.backgroundColor = .brown
+        lineView.backgroundColor = #colorLiteral(red: 0.5725490196, green: 0.5725490196, blue: 0.5725490196, alpha: 1)
 
         lastMessageLabel.numberOfLines = 2
 

@@ -58,10 +58,10 @@ class SetupProfileViewController: UIViewController {
     }
 
     @objc private func goToChatsButtonTapped() {
-       // guard let email = currentUser.email else { return }
+        guard let email = currentUser.email else { return }
         FirestoreService.shared.saveProfileWith(
             id: currentUser.uid,
-            email: currentUser.email!,
+            email: email,
             username: fullNameTextField.text,
             avatarImageString: "nil",
             description: aboutmeTextField.text,
@@ -69,7 +69,11 @@ class SetupProfileViewController: UIViewController {
             switch result {
             
             case .success(let muser):
-                self.showAlert(with: "Success!", and: "Enjoy chatting")
+                self.showAlert(with: "Success!", and: "Enjoy chatting") {
+                    let mainTabBar = MainTabBarController(currentUser: muser)
+                    mainTabBar.modalPresentationStyle = .fullScreen
+                    self.present(mainTabBar, animated: true, completion: nil)
+                }
                 print(muser)
             case .failure(let error):
                 self.showAlert(with: "Error!", and: error.localizedDescription)

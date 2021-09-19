@@ -47,8 +47,19 @@ class LoginViewController: UIViewController {
         AuthService.shared.login(email: emailTextField.text,
                                  password: passwordTextField.text) { result in
             switch result {
-            case .success:
-                self.showAlert(with: "Success!", and: "You signed in")
+            case .success(let user):
+                self.showAlert(with: "Success!", and: "You signed in") {
+                    FirestoreService.shared.getUserData(user: user) { result in
+                        switch result {
+                        case .success(let muser):
+                            let mainTabBar = MainTabBarController(currentUser: muser)
+                            mainTabBar.modalPresentationStyle = .fullScreen
+                            self.present(mainTabBar, animated: true, completion: nil)
+                        case .failure(let error):
+                            self.present(SetupProfileViewController(currentUser: user), animated: true, completion: nil)
+                        }
+                    }
+                }
             case .failure(let error):
                 self.showAlert(with: "Error", and: error.localizedDescription)
             }
@@ -95,7 +106,7 @@ extension LoginViewController {
 
         let stackView = UIStackView(arrangedSubviews: [loginWithView, orLabel, emailStackView, passwordStackView, loginButton, bottomStackView],
                                     axis: .vertical,
-                                    spacing: 30)
+                                    spacing: 40)
 
         welcomeLabel.translatesAutoresizingMaskIntoConstraints = false
         stackView.translatesAutoresizingMaskIntoConstraints = false
