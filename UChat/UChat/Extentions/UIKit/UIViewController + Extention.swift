@@ -45,7 +45,7 @@ extension UIViewController {
     }
     
     func setupSearchBar(_ searchController: UISearchController /*, _ delegate: UISearchBarDelegate?*/) {
-        navigationController?.navigationBar.barTintColor = UIColor(named: "mainColor")
+        navigationController?.navigationBar.barTintColor = .systemBackground
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false

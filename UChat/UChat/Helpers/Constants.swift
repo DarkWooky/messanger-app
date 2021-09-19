@@ -55,7 +55,6 @@ enum Regex: Int{
         case .nameRegex:
             return "^[a-zA-Z-]+ ?.* [a-zA-Z-]+$"
         }
-
     }
 }
 
@@ -111,6 +110,8 @@ enum UserError {
     case notFilled
     case invalidName
     case photoNotExist
+    case cannotUnwrapToMUser
+    case cannotGetUserInfo
 }
 
 extension UserError: LocalizedError {
@@ -122,6 +123,10 @@ extension UserError: LocalizedError {
             return NSLocalizedString("User didn't choose a photo", comment: "")
         case .invalidName:
             return NSLocalizedString("Incorrect name format", comment: "")
+        case .cannotGetUserInfo:
+            return NSLocalizedString("Unable to download information about User from Firebase", comment: "")
+        case .cannotUnwrapToMUser:
+            return NSLocalizedString("Unable to unwrap MUser from User", comment: "")
         }
     }
 }

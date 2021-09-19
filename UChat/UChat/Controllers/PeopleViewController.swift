@@ -6,10 +6,11 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class PeopleViewController: UIViewController {
 
-    let users = Bundle.main.decode([MUser].self, from: "users.json")
+//    let users = Bundle.main.decode([MUser].self, from: "users.json")
 
     var collectionView: UICollectionView!
     var dataSource: UICollectionViewDiffableDataSource<PeopleSection, MUser>?
@@ -23,6 +24,22 @@ class PeopleViewController: UIViewController {
         setupCollectionView()
         createDataSource()
         reloadData(with: nil)
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log out", style: .plain, target: self, action: #selector(signOut))
+    }
+    
+    @objc private func signOut() {
+        let ac = UIAlertController(title: nil, message: "Are you sure you want to sign out?", preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        ac.addAction(UIAlertAction(title: "Sign Out", style: .destructive, handler: { _ in
+            do {
+                try Auth.auth().signOut()
+                UIApplication.shared.windows.first{$0.isKeyWindow}?.rootViewController = AuthViewController()
+            } catch {
+                print("Error signing out: \(error.localizedDescription) ")
+            }
+        }))
+        present(ac, animated: true, completion: nil)
     }
 
     private func setupCollectionView() {
@@ -38,14 +55,14 @@ class PeopleViewController: UIViewController {
     }
 
     private func reloadData(with searchText: String?) {
-        let filtered = users.filter { (user) -> Bool in
-            user.contains(filter: searchText)
-        }
-        searchController.searchBar.delegate = self
+//        let filtered = users.filter { (user) -> Bool in
+//            user.contains(filter: searchText)
+//        }
+//        searchController.searchBar.delegate = self
 
         var snapshot = NSDiffableDataSourceSnapshot<PeopleSection, MUser>()
         snapshot.appendSections([.users])
-        snapshot.appendItems(filtered, toSection: .users)
+//        snapshot.appendItems(filtered, toSection: .users)
 
         dataSource?.apply(snapshot, animatingDifferences: true)
     }

@@ -17,12 +17,12 @@ class ListViewController: UIViewController {
 
     var collectionView: UICollectionView!
     var dataSource: UICollectionViewDiffableDataSource<ListSection, MChat>?
-    var searchBarDelegate: UISearchBarDelegate?
+    let searchController = UISearchController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //setupSearchBar(searchBarDelegate)
+        setupSearchBar(searchController)
         setupCollectionView()
         createDataSource()
         reloadData()

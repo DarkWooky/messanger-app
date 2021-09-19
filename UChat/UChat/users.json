@@ -1,52 +1,52 @@
 [
     {
         "username": "Bob River",
-        "avatarImageString": "human1",
+        "avatarStringURL": "human1",
         "id": 1
     },
     {
         "username": "John Black",
-        "avatarImageString": "human2",
+        "avatarStringURL": "human2",
         "id": 2
     },
     {
         "username": "Misha Red",
-        "avatarImageString": "human3",
+        "avatarStringURL": "human3",
         "id": 3
     },
     {
         "username": "Alex Film",
-        "avatarImageString": "human4",
+        "avatarStringURL": "human4",
         "id": 4
     },
     {
         "username": "Robert Martin",
-        "avatarImageString": "human5",
+        "avatarStringURL": "human5",
         "id": 5
     },
     {
         "username": "Peter Brown",
-        "avatarImageString": "human6",
+        "avatarStringURL": "human6",
         "id": 6
     },
     {
         "username": "Sarah White",
-        "avatarImageString": "human7",
+        "avatarStringURL": "human7",
         "id": 7
     },
     {
         "username": "Melven Strong",
-        "avatarImageString": "human8",
+        "avatarStringURL": "human8",
         "id": 8
     },
     {
         "username": "Nike Rose",
-        "avatarImageString": "human9",
+        "avatarStringURL": "human9",
         "id": 9
     },
     {
         "username": "Andrey Velvet",
-        "avatarImageString": "human10",
+        "avatarStringURL": "human10",
         "id": 10
     }
 ]
