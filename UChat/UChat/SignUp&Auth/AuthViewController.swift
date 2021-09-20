@@ -27,7 +27,7 @@ class AuthViewController: UIViewController {
 
     let signUpVC = SignUpViewController()
     let loginVC = LoginViewController()
-
+  
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -42,6 +42,7 @@ class AuthViewController: UIViewController {
     private func setupTargets() {
         emailButton.addTarget(self, action: #selector(emailButtonTapped), for: .touchUpInside)
         loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
+        googleButton.addTarget(self, action: #selector(googleButtonTapped), for: .touchUpInside)
     }
 
     @objc private func emailButtonTapped() {
@@ -53,7 +54,12 @@ class AuthViewController: UIViewController {
         print(#function)
         present(loginVC, animated: true, completion: nil)
     }
+
+    @objc private func googleButtonTapped() {
+        AuthService.shared.signInWithGoogle()
+    }
 }
+
 
 // MARK: - Setup views
 

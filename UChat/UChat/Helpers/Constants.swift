@@ -53,7 +53,7 @@ enum Regex: Int{
         case .emailRegex:
             return "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         case .nameRegex:
-            return "^[a-zA-Z-]+ ?.* [a-zA-Z-]+$"
+            return "^[a-zA-Zа-яА-Я-]+ ?.* [a-zA-Zа-яА-Я-]+$"
         }
     }
 }
