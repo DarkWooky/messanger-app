@@ -11,11 +11,11 @@ import FirebaseAuth
 // MARK: - SetupProfileViewController
 
 class SetupProfileViewController: UIViewController {
-    
+
     // Scroll View
     let scrollView = UIScrollView()
     let contentView = UIView()
-    
+
     //Labels
     let setupProfileLabel = UILabel(text: "Set up profile!", font: .helvetica26())
     let fullNameLabel = UILabel(text: "Full name")
@@ -33,23 +33,23 @@ class SetupProfileViewController: UIViewController {
     let goToChatsButton = UIButton(title: "Go to chats!", titleColor: .white, isShadow: true)
 
     //View
-    let fillImageView = AddPhotoView()
-    
+    let fullImageView = AddPhotoView()
+
     private let currentUser: User
-    
+
     init(currentUser: User) {
         self.currentUser = currentUser
         super.init(nibName: nil, bundle: nil)
-        
+
         if let username = currentUser.displayName {
             fullNameTextField.text = username
         }
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -59,6 +59,14 @@ class SetupProfileViewController: UIViewController {
 
     private func addTargets() {
         goToChatsButton.addTarget(self, action: #selector(goToChatsButtonTapped), for: .touchUpInside)
+        fullImageView.plusButton.addTarget(self, action: #selector(plusButtonTapped), for: .touchUpInside)
+    }
+
+    @objc private func plusButtonTapped() {
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        imagePickerController.sourceType = .photoLibrary
+        present(imagePickerController, animated: true, completion: nil)
     }
 
     @objc private func goToChatsButtonTapped() {
@@ -67,11 +75,11 @@ class SetupProfileViewController: UIViewController {
             id: currentUser.uid,
             email: email,
             username: fullNameTextField.text,
-            avatarImageString: "nil",
+            avatarImage: fullImageView.circleImageView.image,
             description: aboutmeTextField.text,
             sex: sexSegmentedControl.titleForSegment(at: sexSegmentedControl.selectedSegmentIndex)) { result in
             switch result {
-            
+
             case .success(let muser):
                 self.showAlert(with: "Success!", and: "Enjoy chatting") {
                     let mainTabBar = MainTabBarController(currentUser: muser)
@@ -112,24 +120,24 @@ extension SetupProfileViewController {
             axis: .vertical,
             spacing: 35)
 
-        let views = [setupProfileLabel, fillImageView, stackView]
+        let views = [setupProfileLabel, fullImageView, stackView]
         views.forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
 
         contentView.addSubview(setupProfileLabel)
-        contentView.addSubview(fillImageView)
+        contentView.addSubview(fullImageView)
         contentView.addSubview(stackView)
 
         //Constraints
         NSLayoutConstraint.activate([
-            setupProfileLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 100),
+            setupProfileLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 80),
             setupProfileLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor)
             ])
         NSLayoutConstraint.activate([
-            fillImageView.topAnchor.constraint(equalTo: setupProfileLabel.bottomAnchor, constant: 40),
-            fillImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor)
+            fullImageView.topAnchor.constraint(equalTo: setupProfileLabel.bottomAnchor, constant: 40),
+            fullImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor)
             ])
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: fillImageView.bottomAnchor, constant: 40),
+            stackView.topAnchor.constraint(equalTo: fullImageView.bottomAnchor, constant: 40),
             stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 25),
             stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -40),
             stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -50)
@@ -138,7 +146,16 @@ extension SetupProfileViewController {
     }
 }
 
-// MARK: - Canvas
+extension SetupProfileViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+
+        picker.dismiss(animated: true, completion: nil)
+        guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
+            return
+        }
+        fullImageView.circleImageView.image = image
+    }
+}
 
 import SwiftUI
 

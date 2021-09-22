@@ -24,7 +24,6 @@
 		F493645A26DED8C3008DC184 /* UIFont + Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = F493645926DED8C3008DC184 /* UIFont + Extention.swift */; };
 		F493645E26DEEFB3008DC184 /* UIViewController + Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = F493645D26DEEFB3008DC184 /* UIViewController + Extention.swift */; };
 		F493646026DEF158008DC184 /* UILabel + Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = F493645F26DEF158008DC184 /* UILabel + Extention.swift */; };
-		F493646226DEF37B008DC184 /* UIImage + Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = F493646126DEF37B008DC184 /* UIImage + Extention.swift */; };
 		F493646626DF005A008DC184 /* ButtonFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F493646526DF005A008DC184 /* ButtonFormView.swift */; };
 		F493646826DF0E74008DC184 /* UIStackView + Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = F493646726DF0E74008DC184 /* UIStackView + Extention.swift */; };
 		F493646A26DFBC52008DC184 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F493646926DFBC52008DC184 /* SignUpViewController.swift */; };
@@ -56,6 +55,8 @@
 		F4C85B8326F7DE2A00F14A3A /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = F4C85B8226F7DE2A00F14A3A /* FirebaseDatabase */; };
 		F4C85B8B26F8168D00F14A3A /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = F4C85B8A26F8168D00F14A3A /* GoogleSignIn */; };
 		F4C85B8D26F829CE00F14A3A /* UIAplication + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C85B8C26F829CD00F14A3A /* UIAplication + Extension.swift */; };
+		F4C85B8F26F949CE00F14A3A /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C85B8E26F949CE00F14A3A /* StorageService.swift */; };
+		F4C85B9126F94F0600F14A3A /* UIImage + Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C85B9026F94F0600F14A3A /* UIImage + Extention.swift */; };
 		F4D38C0626E97D4100919CDE /* Validators.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D38C0526E97D4100919CDE /* Validators.swift */; };
 		F4E9DB3126E6C1A1001C065C /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E9DB3026E6C1A1001C065C /* SectionHeader.swift */; };
 		F4EAE44C26F663190080F506 /* FirestoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EAE44B26F663190080F506 /* FirestoreService.swift */; };
@@ -81,7 +82,6 @@
 		F493645926DED8C3008DC184 /* UIFont + Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont + Extention.swift"; sourceTree = "<group>"; };
 		F493645D26DEEFB3008DC184 /* UIViewController + Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Extention.swift"; sourceTree = "<group>"; };
 		F493645F26DEF158008DC184 /* UILabel + Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + Extention.swift"; sourceTree = "<group>"; };
-		F493646126DEF37B008DC184 /* UIImage + Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage + Extention.swift"; sourceTree = "<group>"; };
 		F493646526DF005A008DC184 /* ButtonFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonFormView.swift; sourceTree = "<group>"; };
 		F493646726DF0E74008DC184 /* UIStackView + Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView + Extention.swift"; sourceTree = "<group>"; };
 		F493646926DFBC52008DC184 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -107,6 +107,8 @@
 		F4B9326226E6728A0001DD04 /* SelfConfiguringCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfConfiguringCell.swift; sourceTree = "<group>"; };
 		F4BD25E526F3E4680008C703 /* AuthNavigationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthNavigationDelegate.swift; sourceTree = "<group>"; };
 		F4C85B8C26F829CD00F14A3A /* UIAplication + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAplication + Extension.swift"; sourceTree = "<group>"; };
+		F4C85B8E26F949CE00F14A3A /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
+		F4C85B9026F94F0600F14A3A /* UIImage + Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage + Extention.swift"; sourceTree = "<group>"; };
 		F4D38C0526E97D4100919CDE /* Validators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validators.swift; sourceTree = "<group>"; };
 		F4E9DB3026E6C1A1001C065C /* SectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
 		F4EAE44B26F663190080F506 /* FirestoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreService.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 				F4B9324B26E569780001DD04 /* Models */,
 				F434685E26F2BB4F00FABC15 /* AuthService.swift */,
 				F4EAE44B26F663190080F506 /* FirestoreService.swift */,
+				F4C85B8E26F949CE00F14A3A /* StorageService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -182,7 +185,7 @@
 				F493645D26DEEFB3008DC184 /* UIViewController + Extention.swift */,
 				F4C85B8C26F829CD00F14A3A /* UIAplication + Extension.swift */,
 				F434685726F14A1C00FABC15 /* UIView + Extension.swift */,
-				F493646126DEF37B008DC184 /* UIImage + Extention.swift */,
+				F4C85B9026F94F0600F14A3A /* UIImage + Extention.swift */,
 				F434685326F1455900FABC15 /* UIImageView + Extension.swift */,
 				F493645F26DEF158008DC184 /* UILabel + Extention.swift */,
 				F493645726DED3B4008DC184 /* UIButton + Extention.swift */,
@@ -380,6 +383,7 @@
 				F493646A26DFBC52008DC184 /* SignUpViewController.swift in Sources */,
 				F434685026F1431A00FABC15 /* ProfileViewController.swift in Sources */,
 				F493647926E102A1008DC184 /* SetupProfileViewController.swift in Sources */,
+				F4C85B9126F94F0600F14A3A /* UIImage + Extention.swift in Sources */,
 				F4B9324626E18C410001DD04 /* PeopleViewController.swift in Sources */,
 				F49578C326EA413500CD3294 /* MUser.swift in Sources */,
 				F493645826DED3B4008DC184 /* UIButton + Extention.swift in Sources */,
@@ -400,6 +404,7 @@
 				F493644626DEC3FF008DC184 /* SceneDelegate.swift in Sources */,
 				F493645A26DED8C3008DC184 /* UIFont + Extention.swift in Sources */,
 				F493646826DF0E74008DC184 /* UIStackView + Extention.swift in Sources */,
+				F4C85B8F26F949CE00F14A3A /* StorageService.swift in Sources */,
 				F4B9326326E6728A0001DD04 /* SelfConfiguringCell.swift in Sources */,
 				F493647B26E1072B008DC184 /* AddPhotoView.swift in Sources */,
 				F434685226F1450700FABC15 /* InsertableTextField.swift in Sources */,
@@ -410,7 +415,6 @@
 				F493647226E03A3C008DC184 /* Constants.swift in Sources */,
 				F4C85B8D26F829CE00F14A3A /* UIAplication + Extension.swift in Sources */,
 				F434684E26F00CDF00FABC15 /* UserCell.swift in Sources */,
-				F493646226DEF37B008DC184 /* UIImage + Extention.swift in Sources */,
 				F493646026DEF158008DC184 /* UILabel + Extention.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

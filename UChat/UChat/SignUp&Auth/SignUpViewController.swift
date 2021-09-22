@@ -33,12 +33,14 @@ class SignUpViewController: UIViewController {
     let emailTextField = OneLineTextField(font: .helvetica20(),
                                           isSecure: false,
                                           placeholder: "Email",
-                                          textContentType: .emailAddress)
+                                          textContentType: .username)
     let passwordTextField = OneLineTextField(font: .helvetica20(),
-                                             placeholder: "Password")
+                                             placeholder: "Password",
+                                             textContentType: .oneTimeCode)
     let confirmPasswordTextField = OneLineTextField(font: .helvetica20(),
-                                                    placeholder: "Confirm password")
-
+                                                    placeholder: "Confirm password",
+                                                    textContentType: .oneTimeCode)
+    
     // Buttons
     let signUpButton = UIButton(title: "Sign Up", titleColor: .white, isShadow: true)
     let loginButton = UIButton(title: "Login", backgroundColor: nil)
@@ -80,7 +82,7 @@ class SignUpViewController: UIViewController {
 
     private func addTargets() {
         let textFields = [emailTextField, passwordTextField, confirmPasswordTextField]
-        textFields.forEach { $0.addTarget(self, action: #selector(SignUpViewController.textFieldDidChange(_:)), for: .editingChanged)
+        textFields.forEach { $0.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
         }
 
         signUpButton.addTarget(self, action: #selector(signUpButtonTapped), for: .touchUpInside)

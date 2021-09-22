@@ -1,18 +1,32 @@
 //
 //  UIImage + Extention.swift
-//  ChatU
+//  UChat
 //
-//  Created by Egor Mihalevich on 1.09.21.
+//  Created by Egor Mihalevich on 21.09.21.
 //
 
 import UIKit
 
-extension UIImageView {
+extension UIImage {
     
-    convenience init(image: UIImage?, contentMode: UIView.ContentMode) {
-        self.init()
-        
-        self.image = image
-        self.contentMode = contentMode
+    var scaledToSafeUploadSize: UIImage? {
+      let maxImageSideLength: CGFloat = 480
+      
+      let largerSide: CGFloat = max(size.width, size.height)
+      let ratioScale: CGFloat = largerSide > maxImageSideLength ? largerSide / maxImageSideLength : 1
+      let newImageSize = CGSize(width: size.width / ratioScale, height: size.height / ratioScale)
+      
+      return image(scaledTo: newImageSize)
+    }
+    
+    func image(scaledTo size: CGSize) -> UIImage? {
+      defer {
+        UIGraphicsEndImageContext()
+      }
+      
+      UIGraphicsBeginImageContextWithOptions(size, true, 0)
+      draw(in: CGRect(origin: .zero, size: size))
+
+      return UIGraphicsGetImageFromCurrentImageContext()
     }
 }

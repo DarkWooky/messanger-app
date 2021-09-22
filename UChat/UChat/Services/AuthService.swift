@@ -43,7 +43,7 @@ class AuthService {
                             let mainTabBar = MainTabBarController(currentUser: muser)
                             mainTabBar.modalPresentationStyle = .fullScreen
                             UIApplication.getTopViewController()?.present(mainTabBar, animated: true, completion: nil)
-                        case .failure(let error):
+                        case .failure(_):
                             UIApplication.getTopViewController()?.present(SetupProfileViewController(currentUser: user), animated: true, completion: nil)
                         }
                     }
@@ -89,7 +89,7 @@ class AuthService {
                                 mainTabBar.modalPresentationStyle = .fullScreen
                                 UIApplication.getTopViewController()?.present(mainTabBar, animated: true, completion: nil)
                             }
-                        case .failure(let error):
+                        case .failure(_):
                             UIApplication.getTopViewController()?.showAlert(with: "Success", and: "You signed up") {
                                 UIApplication.getTopViewController()?.present(SetupProfileViewController(currentUser: user), animated: true, completion: nil)
                             }

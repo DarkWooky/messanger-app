@@ -32,7 +32,7 @@ class AddPhotoView: UIView {
         imageView.tintColor = UIColor(named: "projectColor")
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
-
+        
         return imageView
     }()
     

@@ -1,6 +1,6 @@
 //
 //  ViewController.swift
-//  ChatU
+//  UChat
 //
 //  Created by Egor Mihalevich on 31.08.21.
 //

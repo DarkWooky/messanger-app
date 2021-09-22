@@ -5,6 +5,7 @@
 //  Created by Egor Mihalevich on 31.08.21.
 //
 
+import FirebaseStorage
 import Firebase
 import GoogleSignIn
 import UIKit

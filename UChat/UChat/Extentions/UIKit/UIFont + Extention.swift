@@ -1,6 +1,6 @@
 //
 //  UIFont + Extention.swift
-//  ChatU
+//  UChat
 //
 //  Created by Egor Mihalevich on 1.09.21.
 //
