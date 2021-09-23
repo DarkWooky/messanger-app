@@ -29,7 +29,7 @@ class AddPhotoView: UIView {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.image = UIImage(systemName: "person.crop.circle")
-        imageView.tintColor = UIColor(named: "projectColor")
+        imageView.tintColor = .mainWhite()
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         
@@ -41,7 +41,7 @@ class AddPhotoView: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         let plusImage = #imageLiteral(resourceName: "plus")
         button.setImage(plusImage, for: .normal)
-        button.tintColor = UIColor(named: "projectColor")
+        button.tintColor = .mainWhite()
         return button
     }()
 

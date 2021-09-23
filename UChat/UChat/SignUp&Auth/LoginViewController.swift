@@ -69,7 +69,7 @@ class LoginViewController: UIViewController {
 extension LoginViewController {
     private func setupView() {
         
-        view.applyGradients()
+        view.applyGradients(startColor: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), endColor: #colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1))
         setupScrollView(scrollView, with: contentView)
         googleButton.customizeGoogleButton()
 

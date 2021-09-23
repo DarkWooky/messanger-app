@@ -7,47 +7,61 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseFirestore
 import GoogleSignIn
 
 class PeopleViewController: UIViewController {
 
-//    let users = Bundle.main.decode([MUser].self, from: "users.json")
-    let users = [MUser]()
+    var users = [MUser]()
+    private var usersListener: ListenerRegistration?
 
     var collectionView: UICollectionView!
     var dataSource: UICollectionViewDiffableDataSource<PeopleSection, MUser>?
     let searchController = UISearchController()
 
     private let currentUser: MUser
-    
+
     init(currentUser: MUser) {
         self.currentUser = currentUser
         super.init(nibName: nil, bundle: nil)
         title = currentUser.username
     }
     
+    deinit {
+        usersListener?.remove()
+    }
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupSearchBar(searchController)
         setupCollectionView()
         createDataSource()
-        reloadData(with: nil)
-        
+
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log out", style: .plain, target: self, action: #selector(signOut))
+        
+        usersListener = ListenerService.shared.userObserver(users: users, completion: { result in
+            switch result {
+            case .success(let users):
+                self.users = users
+                self.reloadData(with: nil)
+            case .failure(let error):
+                self.showAlert(with: "Error!", and: error.localizedDescription)
+            }
+        })
     }
-    
+
     @objc private func signOut() {
         let ac = UIAlertController(title: nil, message: "Are you sure you want to sign out?", preferredStyle: .alert)
         ac.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         ac.addAction(UIAlertAction(title: "Sign Out", style: .destructive, handler: { _ in
             do {
                 try Auth.auth().signOut()
-                UIApplication.shared.windows.first{$0.isKeyWindow}?.rootViewController = AuthViewController()
+                UIApplication.shared.windows.first { $0.isKeyWindow }?.rootViewController = AuthViewController()
             } catch {
                 print("Error signing out: \(error.localizedDescription) ")
             }
@@ -101,8 +115,8 @@ extension PeopleViewController {
             guard let section = PeopleSection(rawValue: indexPath.section) else { fatalError("Unknown section kind") }
             let items = self.dataSource?.snapshot().itemIdentifiers(inSection: .users)
             sectionHeader.configure(text: section.description(userCount: items!.count),
-                font: .systemFont(ofSize: 36, weight: .light),
-                textColor: .label)
+                                    font: .systemFont(ofSize: 36, weight: .light),
+                                    textColor: .label)
             return sectionHeader
         }
     }
@@ -129,11 +143,11 @@ extension PeopleViewController {
 
     private func createUsersSection() -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
-            heightDimension: .fractionalHeight(1))
+                                              heightDimension: .fractionalHeight(1))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
 
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-            heightDimension: .fractionalWidth(0.6))
+                                               heightDimension: .fractionalWidth(0.6))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 2)
         let spacing = CGFloat(15)
         group.interItemSpacing = .fixed(spacing)
@@ -149,10 +163,10 @@ extension PeopleViewController {
 
     private func createSectionHeader() -> NSCollectionLayoutBoundarySupplementaryItem {
         let sectionHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
-            heightDimension: .estimated(1))
+                                                       heightDimension: .estimated(1))
         let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: sectionHeaderSize,
-            elementKind: UICollectionView.elementKindSectionHeader,
-            alignment: .top)
+                                                                        elementKind: UICollectionView.elementKindSectionHeader,
+                                                                        alignment: .top)
         return sectionHeader
     }
 }

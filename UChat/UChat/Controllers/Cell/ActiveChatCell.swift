@@ -17,7 +17,6 @@ class ActiveChatCell: UICollectionViewCell, SelfConfiguringCell {
     let friendImageView = UIImageView()
     let friendNameLabel = UILabel(text: "User name", font: .helveticaNeueMedium20())
     let lastMessageLabel = UILabel(text: "How are you?", font: .helveticaNeue18())
-    let lineView = UIView()
     let lastMsgTimeLbl = UILabel(text: "2:00", font: .helvetica16())
 //    let unreadMessageCountLbl = UILabel()
 
@@ -25,6 +24,13 @@ class ActiveChatCell: UICollectionViewCell, SelfConfiguringCell {
         super.init(frame: frame)
         backgroundColor = UIColor(named: "activeChatsBg")?.withAlphaComponent(0.5)
         setupViews()
+        
+        self.layer.cornerRadius = 10
+        
+        self.layer.shadowColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+        self.layer.shadowRadius = 3
+        self.layer.shadowOpacity = 0.5
+        self.layer.shadowOffset = CGSize(width: 4, height: 4)
     }
     
     required init?(coder: NSCoder) {
@@ -48,10 +54,8 @@ extension ActiveChatCell {
         let chatStackView = UIStackView(arrangedSubviews: [friendNameLabel, lastMessageLabel], axis: .vertical, spacing: 8)
         chatStackView.alignment = .leading
 
-        let views = [friendImageView, friendNameLabel, lastMessageLabel, chatStackView, lastMsgTimeLbl, lineView]
+        let views = [friendImageView, friendNameLabel, lastMessageLabel, chatStackView, lastMsgTimeLbl]
         views.forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
-        
-        lineView.backgroundColor = #colorLiteral(red: 0.5725490196, green: 0.5725490196, blue: 0.5725490196, alpha: 1)
 
         lastMessageLabel.numberOfLines = 2
 
@@ -61,10 +65,9 @@ extension ActiveChatCell {
         addSubview(friendImageView)
         addSubview(chatStackView)
         addSubview(lastMsgTimeLbl)
-        addSubview(lineView)
 
         NSLayoutConstraint.activate([
-            friendImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            friendImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
             friendImageView.topAnchor.constraint(equalTo: topAnchor, constant: 10),
             friendImageView.heightAnchor.constraint(equalToConstant: 75),
             friendImageView.widthAnchor.constraint(equalToConstant: 75),
@@ -79,11 +82,6 @@ extension ActiveChatCell {
             lastMsgTimeLbl.leadingAnchor.constraint(equalTo: chatStackView.trailingAnchor, constant: 5),
             lastMsgTimeLbl.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -5)
             ])
-        NSLayoutConstraint.activate([
-            lineView.leadingAnchor.constraint(equalTo: chatStackView.leadingAnchor),
-            lineView.heightAnchor.constraint(equalToConstant: 1),
-            lineView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            lineView.bottomAnchor.constraint(equalTo: bottomAnchor)])
     }
 }
 

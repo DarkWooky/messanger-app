@@ -94,9 +94,9 @@ class SignUpViewController: UIViewController {
 
 extension SignUpViewController {
     private func setupViews() {
-        view.applyGradients()
+        view.applyGradients(startColor: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), endColor: #colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1))
         setupScrollView(scrollView, with: contentView)
-
+        
         // Main StackView
         let emailStackView = UIStackView(arrangedSubviews: [emailLabel, emailTextField, emailErrorLabel], axis: .vertical, spacing: 10)
         let passwordStackView = UIStackView(arrangedSubviews: [passwordLabel, passwordTextField, passwordErrorLabel, passwordRuleLabel], axis: .vertical, spacing: 10)

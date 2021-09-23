@@ -18,15 +18,15 @@ class ListViewController: UIViewController {
     var collectionView: UICollectionView!
     var dataSource: UICollectionViewDiffableDataSource<ListSection, MChat>?
     let searchController = UISearchController()
-    
+
     private let currentUser: MUser
-    
+
     init(currentUser: MUser) {
         self.currentUser = currentUser
         super.init(nibName: nil, bundle: nil)
         title = currentUser.username
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -91,8 +91,8 @@ extension ListViewController {
             guard let section = ListSection(rawValue: indexPath.section) else {
                 fatalError("Unknown section kind") }
             sectionHeader.configure(text: section.description(),
-                font: .helvetica20(),
-                textColor: #colorLiteral(red: 0.5725490196, green: 0.5725490196, blue: 0.5725490196, alpha: 1))
+                                    font: .helvetica20(),
+                                    textColor: #colorLiteral(red: 0.5725490196, green: 0.5725490196, blue: 0.5725490196, alpha: 1))
             return sectionHeader
         }
     }
@@ -122,11 +122,11 @@ extension ListViewController {
 
     private func createWaitingChats() -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
-            heightDimension: .fractionalHeight(1))
+                                              heightDimension: .fractionalHeight(1))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
 
         let groupSize = NSCollectionLayoutSize(widthDimension: .absolute(80),
-            heightDimension: .absolute(80))
+                                               heightDimension: .absolute(80))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
 
         let section = NSCollectionLayoutSection(group: group)
@@ -135,22 +135,23 @@ extension ListViewController {
         section.orthogonalScrollingBehavior = .continuous
 
         let sectionHeader = createSectionHeader()
-        sectionHeader.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 0)
+        sectionHeader.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 0)
         section.boundarySupplementaryItems = [sectionHeader]
         return section
     }
 
     private func createActiveChats() -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
-            heightDimension: .fractionalHeight(1))
+                                              heightDimension: .fractionalHeight(1))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
 
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-            heightDimension: .absolute(95))
+                                               heightDimension: .absolute(95))
         let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
 
         let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10)
+        section.interGroupSpacing = 10
 
         let sectionHeader = createSectionHeader()
         sectionHeader.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 0)
@@ -160,10 +161,10 @@ extension ListViewController {
 
     private func createSectionHeader() -> NSCollectionLayoutBoundarySupplementaryItem {
         let sectionHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
-            heightDimension: .estimated(1))
+                                                       heightDimension: .estimated(1))
         let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: sectionHeaderSize,
-            elementKind: UICollectionView.elementKindSectionHeader,
-            alignment: .top)
+                                                                        elementKind: UICollectionView.elementKindSectionHeader,
+                                                                        alignment: .top)
         return sectionHeader
     }
 }

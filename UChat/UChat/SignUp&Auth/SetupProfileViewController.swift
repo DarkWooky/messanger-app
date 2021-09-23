@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseAuth
+import SDWebImage
 
 // MARK: - SetupProfileViewController
 
@@ -43,6 +44,10 @@ class SetupProfileViewController: UIViewController {
 
         if let username = currentUser.displayName {
             fullNameTextField.text = username
+        }
+        
+        if let photoURL = currentUser.photoURL {
+            fullImageView.circleImageView.sd_setImage(with: photoURL, completed: nil)
         }
     }
 
@@ -99,7 +104,7 @@ class SetupProfileViewController: UIViewController {
 extension SetupProfileViewController {
     private func setupViews() {
 
-        view.applyGradients()
+        view.applyGradients(startColor: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), endColor: #colorLiteral(red: 0.1764705926, green: 0.01176470611, blue: 0.5607843399, alpha: 1))
         setupScrollView(scrollView, with: contentView)
 
         //Stack views

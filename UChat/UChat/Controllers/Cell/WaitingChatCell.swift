@@ -16,6 +16,11 @@ class WaitingChatCell: UICollectionViewCell, SelfConfiguringCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupConstraints()
+        
+        self.layer.shadowColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+        self.layer.shadowRadius = 2.5
+        self.layer.shadowOpacity = 0.5
+        self.layer.shadowOffset = CGSize(width: 2, height: 2)
     }
 
     func configure<U>(with value: U) where U : Hashable {

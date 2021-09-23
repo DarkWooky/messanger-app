@@ -9,10 +9,10 @@ import UIKit
 
 extension UIView {
 
-    func applyGradients(cornerRadius: CGFloat = 0) {
+    func applyGradients(cornerRadius: CGFloat = 0, startColor: UIColor, endColor: UIColor) {
         self.backgroundColor = nil
         self.layoutIfNeeded()
-        let gradientView = GradientView(from: .topTrailing, to: .bottomLeading, startColor: UIColor(named: "Color-1"), endColor: UIColor(named: "Color"))
+        let gradientView = GradientView(from: .bottomLeading, to: .topTrailing, startColor: startColor, endColor: endColor)
         if let gradientLayer = gradientView.layer.sublayers?.first as? CAGradientLayer {
             gradientLayer.frame = self.bounds
             gradientLayer.cornerRadius = cornerRadius

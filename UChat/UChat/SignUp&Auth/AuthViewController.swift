@@ -65,7 +65,7 @@ class AuthViewController: UIViewController {
 
 extension AuthViewController {
     private func setupViews() {
-        view.applyGradients()
+        view.applyGradients(startColor: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), endColor: #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1))
         googleButton.customizeGoogleButton()
 
         let googleView = ButtonFormView(label: googleLabel, button: googleButton)
