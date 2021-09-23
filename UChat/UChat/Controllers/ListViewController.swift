@@ -12,8 +12,8 @@ import UIKit
 class ListViewController: UIViewController {
     // MARK: Internal
 
-    let activeChats = Bundle.main.decode([MChat].self, from: "activeChats.json")
-    let waitingChats = Bundle.main.decode([MChat].self, from: "waitingChats.json")
+    let activeChats = [MChat]()
+    let waitingChats = [MChat]()
 
     var collectionView: UICollectionView!
     var dataSource: UICollectionViewDiffableDataSource<ListSection, MChat>?
@@ -33,7 +33,7 @@ class ListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+    
         setupSearchBar(searchController)
         setupCollectionView()
         createDataSource()
@@ -53,6 +53,8 @@ class ListViewController: UIViewController {
 
         collectionView.register(ActiveChatCell.self, forCellWithReuseIdentifier: ActiveChatCell.reuseId)
         collectionView.register(WaitingChatCell.self, forCellWithReuseIdentifier: WaitingChatCell.reuseId)
+        
+        //collectionView.delegate = self
     }
 
     private func reloadData() {
@@ -177,6 +179,17 @@ extension ListViewController: UISearchBarDelegate {
         print(searchText)
     }
 }
+
+//extension ListViewController: UICollectionViewDelegate {
+//    override func setEditing(_ editing: Bool, animated: Bool) {
+//        super.setEditing(editing, animated: true)
+//        collectionView.isEditing = true
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, canEditItemAt indexPath: IndexPath) -> Bool {
+//        true
+//    }
+//}
 
 // MARK: - SwiftUI
 import SwiftUI

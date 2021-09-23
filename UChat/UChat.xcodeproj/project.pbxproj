@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		F403B4EE26FBEC4200DDB17A /* ListenerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F403B4ED26FBEC4200DDB17A /* ListenerService.swift */; };
 		F403B4F126FC042100DDB17A /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = F403B4F026FC042100DDB17A /* SDWebImage */; };
+		F403B4F326FD350300DDB17A /* MMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F403B4F226FD350300DDB17A /* MMessage.swift */; };
 		F434684E26F00CDF00FABC15 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F434684D26F00CDF00FABC15 /* UserCell.swift */; };
 		F434685026F1431A00FABC15 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F434684F26F1431A00FABC15 /* ProfileViewController.swift */; };
 		F434685226F1450700FABC15 /* InsertableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F434685126F1450600FABC15 /* InsertableTextField.swift */; };
@@ -66,6 +67,7 @@
 
 /* Begin PBXFileReference section */
 		F403B4ED26FBEC4200DDB17A /* ListenerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenerService.swift; sourceTree = "<group>"; };
+		F403B4F226FD350300DDB17A /* MMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MMessage.swift; sourceTree = "<group>"; };
 		F434684D26F00CDF00FABC15 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		F434684F26F1431A00FABC15 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		F434685126F1450600FABC15 /* InsertableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertableTextField.swift; sourceTree = "<group>"; };
@@ -263,6 +265,7 @@
 			children = (
 				F49578C226EA413500CD3294 /* MUser.swift */,
 				F4B9324C26E5699C0001DD04 /* MChat.swift */,
+				F403B4F226FD350300DDB17A /* MMessage.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -410,6 +413,7 @@
 				F493646626DF005A008DC184 /* ButtonFormView.swift in Sources */,
 				F4B9325126E577740001DD04 /* Bundle-Decodable.swift in Sources */,
 				F493644626DEC3FF008DC184 /* SceneDelegate.swift in Sources */,
+				F403B4F326FD350300DDB17A /* MMessage.swift in Sources */,
 				F493645A26DED8C3008DC184 /* UIFont + Extention.swift in Sources */,
 				F493646826DF0E74008DC184 /* UIStackView + Extention.swift in Sources */,
 				F4C85B8F26F949CE00F14A3A /* StorageService.swift in Sources */,
