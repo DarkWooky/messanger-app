@@ -10,6 +10,7 @@
 		F403B4EE26FBEC4200DDB17A /* ListenerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F403B4ED26FBEC4200DDB17A /* ListenerService.swift */; };
 		F403B4F126FC042100DDB17A /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = F403B4F026FC042100DDB17A /* SDWebImage */; };
 		F403B4F326FD350300DDB17A /* MMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F403B4F226FD350300DDB17A /* MMessage.swift */; };
+		F403B4F526FD5B9200DDB17A /* WaitingChatsNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F403B4F426FD5B9200DDB17A /* WaitingChatsNavigation.swift */; };
 		F434684E26F00CDF00FABC15 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F434684D26F00CDF00FABC15 /* UserCell.swift */; };
 		F434685026F1431A00FABC15 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F434684F26F1431A00FABC15 /* ProfileViewController.swift */; };
 		F434685226F1450700FABC15 /* InsertableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F434685126F1450600FABC15 /* InsertableTextField.swift */; };
@@ -68,6 +69,7 @@
 /* Begin PBXFileReference section */
 		F403B4ED26FBEC4200DDB17A /* ListenerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenerService.swift; sourceTree = "<group>"; };
 		F403B4F226FD350300DDB17A /* MMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MMessage.swift; sourceTree = "<group>"; };
+		F403B4F426FD5B9200DDB17A /* WaitingChatsNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingChatsNavigation.swift; sourceTree = "<group>"; };
 		F434684D26F00CDF00FABC15 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		F434684F26F1431A00FABC15 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		F434685126F1450600FABC15 /* InsertableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertableTextField.swift; sourceTree = "<group>"; };
@@ -285,6 +287,7 @@
 			children = (
 				F4B9326226E6728A0001DD04 /* SelfConfiguringCell.swift */,
 				F4BD25E526F3E4680008C703 /* AuthNavigationDelegate.swift */,
+				F403B4F426FD5B9200DDB17A /* WaitingChatsNavigation.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -394,6 +397,7 @@
 				F493646A26DFBC52008DC184 /* SignUpViewController.swift in Sources */,
 				F434685026F1431A00FABC15 /* ProfileViewController.swift in Sources */,
 				F493647926E102A1008DC184 /* SetupProfileViewController.swift in Sources */,
+				F403B4F526FD5B9200DDB17A /* WaitingChatsNavigation.swift in Sources */,
 				F4C85B9126F94F0600F14A3A /* UIImage + Extention.swift in Sources */,
 				F4B9324626E18C410001DD04 /* PeopleViewController.swift in Sources */,
 				F49578C326EA413500CD3294 /* MUser.swift in Sources */,
