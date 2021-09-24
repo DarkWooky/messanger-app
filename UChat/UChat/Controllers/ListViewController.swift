@@ -13,10 +13,11 @@ import FirebaseFirestore
 class ListViewController: UIViewController {
     // MARK: Internal
 
-    let activeChats = [MChat]()
+    var activeChats = [MChat]()
     var waitingChats = [MChat]()
     
     private var waitingChatsListener: ListenerRegistration?
+    private var activeChatsListener: ListenerRegistration?
 
     var collectionView: UICollectionView!
     var dataSource: UICollectionViewDiffableDataSource<ListSection, MChat>?
@@ -36,6 +37,7 @@ class ListViewController: UIViewController {
     
     deinit {
         waitingChatsListener?.remove()
+        activeChatsListener?.remove()
     }
 
     override func viewDidLoad() {
@@ -58,6 +60,16 @@ class ListViewController: UIViewController {
                 self.reloadData()
             case .failure(let error):
                 self.showAlert(with: "Error", and: error.localizedDescription)
+            }
+        })
+        
+        activeChatsListener = ListenerService.shared.activeChatsObserve(chats: activeChats, completion: { (result) in
+            switch result {
+            case .success(let chats):
+                self.activeChats = chats
+                self.reloadData()
+            case .failure(let error):
+                self.showAlert(with: "Error!", and: error.localizedDescription)
             }
         })
     }
@@ -216,13 +228,22 @@ extension ListViewController: UICollectionViewDelegate {
             self.present(chatRequestVC, animated: true, completion: nil)
         case .activeChats:
             print(indexPath)
+            let chatsVC = ChatsViewController(user: currentUser, chat: chat)
+            navigationController?.pushViewController(chatsVC, animated: true)
         }
     }
 }
 
 extension ListViewController: WaitingChatsNavigation {
     func chatToActive(chat: MChat) {
-        print(#function)
+        FirestoreService.shared.changeToActive(chat: chat) { result in
+            switch result {
+            case .success():
+                self.showAlert(with: "Success", and: "Enjoy chatting with \(chat.friendUsername).")
+            case .failure(let error):
+                self.showAlert(with: "Error", and: error.localizedDescription)
+            }
+        }
     }
     
     func removeWaitingChat(chat: MChat) {
