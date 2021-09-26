@@ -97,7 +97,7 @@ class OnboardingViewController: UIViewController, UIScrollViewDelegate {
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: view.topAnchor),
             scrollView.widthAnchor.constraint(equalTo: view.widthAnchor),
-            scrollView.heightAnchor.constraint(equalToConstant: 500)
+            scrollView.heightAnchor.constraint(equalToConstant: 600)
 //            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
 //            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
 //            scrollView.heightAnchor.constraint(equalToConstant: 1000)
