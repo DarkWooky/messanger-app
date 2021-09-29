@@ -22,7 +22,7 @@ class ActiveChatCell: UICollectionViewCell, SelfConfiguringCell {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = UIColor(named: "activeChatsBg")?.withAlphaComponent(0.5)
+        backgroundColor = UIColor(named: "projectColor")?.withAlphaComponent(0.2)
         setupViews()
         
         self.layer.cornerRadius = 10

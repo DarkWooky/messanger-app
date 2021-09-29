@@ -13,7 +13,7 @@
 		F403B4F526FD5B9200DDB17A /* WaitingChatsNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F403B4F426FD5B9200DDB17A /* WaitingChatsNavigation.swift */; };
 		F403B4F826FD816B00DDB17A /* MessageKit in Frameworks */ = {isa = PBXBuildFile; productRef = F403B4F726FD816B00DDB17A /* MessageKit */; };
 		F403B4FA26FDC17800DDB17A /* ChatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F403B4F926FDC17700DDB17A /* ChatsViewController.swift */; };
-		F403B4FC26FDC78C00DDB17A /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F403B4FB26FDC78B00DDB17A /* OnboardingViewController.swift */; };
+		F403B4FC26FDC78C00DDB17A /* DemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F403B4FB26FDC78B00DDB17A /* DemoViewController.swift */; };
 		F434684E26F00CDF00FABC15 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F434684D26F00CDF00FABC15 /* UserCell.swift */; };
 		F434685026F1431A00FABC15 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F434684F26F1431A00FABC15 /* ProfileViewController.swift */; };
 		F434685226F1450700FABC15 /* InsertableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F434685126F1450600FABC15 /* InsertableTextField.swift */; };
@@ -64,6 +64,7 @@
 		F4C85B8D26F829CE00F14A3A /* UIAplication + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C85B8C26F829CD00F14A3A /* UIAplication + Extension.swift */; };
 		F4C85B8F26F949CE00F14A3A /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C85B8E26F949CE00F14A3A /* StorageService.swift */; };
 		F4C85B9126F94F0600F14A3A /* UIImage + Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C85B9026F94F0600F14A3A /* UIImage + Extention.swift */; };
+		F4CFC81F2703DDEA001BA759 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CFC81E2703DDEA001BA759 /* OnboardingViewController.swift */; };
 		F4D38C0626E97D4100919CDE /* Validators.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D38C0526E97D4100919CDE /* Validators.swift */; };
 		F4E9DB3126E6C1A1001C065C /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E9DB3026E6C1A1001C065C /* SectionHeader.swift */; };
 		F4EAE44C26F663190080F506 /* FirestoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EAE44B26F663190080F506 /* FirestoreService.swift */; };
@@ -74,7 +75,7 @@
 		F403B4F226FD350300DDB17A /* MMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MMessage.swift; sourceTree = "<group>"; };
 		F403B4F426FD5B9200DDB17A /* WaitingChatsNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingChatsNavigation.swift; sourceTree = "<group>"; };
 		F403B4F926FDC17700DDB17A /* ChatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsViewController.swift; sourceTree = "<group>"; };
-		F403B4FB26FDC78B00DDB17A /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		F403B4FB26FDC78B00DDB17A /* DemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoViewController.swift; sourceTree = "<group>"; };
 		F434684D26F00CDF00FABC15 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		F434684F26F1431A00FABC15 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		F434685126F1450600FABC15 /* InsertableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertableTextField.swift; sourceTree = "<group>"; };
@@ -121,6 +122,7 @@
 		F4C85B8C26F829CD00F14A3A /* UIAplication + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAplication + Extension.swift"; sourceTree = "<group>"; };
 		F4C85B8E26F949CE00F14A3A /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
 		F4C85B9026F94F0600F14A3A /* UIImage + Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage + Extention.swift"; sourceTree = "<group>"; };
+		F4CFC81E2703DDEA001BA759 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		F4D38C0526E97D4100919CDE /* Validators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validators.swift; sourceTree = "<group>"; };
 		F4E9DB3026E6C1A1001C065C /* SectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
 		F4EAE44B26F663190080F506 /* FirestoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreService.swift; sourceTree = "<group>"; };
@@ -246,6 +248,7 @@
 		F4B9323F26E186860001DD04 /* SignUp&Auth */ = {
 			isa = PBXGroup;
 			children = (
+				F4CFC8202703E805001BA759 /* Onboarding */,
 				F493644726DEC3FF008DC184 /* AuthViewController.swift */,
 				F493646926DFBC52008DC184 /* SignUpViewController.swift */,
 				F493647426E043A3008DC184 /* LoginViewController.swift */,
@@ -257,7 +260,6 @@
 		F4B9324026E1877E0001DD04 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				F403B4FB26FDC78B00DDB17A /* OnboardingViewController.swift */,
 				F4B9324126E187BD0001DD04 /* MainTabBarController.swift */,
 				F4B9324326E188500001DD04 /* ListViewController.swift */,
 				F4B9324526E18C410001DD04 /* PeopleViewController.swift */,
@@ -298,6 +300,15 @@
 				F403B4F426FD5B9200DDB17A /* WaitingChatsNavigation.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		F4CFC8202703E805001BA759 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				F403B4FB26FDC78B00DDB17A /* DemoViewController.swift */,
+				F4CFC81E2703DDEA001BA759 /* OnboardingViewController.swift */,
+			);
+			path = Onboarding;
 			sourceTree = "<group>";
 		};
 		F4EAE44D26F6A8470080F506 /* Helpers */ = {
@@ -425,7 +436,7 @@
 				F434685A26F25B3500FABC15 /* ChatRequestViewController.swift in Sources */,
 				F434685826F14A1C00FABC15 /* UIView + Extension.swift in Sources */,
 				F434685426F1455900FABC15 /* UIImageView + Extension.swift in Sources */,
-				F403B4FC26FDC78C00DDB17A /* OnboardingViewController.swift in Sources */,
+				F403B4FC26FDC78C00DDB17A /* DemoViewController.swift in Sources */,
 				F493646626DF005A008DC184 /* ButtonFormView.swift in Sources */,
 				F4B9325126E577740001DD04 /* Bundle-Decodable.swift in Sources */,
 				F493644626DEC3FF008DC184 /* SceneDelegate.swift in Sources */,
@@ -436,6 +447,7 @@
 				F4B9326326E6728A0001DD04 /* SelfConfiguringCell.swift in Sources */,
 				F493647B26E1072B008DC184 /* AddPhotoView.swift in Sources */,
 				F434685226F1450700FABC15 /* InsertableTextField.swift in Sources */,
+				F4CFC81F2703DDEA001BA759 /* OnboardingViewController.swift in Sources */,
 				F4B9324D26E5699C0001DD04 /* MChat.swift in Sources */,
 				F434685F26F2BB5000FABC15 /* AuthService.swift in Sources */,
 				F493645E26DEEFB3008DC184 /* UIViewController + Extention.swift in Sources */,

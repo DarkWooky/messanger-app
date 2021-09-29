@@ -15,13 +15,8 @@
         }
       ],
       "color" : {
-        "color-space" : "display-p3",
-        "components" : {
-          "alpha" : "1.000",
-          "blue" : "1.000",
-          "green" : "0.200",
-          "red" : "0.600"
-        }
+        "platform" : "ios",
+        "reference" : "systemIndigoColor"
       },
       "idiom" : "universal"
     },
@@ -34,7 +29,7 @@
       ],
       "color" : {
         "platform" : "ios",
-        "reference" : "systemPurpleColor"
+        "reference" : "systemIndigoColor"
       },
       "idiom" : "universal"
     }

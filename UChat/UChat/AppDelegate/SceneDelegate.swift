@@ -29,11 +29,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                     mainTabBar.modalPresentationStyle = .fullScreen
                     self.window?.rootViewController = mainTabBar
                 case .failure(_):
-                    self.window?.rootViewController = AuthViewController()
+                    self.window?.rootViewController = DemoViewController()
                 }
             }
         } else {
-            window?.rootViewController = AuthViewController()
+            window?.rootViewController = DemoViewController()
         }
         window?.makeKeyAndVisible()
     }
