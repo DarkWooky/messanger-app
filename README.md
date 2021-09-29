@@ -12,6 +12,6 @@ UChat is a messenger app based on Firebase and MessageKit.
  * Storage
 * Google Sign In
 * SDWebImage
-* MessageKik
+* MessageKit
 
 
