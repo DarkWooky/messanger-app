@@ -65,7 +65,8 @@ class AuthViewController: UIViewController {
 
 extension AuthViewController {
     private func setupViews() {
-        view.applyGradients(startColor: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), endColor: #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1))
+    
+        view.backgroundColor = .mainWhite()
         googleButton.customizeGoogleButton()
 
         let googleView = ButtonFormView(label: googleLabel, button: googleButton)
@@ -106,22 +107,3 @@ extension AuthViewController: AuthNavigationDelegate {
     }
 }
 
-import SwiftUI
-
-// MARK: - AuthVCProvider
-
-struct AuthVCProvider: PreviewProvider {
-    struct ContainerView: UIViewControllerRepresentable {
-        let viewController = AuthViewController()
-
-        func makeUIViewController(context: UIViewControllerRepresentableContext<AuthVCProvider.ContainerView>) -> AuthViewController {
-            return viewController
-        }
-
-        func updateUIViewController(_ uiViewController: AuthVCProvider.ContainerView.UIViewControllerType, context: UIViewControllerRepresentableContext<AuthVCProvider.ContainerView>) {}
-    }
-
-    static var previews: some View {
-        ContainerView().preferredColorScheme(.light).edgesIgnoringSafeArea(.all)
-    }
-}

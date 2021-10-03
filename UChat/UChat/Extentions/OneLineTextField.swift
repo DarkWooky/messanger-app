@@ -13,7 +13,7 @@ class OneLineTextField: UITextField {
                      placeholder: String = "",
                      textContentType: UITextContentType! = .none) {
         self.init()
-        
+
         self.font = font
         self.borderStyle = .none
         self.clearButtonMode = .whileEditing
@@ -22,13 +22,13 @@ class OneLineTextField: UITextField {
         self.autocapitalizationType = .none
         self.placeholder = placeholder
         self.translatesAutoresizingMaskIntoConstraints = false
-        
+
         var bottomView = UIView()
         bottomView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         bottomView.backgroundColor = UIColor(named: "customColor")
         bottomView.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(bottomView)
-        
+
         NSLayoutConstraint.activate([
             bottomView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 3),
             bottomView.leadingAnchor.constraint(equalTo: self.leadingAnchor),

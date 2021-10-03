@@ -22,15 +22,17 @@ class ActiveChatCell: UICollectionViewCell, SelfConfiguringCell {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = UIColor(named: "projectColor")?.withAlphaComponent(0.2)
-        setupViews()
+        backgroundColor = UIColor(named: "Color-2")//?.withAlphaComponent(0.2)
+        
         
         self.layer.cornerRadius = 10
         
-        self.layer.shadowColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+        self.layer.shadowColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
         self.layer.shadowRadius = 3
         self.layer.shadowOpacity = 0.5
         self.layer.shadowOffset = CGSize(width: 4, height: 4)
+        
+        setupViews()
     }
     
     required init?(coder: NSCoder) {
@@ -50,7 +52,9 @@ class ActiveChatCell: UICollectionViewCell, SelfConfiguringCell {
 extension ActiveChatCell {
 
     private func setupViews() {
-        let chatStackView = UIStackView(arrangedSubviews: [friendNameLabel, lastMessageLabel], axis: .vertical, spacing: 8)
+        let chatStackView = UIStackView(arrangedSubviews: [friendNameLabel, lastMessageLabel],
+                                        axis: .vertical,
+                                        spacing: 8)
         chatStackView.alignment = .leading
 
         let views = [friendImageView, friendNameLabel, lastMessageLabel, chatStackView, /*lastMsgTimeLbl*/]
@@ -72,7 +76,7 @@ extension ActiveChatCell {
             friendImageView.widthAnchor.constraint(equalToConstant: 75),
             ])
         NSLayoutConstraint.activate([
-            chatStackView.topAnchor.constraint(equalTo: friendImageView.topAnchor),
+            chatStackView.topAnchor.constraint(equalTo: friendImageView.topAnchor, constant: -2),
             chatStackView.leadingAnchor.constraint(equalTo: friendImageView.trailingAnchor, constant: 16),
             chatStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10)
             ])

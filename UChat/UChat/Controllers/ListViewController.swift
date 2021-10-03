@@ -15,13 +15,21 @@ class ListViewController: UIViewController {
 
     var activeChats = [MChat]()
     var waitingChats = [MChat]()
-    
+
     private var waitingChatsListener: ListenerRegistration?
     private var activeChatsListener: ListenerRegistration?
 
     var collectionView: UICollectionView!
     var dataSource: UICollectionViewDiffableDataSource<ListSection, MChat>?
     let searchController = UISearchController()
+    
+    let personButton: UIButton = {
+        let button = UIButton(type: .system)
+        let personImage = UIImage(systemName: "person.circle.fill")
+        button.setImage(personImage, for: .normal)
+        button.tintColor = UIColor(named: "projectColor")
+        return button
+    }()
 
     private let currentUser: MUser
 
@@ -34,7 +42,7 @@ class ListViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     deinit {
         waitingChatsListener?.remove()
         activeChatsListener?.remove()
@@ -42,12 +50,13 @@ class ListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+
         setupSearchBar(searchController)
         setupCollectionView()
         createDataSource()
         reloadData()
         
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: personButton)
         waitingChatsListener = ListenerService.shared.waitingChatsObserver(chats: waitingChats, completion: { result in
             switch result {
             case .success(let chats):
@@ -62,7 +71,7 @@ class ListViewController: UIViewController {
                 self.showAlert(with: "Error", and: error.localizedDescription)
             }
         })
-        
+
         activeChatsListener = ListenerService.shared.activeChatsObserve(chats: activeChats, completion: { (result) in
             switch result {
             case .success(let chats):
@@ -87,7 +96,7 @@ class ListViewController: UIViewController {
 
         collectionView.register(ActiveChatCell.self, forCellWithReuseIdentifier: ActiveChatCell.reuseId)
         collectionView.register(WaitingChatCell.self, forCellWithReuseIdentifier: WaitingChatCell.reuseId)
-        
+
         collectionView.delegate = self
     }
 
@@ -216,11 +225,11 @@ extension ListViewController: UISearchBarDelegate {
 
 // MARK: UICollectionViewDelegate
 extension ListViewController: UICollectionViewDelegate {
-    
+
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let chat = self.dataSource?.itemIdentifier(for: indexPath) else { return }
         guard let section = ListSection(rawValue: indexPath.section) else { return }
-        
+
         switch section {
         case .waitingChats:
             let chatRequestVC = ChatRequestViewController(chat: chat)
@@ -245,7 +254,7 @@ extension ListViewController: WaitingChatsNavigation {
             }
         }
     }
-    
+
     func removeWaitingChat(chat: MChat) {
         FirestoreService.shared.deleteWaitingChat(chat: chat) { result in
             switch result {
@@ -254,28 +263,6 @@ extension ListViewController: WaitingChatsNavigation {
             case .failure(let error):
                 self.showAlert(with: "Error", and: error.localizedDescription)
             }
-        }
-    }
-}
-
-// MARK: - SwiftUI
-import SwiftUI
-
-struct ListVCProvider: PreviewProvider {
-    static var previews: some View {
-        ContainerView().preferredColorScheme(.light).edgesIgnoringSafeArea(.all)
-    }
-
-    struct ContainerView: UIViewControllerRepresentable {
-
-        let tabBarVC = MainTabBarController()
-
-        func makeUIViewController(context: UIViewControllerRepresentableContext<ListVCProvider.ContainerView>) -> MainTabBarController {
-            return tabBarVC
-        }
-
-        func updateUIViewController(_ uiViewController: ListVCProvider.ContainerView.UIViewControllerType, context: UIViewControllerRepresentableContext<ListVCProvider.ContainerView>) {
-
         }
     }
 }

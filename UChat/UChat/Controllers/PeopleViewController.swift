@@ -192,22 +192,3 @@ extension PeopleViewController: UICollectionViewDelegate {
     }
 }
 
-import SwiftUI
-
-// MARK: - AuthVCProvider
-
-struct PeopleVCProvider: PreviewProvider {
-    struct ContainerView: UIViewControllerRepresentable {
-        let tabBarVC = MainTabBarController()
-
-        func makeUIViewController(context: UIViewControllerRepresentableContext<PeopleVCProvider.ContainerView>) -> MainTabBarController {
-            return tabBarVC
-        }
-
-        func updateUIViewController(_ uiViewController: PeopleVCProvider.ContainerView.UIViewControllerType, context: UIViewControllerRepresentableContext<PeopleVCProvider.ContainerView>) { }
-    }
-
-    static var previews: some View {
-        ContainerView().preferredColorScheme(.light).edgesIgnoringSafeArea(.all)
-    }
-}

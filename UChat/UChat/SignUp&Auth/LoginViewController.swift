@@ -11,7 +11,7 @@ import UIKit
 
 class LoginViewController: UIViewController {
     // MARK: Internal
-    
+
     // Scroll View
     let scrollView = UIScrollView()
     let contentView = UIView()
@@ -45,7 +45,7 @@ class LoginViewController: UIViewController {
     @objc func googleButtonTapped() {
         AuthService.shared.signInWithGoogle()
     }
-    
+
     @objc func loginButtonTapped() {
         print(#function)
         AuthService.shared.login(email: emailTextField.text, password: passwordTextField.text)
@@ -56,7 +56,7 @@ class LoginViewController: UIViewController {
             self.delegate?.toSignUpVC()
         }
     }
-
+    
     // MARK: Private
 
     private func addTargets() {
@@ -66,10 +66,12 @@ class LoginViewController: UIViewController {
     }
 }
 
+//MARK: - Setup view
+
 extension LoginViewController {
     private func setupView() {
-        
-        view.applyGradients(startColor: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), endColor: #colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1))
+
+        view.backgroundColor = .mainWhite()
         setupScrollView(scrollView, with: contentView)
         googleButton.customizeGoogleButton()
 
@@ -90,7 +92,8 @@ extension LoginViewController {
                                           spacing: 12)
         bottomStackView.alignment = .firstBaseline
 
-        let stackView = UIStackView(arrangedSubviews: [loginWithView, orLabel, emailStackView, passwordStackView, loginButton, bottomStackView],
+        let stackView = UIStackView(arrangedSubviews: [loginWithView, orLabel, emailStackView,
+                                                       passwordStackView, loginButton, bottomStackView],
                                     axis: .vertical,
                                     spacing: 40)
 
@@ -105,34 +108,11 @@ extension LoginViewController {
             welcomeLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 80),
             welcomeLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor)
         ])
-
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: welcomeLabel.bottomAnchor, constant: 60),
             stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 25),
             stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -25),
             stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -50)
         ])
-    }
-}
-
-// MARK: - Canvas
-
-import SwiftUI
-
-// MARK: - LoginVCProvider
-
-struct LoginVCProvider: PreviewProvider {
-    struct ContainerView: UIViewControllerRepresentable {
-        let loginVC = LoginViewController()
-
-        func makeUIViewController(context: UIViewControllerRepresentableContext<LoginVCProvider.ContainerView>) -> LoginViewController {
-            return loginVC
-        }
-
-        func updateUIViewController(_ uiViewController: LoginVCProvider.ContainerView.UIViewControllerType, context: UIViewControllerRepresentableContext<LoginVCProvider.ContainerView>) {}
-    }
-
-    static var previews: some View {
-        ContainerView().preferredColorScheme(.light).edgesIgnoringSafeArea(.all)
     }
 }

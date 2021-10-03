@@ -19,12 +19,12 @@ class UserCell: UICollectionViewCell, SelfConfiguringCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        backgroundColor = UIColor(named: "activeChatsBg")?.withAlphaComponent(0.5)
+        backgroundColor = UIColor(named: "Color-2")
         setupViews()
         
         self.layer.cornerRadius = 10
         
-        self.layer.shadowColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+        self.layer.shadowColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
         self.layer.shadowRadius = 3
         self.layer.shadowOpacity = 0.5
         self.layer.shadowOffset = CGSize(width: 4, height: 4)
@@ -51,7 +51,7 @@ class UserCell: UICollectionViewCell, SelfConfiguringCell {
         let views = [userImageView, userName, containerView]
         views.forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
     
-        userImageView.backgroundColor = .red
+       // userImageView.backgroundColor = .red
         
         addSubview(containerView)
         containerView.addSubview(userImageView)
@@ -81,27 +81,5 @@ class UserCell: UICollectionViewCell, SelfConfiguringCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-}
-
-// MARK: - SwiftUI
-import SwiftUI
-
-struct UserChatProvider: PreviewProvider {
-    static var previews: some View {
-        ContainerView().preferredColorScheme(.dark).edgesIgnoringSafeArea(.all)
-    }
-    
-    struct ContainerView: UIViewControllerRepresentable {
-        
-        let tabBarVC = MainTabBarController()
-        
-        func makeUIViewController(context: UIViewControllerRepresentableContext<UserChatProvider.ContainerView>) -> MainTabBarController {
-            return tabBarVC
-        }
-        
-        func updateUIViewController(_ uiViewController: UserChatProvider.ContainerView.UIViewControllerType, context: UIViewControllerRepresentableContext<UserChatProvider.ContainerView>) {
-            
-        }
     }
 }

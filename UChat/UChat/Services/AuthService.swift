@@ -33,7 +33,7 @@ class AuthService {
 
     func login(email: String?, password: String?) {
         AuthService.shared.login(email: email,
-            password: password) { result in
+                                 password: password) { result in
             switch result {
             case .success(let user):
                 UIApplication.getTopViewController()?.showAlert(with: "Success!", and: "You signed in") {
@@ -63,7 +63,7 @@ class AuthService {
             let idToken = authentication.idToken else { return }
 
         let credential = GoogleAuthProvider.credential(withIDToken: idToken,
-            accessToken: authentication.accessToken)
+                                                       accessToken: authentication.accessToken)
 
         Auth.auth().signIn(with: credential) { result, error in
             guard let result = result else {

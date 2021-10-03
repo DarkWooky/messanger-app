@@ -45,7 +45,7 @@ class SetupProfileViewController: UIViewController {
         if let username = currentUser.displayName {
             fullNameTextField.text = username
         }
-        
+
         if let photoURL = currentUser.photoURL {
             fullImageView.circleImageView.sd_setImage(with: photoURL, completed: nil)
         }
@@ -104,26 +104,26 @@ class SetupProfileViewController: UIViewController {
 extension SetupProfileViewController {
     private func setupViews() {
 
-        view.applyGradients(startColor: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), endColor: #colorLiteral(red: 0.1764705926, green: 0.01176470611, blue: 0.5607843399, alpha: 1))
+        view.backgroundColor = .mainWhite()
         setupScrollView(scrollView, with: contentView)
 
         //Stack views
         let fullNameStackView = UIStackView(arrangedSubviews: [fullNameLabel, fullNameTextField],
-            axis: .vertical,
-            spacing: 0)
+                                            axis: .vertical,
+                                            spacing: 0)
         let aboutmeStackView = UIStackView(arrangedSubviews: [aboutmeLabel, aboutmeTextField],
-            axis: .vertical,
-            spacing: 0)
+                                           axis: .vertical,
+                                           spacing: 0)
         let sexStackView = UIStackView(arrangedSubviews: [sexLabel, sexSegmentedControl],
-            axis: .vertical,
-            spacing: 12)
+                                       axis: .vertical,
+                                       spacing: 12)
 
         goToChatsButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
 
         let stackView = UIStackView(arrangedSubviews: [fullNameStackView, aboutmeStackView,
-            sexStackView, goToChatsButton],
-            axis: .vertical,
-            spacing: 35)
+                                                       sexStackView, goToChatsButton],
+                                    axis: .vertical,
+                                    spacing: 35)
 
         let views = [setupProfileLabel, fullImageView, stackView]
         views.forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
@@ -136,20 +136,21 @@ extension SetupProfileViewController {
         NSLayoutConstraint.activate([
             setupProfileLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 80),
             setupProfileLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor)
-            ])
+        ])
         NSLayoutConstraint.activate([
             fullImageView.topAnchor.constraint(equalTo: setupProfileLabel.bottomAnchor, constant: 40),
             fullImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor)
-            ])
+        ])
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: fullImageView.bottomAnchor, constant: 40),
             stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 25),
             stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -40),
             stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -50)
-            ])
-
+        ])
     }
 }
+
+// MARK: - UINavigationControllerDelegate, UIImagePickerControllerDelegate
 
 extension SetupProfileViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
@@ -162,22 +163,3 @@ extension SetupProfileViewController: UINavigationControllerDelegate, UIImagePic
     }
 }
 
-import SwiftUI
-
-// MARK: - SetupProfileVCProvider
-
-struct SetupProfileVCProvider: PreviewProvider {
-    struct ContainerView: UIViewControllerRepresentable {
-        let setupProfileVC = SetupProfileViewController(currentUser: Auth.auth().currentUser!)
-
-        func makeUIViewController(context: UIViewControllerRepresentableContext<SetupProfileVCProvider.ContainerView>) -> SetupProfileViewController {
-            return setupProfileVC
-        }
-
-        func updateUIViewController(_ uiViewController: SetupProfileVCProvider.ContainerView.UIViewControllerType, context: UIViewControllerRepresentableContext<SetupProfileVCProvider.ContainerView>) { }
-    }
-
-    static var previews: some View {
-        ContainerView().preferredColorScheme(.light).edgesIgnoringSafeArea(.all)
-    }
-}

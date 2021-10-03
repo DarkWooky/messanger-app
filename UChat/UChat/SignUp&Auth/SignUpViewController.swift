@@ -40,7 +40,7 @@ class SignUpViewController: UIViewController {
     let confirmPasswordTextField = OneLineTextField(font: .helvetica20(),
                                                     placeholder: "Confirm password",
                                                     textContentType: .oneTimeCode)
-    
+
     // Buttons
     let signUpButton = UIButton(title: "Sign Up", titleColor: .white, isShadow: true)
     let loginButton = UIButton(title: "Login", backgroundColor: nil)
@@ -94,9 +94,10 @@ class SignUpViewController: UIViewController {
 
 extension SignUpViewController {
     private func setupViews() {
-        view.applyGradients(startColor: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), endColor: #colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1))
+
+        view.backgroundColor = .mainWhite()
         setupScrollView(scrollView, with: contentView)
-        
+
         // Main StackView
         let emailStackView = UIStackView(arrangedSubviews: [emailLabel, emailTextField, emailErrorLabel], axis: .vertical, spacing: 10)
         let passwordStackView = UIStackView(arrangedSubviews: [passwordLabel, passwordTextField, passwordErrorLabel, passwordRuleLabel], axis: .vertical, spacing: 10)
@@ -158,39 +159,19 @@ extension SignUpViewController {
 
         case passwordTextField:
             guard let pass1 = passwordTextField.text,
-                  let pass2 = confirmPasswordTextField.text else { return }
+                let pass2 = confirmPasswordTextField.text else { return }
 
             passwordStrength = Validators.isValidPassword(pass1)
             Validators.updatePassErrorLbl(pass1, pass2, passwordStrength, &isPassConfirmed, confPassErrLbl: confirmPasswordlErrorLabel, passErrLbl: passwordErrorLabel)
 
         case confirmPasswordTextField:
             guard let pass1 = passwordTextField.text,
-                  let pass2 = confirmPasswordTextField.text else { return }
+                let pass2 = confirmPasswordTextField.text else { return }
 
             Validators.updatePassErrorLbl(pass1, pass2, passwordStrength, &isPassConfirmed, confPassErrLbl: confirmPasswordlErrorLabel)
 
         default:
             print("")
         }
-    }
-}
-
-import SwiftUI
-
-// MARK: - SignUpVCProvider
-
-struct SignUpVCProvider: PreviewProvider {
-    struct ContainerView: UIViewControllerRepresentable {
-        let signUpVC = SignUpViewController()
-
-        func makeUIViewController(context: UIViewControllerRepresentableContext<SignUpVCProvider.ContainerView>) -> SignUpViewController {
-            return signUpVC
-        }
-
-        func updateUIViewController(_ uiViewController: SignUpVCProvider.ContainerView.UIViewControllerType, context: UIViewControllerRepresentableContext<SignUpVCProvider.ContainerView>) {}
-    }
-
-    static var previews: some View {
-        ContainerView().preferredColorScheme(.light).edgesIgnoringSafeArea(.all)
     }
 }

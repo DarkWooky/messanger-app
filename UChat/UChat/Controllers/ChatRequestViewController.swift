@@ -68,6 +68,7 @@ class ChatRequestViewController: UIViewController {
     }
 }
 
+// MARK: - Setup constraints
 extension ChatRequestViewController {
     private func setupConstraints() {
         view.addSubview(imageView)
