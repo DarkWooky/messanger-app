@@ -22,14 +22,6 @@ class ListViewController: UIViewController {
     var collectionView: UICollectionView!
     var dataSource: UICollectionViewDiffableDataSource<ListSection, MChat>?
     let searchController = UISearchController()
-    
-    let personButton: UIButton = {
-        let button = UIButton(type: .system)
-        let personImage = UIImage(systemName: "person.circle.fill")
-        button.setImage(personImage, for: .normal)
-        button.tintColor = UIColor(named: "projectColor")
-        return button
-    }()
 
     private let currentUser: MUser
 
@@ -54,9 +46,7 @@ class ListViewController: UIViewController {
         setupSearchBar(searchController)
         setupCollectionView()
         createDataSource()
-        reloadData()
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: personButton)
         waitingChatsListener = ListenerService.shared.waitingChatsObserver(chats: waitingChats, completion: { result in
             switch result {
             case .success(let chats):
@@ -66,7 +56,7 @@ class ListViewController: UIViewController {
                     self.present(chatRequestVC, animated: true, completion: nil)
                 }
                 self.waitingChats = chats
-                self.reloadData()
+                self.reloadData(with: nil)
             case .failure(let error):
                 self.showAlert(with: "Error", and: error.localizedDescription)
             }
@@ -76,7 +66,7 @@ class ListViewController: UIViewController {
             switch result {
             case .success(let chats):
                 self.activeChats = chats
-                self.reloadData()
+                self.reloadData(with: nil)
             case .failure(let error):
                 self.showAlert(with: "Error!", and: error.localizedDescription)
             }
@@ -100,12 +90,17 @@ class ListViewController: UIViewController {
         collectionView.delegate = self
     }
 
-    private func reloadData() {
+    private func reloadData(with searchText: String?) {
+        let filtered = activeChats.filter { (activeChat) -> Bool in
+            activeChat.contains(filter: searchText)
+        }
+        searchController.searchBar.delegate = self
+        
         var snapshot = NSDiffableDataSourceSnapshot<ListSection, MChat>()
         snapshot.appendSections([.waitingChats, .activeChats])
 
         snapshot.appendItems(waitingChats, toSection: .waitingChats)
-        snapshot.appendItems(activeChats, toSection: .activeChats)
+        snapshot.appendItems(filtered, toSection: .activeChats)
 
         dataSource?.apply(snapshot, animatingDifferences: true)
     }
@@ -219,7 +214,7 @@ extension ListViewController {
 
 extension ListViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print(searchText)
+        reloadData(with: searchText)
     }
 }
 

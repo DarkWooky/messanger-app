@@ -9,6 +9,7 @@ import UIKit
 import FirebaseAuth
 import FirebaseFirestore
 import GoogleSignIn
+import SDWebImage
 
 class PeopleViewController: UIViewController {
 
@@ -18,6 +19,14 @@ class PeopleViewController: UIViewController {
     var collectionView: UICollectionView!
     var dataSource: UICollectionViewDiffableDataSource<PeopleSection, MUser>?
     let searchController = UISearchController()
+    
+    let personButton: UIButton = {
+        let button = UIButton(type: .system)
+        let personImage = UIImage(systemName: "person.circle.fill")
+        button.setImage(personImage, for: .normal)
+        button.tintColor = UIColor(named: "projectColor")
+        return button
+    }()
 
     private let currentUser: MUser
 
@@ -26,7 +35,7 @@ class PeopleViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
         title = currentUser.username
     }
-    
+
     deinit {
         usersListener?.remove()
     }
@@ -41,9 +50,11 @@ class PeopleViewController: UIViewController {
         setupSearchBar(searchController)
         setupCollectionView()
         createDataSource()
-
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log out", style: .plain, target: self, action: #selector(signOut))
         
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log out", style: .plain, target: self, action: #selector(signOut))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: personButton)
+        personButton.addTarget(self, action: #selector(personButtonTapped), for: .touchUpInside)
+
         usersListener = ListenerService.shared.userObserver(users: users, completion: { result in
             switch result {
             case .success(let users):
@@ -53,6 +64,10 @@ class PeopleViewController: UIViewController {
                 self.showAlert(with: "Error!", and: error.localizedDescription)
             }
         })
+    }
+    
+    @objc private func personButtonTapped() {
+        present(SettingsViewController(currentUser: currentUser), animated: true, completion: nil)
     }
 
     @objc private func signOut() {
@@ -79,7 +94,7 @@ class PeopleViewController: UIViewController {
         collectionView.register(SectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SectionHeader.reuseId)
 
         collectionView.register(UserCell.self, forCellWithReuseIdentifier: UserCell.reuseId)
-        
+
         collectionView.delegate = self
     }
 

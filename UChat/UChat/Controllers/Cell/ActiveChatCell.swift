@@ -24,7 +24,6 @@ class ActiveChatCell: UICollectionViewCell, SelfConfiguringCell {
         super.init(frame: frame)
         backgroundColor = UIColor(named: "Color-2")//?.withAlphaComponent(0.2)
         
-        
         self.layer.cornerRadius = 10
         
         self.layer.shadowColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)

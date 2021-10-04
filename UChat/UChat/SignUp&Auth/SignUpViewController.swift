@@ -26,7 +26,7 @@ class SignUpViewController: UIViewController {
     // Error labels
     let emailErrorLabel = UILabel(text: "Incorrect email", font: .helvetica14(), textColor: .systemRed, isHidden: true)
     let passwordErrorLabel = UILabel(text: "Weak password", font: .helvetica14(), textColor: .systemRed, isHidden: true)
-    let passwordRuleLabel = UILabel(text: "Your password must be a minimum of 6 characters and contain one lowercase letter and one number.", font: .helvetica16())
+    let passwordRuleLabel = UILabel(text: "Your password must be a minimum of 6 characters and contain one uppercase letter and one number.", font: .helvetica16())
     let confirmPasswordlErrorLabel = UILabel(text: "Passwords do not match", font: .helvetica14(), textColor: .systemRed, isHidden: true)
 
     // Text fields
