@@ -56,7 +56,7 @@ class LoginViewController: UIViewController {
             self.delegate?.toSignUpVC()
         }
     }
-    
+
     // MARK: Private
 
     private func addTargets() {

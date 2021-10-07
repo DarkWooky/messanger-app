@@ -16,11 +16,9 @@ extension Bundle {
         guard let data = try? Data(contentsOf: url) else {
             fatalError("Failed to load \(file) fron bundle.")
         }
-        
         guard let loaded = try? JSONDecoder().decode(T.self, from: data) else {
             fatalError("Failed to load \(file) fron bundle.")
         }
-        
         return loaded
     }
 }

@@ -9,7 +9,7 @@ import UIKit
 
 enum ListSection: Int, CaseIterable {
     case waitingChats, activeChats
-    
+
     func description() -> String {
         switch self {
         case .waitingChats:
@@ -22,7 +22,7 @@ enum ListSection: Int, CaseIterable {
 
 enum PeopleSection: Int, CaseIterable {
     case users
-    
+
     func description(userCount: Int) -> String {
         switch self {
         case .users:
@@ -31,8 +31,7 @@ enum PeopleSection: Int, CaseIterable {
     }
 }
 
-
-enum Regex: Int{
+enum Regex: Int {
     case simpleRegex
     case averageRegex
     case strongRegex

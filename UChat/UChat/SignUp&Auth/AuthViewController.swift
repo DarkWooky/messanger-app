@@ -27,7 +27,7 @@ class AuthViewController: UIViewController {
 
     let signUpVC = SignUpViewController()
     let loginVC = LoginViewController()
-  
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -65,7 +65,7 @@ class AuthViewController: UIViewController {
 
 extension AuthViewController {
     private func setupViews() {
-    
+
         view.backgroundColor = .mainWhite()
         googleButton.customizeGoogleButton()
 

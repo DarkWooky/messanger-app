@@ -40,13 +40,13 @@ extension DemoViewController {
 
         let page1 = OnboardingViewController(imageName: "chat",
                                              titleText: "Welcome",
-                                             subtitleText: "To the Swift Arcade. Your place for learning Swift.")
+                                             subtitleText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.")
         let page2 = OnboardingViewController(imageName: "chat",
-                                             titleText: "Learn",
-                                             subtitleText: "Start your career in iOS development.")
+                                             titleText: "Chat",
+                                             subtitleText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.")
         let page3 = OnboardingViewController(imageName: "chat",
                                              titleText: "Have fun",
-                                             subtitleText: "Level Up and have fun building mobile apps.")
+                                             subtitleText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.")
         //let page4 = AuthViewController()
 
         pages.append(page1)

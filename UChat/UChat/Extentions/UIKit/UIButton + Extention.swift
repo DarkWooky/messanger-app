@@ -24,7 +24,7 @@ extension UIButton {
         self.titleLabel?.font = font
         self.layer.cornerRadius = cornerRadius
         self.isEnabled = isEnabled
-        
+
         if isShadow {
             self.layer.shadowColor = UIColor.black.cgColor
             self.layer.shadowRadius = 4
@@ -32,7 +32,7 @@ extension UIButton {
             self.layer.shadowOffset = CGSize(width: 0, height: 4)
         }
     }
-    
+
     func customizeGoogleButton() {
         let googleLogo = UIImageView(image: #imageLiteral(resourceName: "googleLogo"), contentMode: .scaleAspectFit)
         googleLogo.translatesAutoresizingMaskIntoConstraints = false

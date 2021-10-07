@@ -51,7 +51,7 @@ class UserCell: UICollectionViewCell, SelfConfiguringCell {
         let views = [userImageView, userName, containerView]
         views.forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
     
-       // userImageView.backgroundColor = .red
+        userImageView.backgroundColor = UIColor(named: "Color-2")
         
         addSubview(containerView)
         containerView.addSubview(userImageView)
